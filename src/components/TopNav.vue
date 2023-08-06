@@ -163,7 +163,7 @@ name: 'TopNav',
           )
           AIRouter &&
             (AIRouter.thirdPartyUrl =
-              'httt://training.pab.com.cn/training-web/index.html')
+              'http://training.pab.com.cn/training-web/index.html')
           this.$store.commit('setUserInfo', data)
         }
       })
