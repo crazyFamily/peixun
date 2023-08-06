@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'pingan-nuancheng';
+    src: url('../../../../assets/fonts/PingAnNuanChengTi_bate21_Regular.woff') format('woff');
+    font-weight: normal;
+    font-display: 'auto';
+    font-style: normal;
+  }
+  
+  .dashboard-wrapper {
+    width: 1290px;
+    color: #4A4A4A;
+  
+    .title-wrapper {
+      font-family: 'pingan-nuancheng', 'PingFang SC', 'Droid Sans', 'HelveticaNeue',
+        'Helvetica Neue', arial, sans-serif;
+      font-size: 84px;
+      color: #D1825E;
+    }
+  
+    .title-wrapper-input {
+      :deep(.el-input__inner) {
+        height: auto;
+        font-size: 84px;
+        color: #D1825E;
+        background: transparent;
+        border: 2px dashed #6E6E6E;
+        font-family: 'pingan-nuancheng', 'PingFang SC', 'Droid Sans', 'HelveticaNeue',
+          'Helvetica Neue', arial, sans-serif;
+      }
+    }
+  
+    .topbar {
+      height: 50px;
+  
+      :deep(.el-card__body) {
+        height: 100%;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  
+    .topbar .control-wrapper {
+      .item {
+        width: 80px;
+      }
+    }
+  
+    .green {
+      color: #00BDAE;
+    }
+  
+    .main-wrapper {
+      background-color: #F0DCB6;
+      padding: 15px 35px;
+      position: relative;
+  
+      .background {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+  
+      .content-container {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+  
+        .dashboard-logo {
+          width: 100%;
+          margin: 30px 0;
+        }
+      }
+  
+    }
+  
+    .top-wrapper {
+      display: flex;
+      justify-content: space-between;
+  
+      .icon-wrapper {
+        width: 30%;
+        margin-top: 5%;
+        margin-right: 5%;
+      }
+  
+      .icon-tip {
+        width: 100%;
+      }
+  
+      .date-wrapper {
+        width: 255px;
+        margin-top: 8%;
+        padding: 5px 0;
+        font-size: 40px;
+        color: #fff;
+        background: #E6A485;
+        border-radius: 30px;
+        text-align: center;
+      }
+    }
+  
+    .message-title {
+      font-size: 32px;
+      color: #A72B19;
+    }
+  
+    .info-message {
+      font-size: 24px;
+      margin-top: 18px;
+    }
+  
+    .table-style {
+      margin-top: 30px;
+  
+      :deep(thead th) {
+        background-color: #F8DFB0 !important;
+      }
+  
+      :deep(.cell) {
+        color: #BD834B;
+      }
+  
+      :deep(th:not(:first-child):before) {
+        background: transparent;
+      }
+  
+      :deep(.gc-table) {
+        border: 1px solid transparent !important;
+      }
+    }
+  }
+  
