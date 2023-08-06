@@ -1,0 +1,229 @@
+@mixin button($width: 90px, $height: 26px) {
+    width: $width !important;
+    height: $height !important;
+    padding: 6px 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+  }
+  
+  @mixin button-color-plain($color: #fd6720) {
+    border-color: $color !important;
+    span {
+      color: $color;
+    }
+    &.el-button--default:hover {
+      border-color: $color !important;
+      box-shadow: 0 2px 5px 0 rgba($color: $color, $alpha: 0.4);
+      span {
+        color: $color !important;
+      }
+    }
+  }
+  
+  @mixin button-color($color: #fd6720) {
+    @include button-color-plain($color);
+    background-color: $color !important;
+    span {
+      color: #ffffff !important;
+    }
+    &.el-button--default:hover {
+      background-color: $color !important;
+      span {
+        color: #ffffff !important;
+      }
+    }
+  }
+  
+  .button-48-24 {
+    @include button(48px, 24px);
+  }
+  .button-50-28 {
+    @include button(50px, 28px);
+  }
+  .button-50-30 {
+    @include button(50px, 30px);
+  }
+  
+  .button-60 {
+    @include button(60px);
+  }
+  
+  .button-60-h30 {
+    @include button(60px, 30px);
+  }
+
+  .button-w70-h26 {
+    @include button(70px, 26px);
+  }
+  
+  .button-w70-h28 {
+    @include button(70px, 28px);
+  }
+  
+  .button-w70-h30 {
+    @include button(70px, 30px);
+  }
+  
+  .button-w80-h30 {
+    @include button(80px, 30px);
+  }
+  .button-w90-h30 {
+    @include button(90px, 30px);
+  }
+  
+  .button-w100-h28 {
+    @include button(100px, 28px);
+  }
+  
+  .button-w100-h30 {
+    @include button(100px, 30px);
+  }
+  
+  .button-w90 {
+    @include button;
+  }
+  
+.button-my-primary-plain {
+    @include button-color-plain;
+  }
+  
+  .button-blue {
+    @include button-color(#36486b);
+  }
+  .button-orange {
+    @include button-color(#eeb435);
+  }
+  .button-green {
+    @include button-color(#2cb47c);
+  }
+  .button-pink {
+    @include button-color(#f56c6c);
+  }
+  
+  .button-60-blue-plain,
+  .button-60-blue-plain.el-button {
+    @extend .button-60;
+    border-color: #36486b !important;
+    span {
+      color: #36486b;
+    }
+    &:hover {
+      border-color: #36486b !important;
+      box-shadow: 0 2px 5px 0 rgba($color: #424656, $alpha: 0.4);
+      span {
+        color: #36486b !important;
+      }
+    }
+  }
+  .button-60-blue-primary,
+  .button-60-blue-primary.el-button.el-button--default {
+    @extend .button-60-blue-plain;
+    background-color: #36486b !important;
+    span {
+      color: #ffffff !important;
+    }
+    &:hover {
+      background-color: #36486b !important;
+      span {
+        color: #ffffff !important;
+      }
+    }
+  }
+  
+  .cancel-button {
+    span {
+      color: #7d8292 !important;
+    }
+    &:hover span {
+      color: #fd6720 !important;
+    }
+  }
+  
+  button.ml10.el-button {
+    margin-left: 10px !important;
+  }
+
+  .dashed-btns {
+    display: flex;
+    height: 30px;
+    margin-top: 20px;
+    justify-content: space-between;
+  
+    div {
+      flex: 1;
+      margin-left: 20px;
+      border: 1px dashed #e2e3e6;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  
+  .down-btn {
+    display: flex;
+    width: 90px;
+    height: 26px;
+    margin-left: 20px;
+    border: 1px solid #e2e3e6;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@mixin b($width, $height) {
+  display: flex;
+  width: $width;
+  height: $height;
+  border-radius: 2px;
+  border: 1px solid #e0e1e3;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+@mixin b-color($color, $bc, $bgc: #fff) {
+  color: $color;
+  border-color: $bc;
+  background-color: $bgc;
+}
+
+.b630 {
+  @include b(60px, 30px);
+}
+.b728 {
+  @include b(70px, 28px);
+}
+.b830 {
+  @include b(80px, 30px);
+}
+
+.theme-color {
+  @include b-color($themeColor, $themeColor);
+}
+
+.theme-bgc {
+    @include b-color(#fff, $themeColor, $themeColor);
+  }
+  
+  .disabled-color {
+    @include b-color($shallow, #eaecf1, #f7f8fa);
+  }
+  
+  .eeb-color {
+    @include b-color(#fff, #eeb435, #eeb435);
+  }
+  
+  .b926 {
+    display: flex;
+    width: 90px;
+    height: 26px;
+    border: 1px solid #e2e3e6;
+    border-radius: 2px;
+    justify-content: center;
+    align-items: center;
+  }
+           

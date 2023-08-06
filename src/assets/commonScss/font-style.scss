@@ -1,0 +1,270 @@
+@import './common-variate.scss';
+
+.el-dialog__title {
+  color: $font-color;
+}
+
+.el-input__inner {
+  color: $font-color;
+}
+
+.el-table td .cell {
+  color: $font-color;
+}
+
+.el-checkbox__label {
+  color: $font-color;
+}
+
+div.el-card {
+  color: $font-color;
+}
+
+div.el-tree {
+  font-size: $font-size;
+  color: $font-color;
+}
+
+div.el-message-box__content {
+  color: $font-color;
+}
+
+label.el-radio {
+  color: $font-color;
+}
+
+span.el-radio__input.is-checked + .el-radio__label {
+    color: $font-color;
+  }
+  
+  .component-head-func__name {
+    color: $font-color;
+  }
+  
+  .component-head-pic__name {
+    color: $font-color;
+  }
+  
+  .component-head-func__name {
+    color: $font-color;
+  }
+  
+  .component-head-pic__name {
+    color: $font-color;
+  }
+  
+  .gc-input .label {
+    color: $font-color;
+  }
+  
+  .el-input {
+    color: $font-color;
+  }
+  
+  .el-checkbox__label {
+    color: $font-color;
+    font-family: 'PingFangSC-Regular', 'Roboto-Regular', 'PingFang SC', 'Droid Sans', 'HelveticaNeue',  'Helvetica Neue', arial, sans-serif;
+  }
+  
+  .gc-pagination {
+    color: $font-color;
+  }
+
+  .edit-wicket-popper__wrapper__content__items__item {
+    &__left,
+    &__right {
+      color: $font-color;
+    }
+  }
+  
+  .LaunchTrainingCourse {
+    &__number-card__left {
+      color: $font-color;
+    }
+    &__info-card__base-info {
+      .el-form-item {
+        &.textarea {
+          .el-form-item__label {
+            color: $font-color;
+          }
+        }
+      }
+    }
+    &__upload-electronics-invoice__title__btn {
+      span {
+        color: $font-color;
+      }
+    }
+    &__title__left {
+      color: $font-color;
+    }
+    &__content__botton-money {
+      &.total {
+        div {
+          font-family: 'PingFangSC-Medium', 'Roboto-Regular', 'PingFang SC', 'Droid Sans', 'HelveticaNeue',  'Helvetica Neue', arial, sans-serif;
+          color: $font-color;
+        }
+      }
+    }
+  }
+
+  .NonTrainingCourse {
+    &__input-data {
+      &__title {
+        color: $font-color;
+      }
+      &__content {
+        &__items__item {
+          &__left {
+            color: $font-color;
+          }
+          &__right {
+            color: $font-color;
+          }
+        }
+      }
+    }
+    &__add-student {
+      &__title {
+        color: $font-color;
+      }
+      &__content {
+        &__buttons {
+          color: $font-color;
+        }
+        &__destination__items__item {
+          color: $font-color;
+        }
+      }
+    }
+  }
+  
+  .fontColor {
+    color: $font-color !important;
+  }
+  .shallow {
+    color: $shallow;
+  }
+  .tintColor {
+    color: $tintColor;
+  }
+  .tintColor6 {
+    color: $tintColor6;
+  }
+  .themeColor {
+    color: $themeColor;
+  }
+  .lineColor {
+    color: $line-color;
+  }
+  .color9 {
+    color: $color9;
+  }
+  
+  .error-color {
+    color: red;
+  }
+  
+  .ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    white-space: nowrap;
+  }
+
+  .ellipsis-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .fzd {
+    font-size: $font-size;
+  }
+  
+  .fz14,
+  .fz14 p {
+    font-size: 14px;
+  }
+  
+  .fz16 {
+    font-size: 16px !important;
+  }
+  .fz20 {
+    font-size: 20px !important;
+  }
+  .fz24 {
+    font-size: 24px !important;
+  }
+  
+  .fw4 {
+    font-weight: 400 !important;
+  }
+  
+  .title1,
+  .title1 .el-checkbox__label {
+    font-size: 14px !important;
+    color: $title1Color !important;
+  }
+
+  .title1Color {
+    color: $title1Color !important;
+  }
+  
+  .td2e {
+    text-indent: 2em;
+  }
+  
+  .h24 {
+    line-height: 24px;
+  }
+  
+  .gary-color,
+  .gary-color p,
+  .gary-color span {
+    color: $title1Color !important;
+  }
+  
+  .em1 {
+    text-indent: 1em;
+  }
+  
+  .em2 {
+    text-indent: 2em;
+  }
+  
+  .l18 {
+    line-height: 18px;
+  }
+  .l24 {
+    line-height: 24px;
+  }
+  
+  .l26 {
+    line-height: 26px;
+  }
+  .l30 {
+    line-height: 30px;
+  }
+  
+  .tar {
+    text-align: right;
+  }
+  
+  .w2ch {
+    width: 2ch;
+  }
+
+  .placeholder {
+    color: rgba(#000000, 0.4) !important;
+    font-weight: 200;
+  }
+  
+  .tac {
+    text-align: center;
+  }
+              

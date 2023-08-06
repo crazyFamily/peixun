@@ -1,0 +1,493 @@
+.icons {
+    height: 15px;
+    color: #fd6720;
+  
+    &__add,
+    &__upload,
+    &__download,
+    &__all,
+    &__del,
+    &__edit,
+    &__lecturerInvitationLetter,
+    &__lecturerThanksLetter,
+    &__choiceTopic,
+    &__refresh,
+    &__attendance,
+    &__putaway,
+    &__pulloff,
+    &__save {
+      position: relative;
+      height: 14px;
+      padding: 0 15px 0 20px;
+      margin-right: 13px;
+      border-right: 1px solid #eaecf1;
+      box-sizing: border-box;
+      line-height: 14px;
+      cursor: pointer;
+  
+      &__icon {
+        position: absolute;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        top: -1px;
+        left: 0;
+        background: url('./assets/svg/tianjia.svg') no-repeat center;
+      }
+    }
+    &__upload__icon {
+        background: url('./assets/svg/shangchuan.svg') no-repeat center;
+      }
+      &__del__icon {
+        background: url('./assets/svg/shanchu.svg') no-repeat center;
+      }
+    
+      &__all__icon {
+        background: url('./assets/svg/suoyouyingxiang.svg') no-repeat center;
+      }
+    
+      &__download__icon {
+        background: url('./assets/svg/xiazaiyingxiang.svg') no-repeat center;
+      }
+      &__edit__icon {
+        background: url('./assets/svg/bianjicheng.svg') no-repeat center;
+      }
+    
+      &__lecturerInvitationLetter__icon {
+        background: url('./assets/svg/jiangshiyaoqinghancheng.svg') no-repeat center;
+      }
+      &__lecturerThanksLetter__icon {
+        background: url('./assets/svg/jiangshiganxiehancheng.svg') no-repeat center;
+      }
+      &__attendance__icon {
+        background: url('./assets/svg/kaishikaoqin.svg') no-repeat center;
+      }
+      &__choiceTopic__icon {
+        background: url('./assets/svg/tikuxuanti.svg') no-repeat center;
+      }
+      &__refresh__icon {
+        background-image: url('./assets/svg/zhongzhicheng.svg');
+        background-size: 15px;
+      }
+      &__save__icon {
+        height: 16px;
+        background-image: url('./assets/svg/baocun.svg');
+      }
+      &__putaway__icon {
+        background: url('./assets/svg/putaway.svg') no-repeat center;
+      }
+      &__pulloff__icon {
+        background: url('./assets/svg/pulloff.svg') no-repeat center;
+      }
+    
+      & > span:last-child {
+        margin: 0;
+        padding-right: 0;
+        border: none;
+      }
+      &.no-line {
+        span[class^='icons'] {
+          border: none;
+          margin-right: 5px;
+        }
+      }
+      &__wraning {
+        position: relative;
+        display: inline-block;
+        top: 2px;
+        width: 17px;
+        height: 16px;
+        margin-right: 10px;
+        background-image: url('./assets/svg/tishi.svg');
+      }
+      &-wraning {
+        display: inline-block;
+        width: 17px;
+        height: 16px;
+        background-image: url('./assets/svg/tishi.svg');
+      }
+    }
+    
+    span.last {
+      margin: 0;
+      padding-right: 0;
+      border: none;
+    }
+    
+    .instructor-icons {
+      &__add,
+      &__del,
+      &__edit,
+      &__upload,
+      &__download,
+      &__courseManagement,
+      &__adjustStudent,
+      &__attendanceManagement,
+      &__trainingAssessment,
+      &__trainAfterInput,
+      &__affirmTrain,
+      &__freeze,
+      &__unfreeze,
+      &__check,
+      &__refresh,
+      &__putaway,
+      &__pulloff,
+      &__submit,
+      &__modification {
+        position: relative;
+        display: flex;
+        margin-left: 30px;
+        height: 15px;
+        padding-left: 20px;
+        align-items: center;
+        &__icon {
+          position: absolute;
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          top: 0;
+          left: 0;
+          margin-right: 5px;
+          background: url('./assets/svg/tianjiahui.svg') no-repeat center;
+        }
+        cursor: pointer;
+      }
+      &__del__icon {
+        background-image: url('./assets/svg/shanchuhui.svg');
+      }
+      &__edit__icon {
+        top: 1px;
+        background-image: url('./assets/svg/bianji.svg');
+      }
+      &__upload__icon {
+        top: 1px;
+        background-image: url('./assets/svg/shangchuanhui.svg');
+      }
+      &__download__icon {
+        background-image: url('./assets/svg/xiazaiyingxianghui.svg');
+      }
+      &__modification__icon {
+        background-image: url('./assets/svg/xiugai.svg');
+        background-size: 90%;
+      }
+    
+      &__courseManagement__icon {
+        background-image: url('./assets/svg/kechengguanli-lixiang.svg');
+      }
+      &__adjustStudent__icon {
+        background-image: url('./assets/svg/tiaozhengxueyuan.svg');
+      }
+      &__attendanceManagement__icon {
+        background-image: url('./assets/svg/kaoqinguanli.svg');
+      }
+      &__trainingAssessment__icon {
+        background-image: url('./assets/svg/peixunbanpinggu.svg');
+      }
+      &__trainAfterInput__icon {
+        background-image: url('./assets/svg/xunhouluru.svg');
+      }
+      &__affirmTrain__icon {
+        background-image: url('./assets/svg/querenjiexun.svg');
+      }
+      &__freeze__icon {
+        background-image: url('./assets/svg/dongjie.svg');
+      }
+      &__unfreeze__icon {
+        background-image: url('./assets/svg/jiedong.svg');
+      }
+      &__check__icon {
+        background-image: url('./assets/svg/chakanhuizongjieguo.svg');
+      }
+      &__refresh__icon {
+        width: 18px;
+        height: 16px;
+        background-image: url('./assets/svg/zhongzhihui.svg');
+      }
+      &__putaway__icon {
+        background: url('./assets/svg/putaway.svg') no-repeat center;
+      }
+      &__pulloff__icon {
+        background: url('./assets/svg/pulloff.svg') no-repeat center;
+      }
+      &__submit__icon {
+        background: url('./assets/svg/icon-submit.svg') no-repeat center;
+      }
+    }
+    
+    .icon {
+      &__close {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        top: calc(50% - 4px);
+        background: url('./assets/svg/danchuangguanbihei.svg') no-repeat center;
+      }
+      &__clear {
+        width: 16px;
+        height: 16px;
+        background: url('./assets/svg/quanbuqingchu.svg') no-repeat center;
+    }
+  }
+  
+  .operation {
+    &__Reimbursement,
+    &__Reimbursement-disabled,
+    &__advance,
+    &__advance-disabled,
+    &__edit,
+    &__edit-disabled,
+    &__del,
+    &__del-disabled,
+    &__add,
+    &__checkData,
+    &__student,
+    &__mockingbird,
+    &__uploadData,
+    &__download,
+    &__accomplish,
+    &__relationTicket,
+    &__relationTravelOrder,
+    &__check,
+    &__pass,
+    &__back,
+    &__curriculumStorage,
+    &__curriculumStorage-disabled,
+    &__curriculumStorageAccomplish,
+    &__curriculumStorageAccomplish-disabled,
+    &__trainingTrends,
+    &__alterEstablish,
+    &__supplementEstablish,
+    &__revocation,
+    &__copy,
+    &__research,
+    &__handworkRecord,
+    &__QRCode,
+    &__exportRecord,
+    &__freeze,
+    &__unfreeze,
+    &__attendance,
+    &__accomplishAttendance,
+    &__course,
+    &__television,
+    &__middleLine,
+    &__upArrowhead,
+    &__downArrowhead,
+    &__refresh,
+    &__dataAnalysis,
+    &__costExtract,
+    &__lecturerInvitationLetter,
+    &__apportionConst,
+    &__lecturerThanksLetter {
+        display: inline-block;
+        width: 16px;
+        height: 18px;
+        vertical-align: text-bottom;
+        background: url('./assets/svg/faqibaoxiaocheng.svg') no-repeat center;
+      }
+      &__Reimbursement-disabled {
+        background-image: url('./assets/svg/faqibaoxiao.svg');
+      }
+    
+      &__advance {
+        background-image: url('./assets/svg/faqiyufukuancheng.svg');
+      }
+      &__advance-disabled {
+        background-image: url('./assets/svg/faqiyufukuan.svg');
+      }
+    
+      &__edit {
+        background-image: url('./assets/svg/xiugaicheng.svg');
+      }
+      &__edit-disabled {
+        background-image: url('./assets/svg/xiugai.svg');
+      }
+    
+      &__del {
+        background-image: url('./assets/svg/shanchu2cheng.svg');
+    }
+    &__del-disabled {
+      background-image: url('./assets/svg/shanchu2.svg');
+    }
+  
+    &__add {
+      background-image: url('./assets/svg/tianjia.svg');
+    }
+  
+    &__checkData {
+      background-image: url('./assets/svg/luruziliaochakan.svg');
+    }
+    &__student {
+      background-image: url('./assets/svg/luruxueyuan.svg');
+    }
+    &__mockingbird {
+      background-image: url('./assets/svg/luruzhiniaokaoshibianhao.svg');
+    }
+    &__uploadData {
+      background-image: url('./assets/svg/shangchuanwenjian.svg');
+    }
+    &__download {
+      background-image: url('./assets/svg/xiazai.svg');
+    }
+    &__accomplish {
+        background-image: url('./assets/svg/wancheng.svg');
+      }
+    
+      &__relationTicket {
+        background-image: url('./assets/svg/guanlianzhuanpiao.svg');
+      }
+      &__relationTravelOrder {
+        background-image: url('./assets/svg/guanlianchalvdingdan.svg');
+      }
+    
+      &__check {
+        background-image: url('./assets/svg/chakan.svg');
+      }
+      &__pass {
+        background-image: url('./assets/svg/wancheng.svg');
+      }
+      &__back {
+        background-image: url('./assets/svg/tuihui.svg');
+      }
+    
+      &__curriculumStorage {
+        background-image: url('./assets/svg/kechengruku.svg');
+      }
+      &__curriculumStorage-disabled {
+        background-image: url('./assets/svg/kechengrukuhui.svg');
+      }
+      &__curriculumStorageAccomplish {
+        background-image: url('./assets/svg/kechengruku-wancheng.svg');
+      }
+      &__curriculumStorageAccomplish-disabled {
+        background-image: url('./assets/svg/kechengruku-wanchenghui.svg');
+      }
+    
+      &__trainingTrends {
+        background-image: url('./assets/svg/peixundongtai.svg');
+      }
+    
+      &__dataAnalysis {
+        background-image: url('./assets/svg/shujufenxi.svg');
+      }
+    
+      &__alterEstablish {
+        background-image: url('./assets/svg/genggailixiang.svg');
+      }
+      &__supplementEstablish {
+        background-image: url('./assets/svg/buchonglixiang.svg');
+      }
+      &__revocation {
+        background-image: url('./assets/svg/chehui.svg');
+      }
+      &__copy {
+        background-image: url('./assets/svg/fuzhi.svg');
+      }
+      &__research {
+        background-image: url('./assets/svg/tiaoyan.svg');
+      }
+      &__handworkRecord {
+        background-image: url('./assets/svg/shougongbulu.svg');
+      }
+      &__QRCode {
+        background-image: url('./assets/svg/erweima.svg');
+      }
+      &__exportRecord {
+        background-image: url('./assets/svg/daochujilu.svg');
+      }
+      &__freeze {
+        background-image: url('./assets/svg/jiedong.svg');
+      }
+      &__unfreeze {
+        background-image: url('./assets/svg/jiedong.svg');
+      }
+    
+      &__attendance {
+        background-image: url('./assets/svg/kaishikaoqin.svg');
+      }
+      &__accomplishAttendance {
+        background-image: url('./assets/svg/jieshukaoqin.svg');
+      }
+    
+      &__doc {
+        display: inline-block;
+        width: 17px;
+        height: 20px;
+        background: url('./assets/svg/putongwendang.svg') no-repeat center;
+      }
+    
+      &__close,
+      &__close-active {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: url('./assets/svg/guanbi copy.svg') no-repeat -5px -3px;
+      }
+    
+      &__close-active {
+        background: url('./assets/svg/guanbi-jihuo.svg') no-repeat center;
+      }
+    
+      &__course {
+        width: 11px;
+        height: 14px;
+        background: url('./assets/svg/kecheng.svg') no-repeat center -8px;
+      }
+      &__television {
+        width: 14px;
+        height: 13px;
+        background: url('./assets/svg/lanmu.svg') no-repeat center;
+      }
+      &__middleLine {
+        width: 16px;
+        height: 16px;
+        background: url('./assets/svg/zhonghengxianshanchu.svg') no-repeat center;
+    }
+    &__upArrowhead {
+      width: 16px;
+      height: 16px;
+      background: url('./assets/svg/xiangshang.svg') no-repeat center;
+    }
+    &__downArrowhead {
+      width: 16px;
+      height: 16px;
+      background: url('./assets/svg/xiangxia.svg') no-repeat center;
+    }
+  
+    &__refresh {
+      width: 18px;
+      height: 16px;
+      background-image: url('./assets/svg/zhongzhicheng.svg');
+    }
+  
+    &__lecturerInvitationLetter {
+      background: url('./assets/svg/jiangshiyaoqinghancheng.svg') no-repeat center;
+    }
+    &__lecturerThanksLetter {
+      background: url('./assets/svg/jiangshiganxiehancheng.svg') no-repeat center;
+    }
+    &__lecturerInvitationLetter-disabled {
+      background: url('./assets/svg/jiangshiyaoqinghanhui.svg') no-repeat center;
+    }
+    &__lecturerThanksLetter-disabled {
+      background: url('./assets/svg/jiangshiganxiehanhui.svg') no-repeat center;
+    }
+    &__costExtract {
+      background: url('./assets/svg/feiyongyuti.svg') no-repeat center;
+    }
+  
+    &__apportionConst {
+      background: url('./assets/svg/feiyongfentan.svg') no-repeat center;
+    }
+  }
+  
+  i.hint {
+    display: inline-block;
+    width: 17px;
+    height: 16px;
+    background-image: url('./assets/svg/tishi.svg');
+  }
+  
+  .deg-90 {
+    transform: rotate(-90deg);
+  }
+                                                   

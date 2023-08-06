@@ -1,0 +1,529 @@
+@import './font-style.scss';
+@import './chunk.scss';
+@import './table.scss';
+@import './input.scss';
+@import './button.scss';
+@import './icons.scss';
+@import './common-variate.scss';
+@import './distance.scss';
+
+.el-main {
+    padding: 15px !important;
+
+    .el-scrollbar__wrap {
+        overflow-x: hidden;
+    }
+}
+
+.container.el-container {
+    max-width: 100%;
+}
+
+.width-fit {
+    min-width: 1591px;
+}
+
+.posb10 {
+    position: relative;
+    bottom: 10px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.fend {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.between-noc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.df {
+    display: flex;
+}
+
+.dif {
+    display: inline-flex !important;
+}
+
+.dfi {
+    display: flex !important;
+}
+
+.dfc {
+    display: flex;
+    justify-content: center;
+}
+
+.dfcc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dfw {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.f1 {
+    flex: 1;
+}
+
+.aic {
+    display: flex;
+    align-items: center;
+}
+
+.active {
+    color: $themeColor;
+    cursor: pointer;
+}
+
+.cp {
+    cursor: pointer;
+}
+
+.active-no-pointer {
+    color: $themeColor  !important;
+}
+
+.active-default {
+    color: $themeColor  !important;
+    cursor: default;
+}
+
+.el-message-box.loginTimeout {
+    width: 390px;
+    height: 148px;
+
+    .el-message-box__title {
+        &::before {
+            position: relative;
+            content: '';
+            display: inline-block;
+            top: 3px;
+            width: 17px;
+            height: 16px;
+            margin-right: 10px;
+            background-image: url('./assets/svg/tishi.svg');
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .el-icon-close {
+        display: none;
+    }
+
+    .el-message-box__content {
+        padding-top: 0;
+
+        .el-message-box__message {
+            margin-left: 26px;
+            font-size: 12px;
+        }
+    }
+
+    .el-message-box__btns {
+        padding-top: 26px;
+        padding-right: 24px;
+
+        .el-button {
+            min-width: 60px;
+            height: 26px;
+            padding: 6px 12px;
+        }
+
+        .cancel span {
+            color: $shallow;
+        }
+    }
+
+    &.autoHeight {
+        min-height: 148px;
+        height: auto;
+
+        .el-message-box__btns {
+            margin-bottom: 8px;
+        }
+    }
+
+    &.approval {
+        height: 174px;
+    }
+
+    &.img-full-screen {
+        width: 95%;
+        height: 95% !important;
+
+        .el-message-box__message {
+            margin-left: 0;
+
+            p {
+                >img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &.width-35p {
+        width: 35%;
+    }
+}
+
+.necessary {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '*';
+        width: 15px;
+        height: 15px;
+        line-height: 18px;
+        top: 0;
+        right: -15px;
+        display: flex;
+        justify-content: center;
+        color: $themeColor;
+    }
+}
+
+.necessary-before {
+    position: relative;
+
+    &::before {
+        position: relative;
+        content: '*';
+        width: 7px;
+        height: 6px;
+        top: 12px;
+        text-align: right;
+        color: $themeColor;
+        line-height: 6px;
+    }
+
+    &.l1::before {
+        top: auto;
+        line-height: 1;
+    }
+
+    &.mr4::before {
+        margin-right: 4px;
+    }
+}
+
+@mixin base-dot($size, $color) {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: $color;
+}
+
+.dot {
+    @include base-dot(3px, $shallow);
+}
+
+.dot4 {
+    @include base-dot(4px, $themeColor);
+}
+
+.dot16 {
+    @include base-dot(16px, $themeColor);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.menu-right {
+    @extend .menu;
+    justify-content: flex-end;
+}
+
+.fs0 {
+    flex-shrink: 0 !important;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
+}
+
+.file-import-error {
+    width: auto !important;
+    max-width: 700px;
+    min-width: 418px;
+
+    .el-message-box__title {
+        &::before {
+            position: relative;
+            content: '';
+            display: inline-block;
+            top: 3px;
+            width: 17px;
+            height: 16px;
+            margin-right: 10px;
+            background-image: url('./assets/svg/tishi.svg');
+        }
+
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .el-icon-close {
+        display: none;
+    }
+
+    .el-message-box__content {
+        max-height: 400px;
+        overflow-y: auto;
+        padding-top: 0;
+
+        .el-message-box__message {
+            margin-left: 26px;
+            font-size: 12px;
+            color: #000000;
+        }
+    }
+
+    .el-message-box__btns {
+        padding-top: 26px;
+        padding-right: 24px;
+
+        .el-button {
+            width: 60px;
+            height: 26px;
+            padding: 6px 12px;
+        }
+    }
+}
+
+.hide {
+    opacity: 0;
+}
+
+.vanish {
+    display: none;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.is-reverse {
+    transform: rotateZ(180deg);
+}
+
+.tag {
+    height: 30px;
+    padding: 6px 10px;
+    background-color: #f7f8fa;
+    line-height: 18px;
+    border-radius: 2px;
+    color: #424656;
+
+    i {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.date-picker {
+    z-index: 3 !important;
+}
+
+.hover:hover {
+    color: #000000;
+    cursor: default;
+}
+
+.active-bar {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: 0;
+    border: 1px solid $themeColor;
+    transition: transform 0.3s;
+    transform: translate(0);
+}
+
+.title {
+    font-size: 14px;
+    font-family: 'PingFangSC-Medium', 'Roboto-Regular', 'PingFang SC', 'Droid Sans', 'HelveticaNeue', 'Helvetica Neue', arial, sans-serif;
+
+    &__menu {
+        display: inline-block;
+        width: 3px;
+        height: 10px;
+        margin-right: 7px;
+        background-color: $themeColor;
+    }
+}
+
+div.icon-popper.is-dark {
+    background: #fff;
+    color: #424656;
+
+    .popper__arrow::after {
+        border-bottom-color: #fff;
+        border-top-color: #fff;
+    }
+
+    &[x-placement^='bottom'] .popper__arrow {
+        border-bottom-color: #fff;
+    }
+
+    &[x-placement^='top'] .popper__arrow {
+        border-top-color: #fff;
+    }
+}
+
+.disabled {
+    background-color: #f7f8fa;
+    border-color: #e4e7ed;
+    color: #b4b6bc;
+    cursor: not-allowed;
+}
+
+.width-auto {
+    width: auto !important;
+}
+
+.big-zindex {
+    z-index: 9999 !important;
+}
+
+.item-menu {
+    height: 28px;
+    padding: 5px 14px 4px;
+    border: 1px solid #e0e1e3;
+    color: $title1Color;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.bgf {
+    background-color: #fff !important;
+}
+
+.shadow-1 {
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.08);
+}
+
+.tooltip__operation {
+    padding: 3px;
+
+    span {
+        display: block;
+        padding: 7px;
+    }
+}
+
+.ws {
+    white-space: nowrap;
+}
+
+.dr {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fdc {
+    display: flex;
+    flex-direction: column;
+}
+
+.ver-t {
+    vertical-align: top;
+}
+
+.fwrap-end-1 {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+.full-min-height {
+    width: 100%;
+    min-height: 100%;
+}
+
+.wfull {
+    width: 100% !important;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.line-20 {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background-color: #eaecf1;
+}
+
+.pen {
+    pointer-events: none;
+}
+
+.no-icon {
+    .el-input__suffix {
+        display: none;
+    }
+}
+
+// 查询表格修复居中问题
+.search-card-fixed-center {
+    .el-form-item__content {
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+// 时间控件处理hover效果
+.clearable-data-pick {
+    .el-icon-circle-close {
+        background: unset !important;
+    }
+}
+
+.wt-helper {
+    display: none !important;
+}
