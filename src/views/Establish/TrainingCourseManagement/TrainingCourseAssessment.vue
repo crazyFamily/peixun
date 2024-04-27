@@ -563,8 +563,7 @@ import {
   formatDate,
   createSpanMethod,
   addAllowKeepAlive,
-  noop,
-  systemConfigParameters
+  noop
 } from '@/util/utils'
 import { QUESTION_TYPES, TEMPLATE_TYPE_CUSTOM, TEMPLATE_TYPE_FIXED  } from "@/util/constants";
 import echarts from '@/plugins/echarts'
@@ -886,8 +885,7 @@ export default {
       evaIdDict: {},
       charData: {},
       previewCustomData: {},
-      isOpenPreview: false,
-      systemConfigParameters
+      isOpenPreview: false
     }
   },
   methods: {
@@ -1126,3 +1124,615 @@ export default {
         })
       return Promise.all([p1, p2])
     },
+    // 查看评估详情
+    openAssessmentInfo(row) {
+      let { evaId } = row
+      const data = { evaId, classId: this.classId }
+      this.$axios
+        .post('/fn/classes/manager/eva/listEvaSendDetail', data, jsonHeaders)
+        .then((res) => {
+          const { code, data } = res.data
+          if (code === 0) {
+            this.assessmentInfoVisible = true
+            this.assessmentInfoTableList = data.courses
+          }
+        })
+    },
+    // 邮件提醒
+    emailHint(row) {
+      const { evaId, classStatus } = row
+      if (classStatus === '02003') {
+        return this.$message.warning('已结训的班不能发起邮件提醒')
+      }
+      if (this.evaIdDict[evaId]) {
+        return this.$message.warning(
+          '该评估已发起过邮件提醒，如需再次发送邮件请关闭当前页面重新进入。'
+        )
+      }
+      this.evaIdDict[evaId] = true
+      hintFrame('确定邮件提醒未评估人吗？').then(() => {
+        const { evaId } = row
+        const data = {
+          evaId,
+          classId: this.classId
+        }
+        this.$axios
+          .post('/fn/classes/manager/eva/addEvaStuMail', data, jsonHeaders)
+          .then((res) => {
+            const { code, data } = res.data
+            if (code === 0) {
+              this.$message.success('发送邮件成功')
+            }
+          })
+      })
+    },
+    // 撤回提示
+    backHint(row) {
+      hintFrame('撤回后，将会清除本次已评估内容').then(() => {
+        const { evaId } = row
+        const data = { evaId, classId: this.classId }
+        this.$axios
+          .post('/fn/classes/manager/eva/deleteSingleEva', data, jsonHeaders)
+          .then((res) => {
+            const { code, data } = res.data
+            if (code === 0) {
+              this.tabClick({ name: 'record' })
+            }
+          })
+      })
+    },
+    // 导出结果
+    exportResult(row) {
+      let { evaId } = row
+      evaId = evaId || 'ALL'
+      const data = { evaId, classId: this.classId }
+      this.$axios
+        .post('/classFileFunc/downloadClassSingleEva', data, {
+          ...jsonHeaders,
+          responseType: 'blob'
+        })
+        .then((res) => {
+          handleBlob(res)
+        })
+    },
+    // 打开二维码dialog
+    openErCode(row) {
+      this.erCodeVisible = true
+      const { evaId } = row
+      const data = {
+        evaId,
+        classId: this.classId,
+        width: 250,
+        height: 250
+      }
+      this.$axios
+        .post(
+          '/fn/classes/manager/eva/findSingleEvaQRCode',
+          { data },
+          jsonHeaders
+        )
+        .then((res) => {
+          const { code, data } = res.data
+          if (code === 0) {
+            this.erCodeSrc = data
+          }
+        })
+    },
+    // 打开查看进度 dialog
+    openCheckProgress(row) {
+      this.checkProgressVisible = true
+      this.checkProgressRow = row
+      const { evaId } = row
+      const data = { evaId, classId: this.classId }
+      this.$axios
+        .post('/fn/classes/manager/eva/listEvaAnswerStu', data, jsonHeaders)
+        .then((res) => {
+          const { code, data } = res.data
+          if (code === 0) {
+            this.checkProgressTableList = data
+            this.checkProgressTableListBack = data
+          }
+        })
+    },
+    // 打开查看问卷
+    checkQuestionnaire(row) {
+      const { classId, evaId, templateId, isAnonymity } = row
+      fetchFindClassEvaHistoryPreview({ classId, evaId })
+        .then(resData => {
+          const templateArr = ['new_custom', 'new_simple']
+          if (templateArr.includes(templateId)) {
+            // 标准问卷,简化版问卷
+            this.questionnaireTitle = templateArr.includes(templateId) ? '标准问卷' : '简化版问卷'
+            this.handleQuestionnaire(resData)
+          } else { 
+            // 自定义问卷
+            const questions = []
+            if (resData.orgTopics) questions.push(...resData.orgTopics)
+            resData.teacherTopics?.forEach(m => questions.push(...m))
+            // 处理自定义题目
+            resData.customTopics?.forEach(m => {
+              // 处理选项排序
+              m?.options?.sort((a, b) => Number(a.orderNo) - Number(b.orderNo))
+              m.isRequired = Boolean(Number(m.isRequired)) 
+            })
+            if (resData.customTopics) questions.push(...resData.customTopics)
+            this.previewCustomData = {
+              questionnaireCategory: templateId,
+              isAnonymous: isAnonymity,
+              templateId: resData.templateId || '',
+              templateName: resData.templateName || '',
+              templateDescribe: resData.templateDescribe || '',
+              questions: resData.templateType === TEMPLATE_TYPE_FIXED ? resData.routeTopics : questions
+            }
+            // 打开自定义问卷预览弹框
+            this.isOpenPreview = true
+          }
+        })
+    },
+    handleQuestionnaire(data) {
+      let results = []
+      let i = 1
+      ;['orgTopics', 'contentTopics', 'allTopics'].forEach((key) => {
+        data[key]?.forEach((v) => {
+          if (v.answerType !== '0') {
+            v.index = i++
+          } else {
+            i = 1
+          }
+          results.push(v)
+        })
+      })
+      data.teacherTopics?.forEach((item) => {
+        if (Array.isArray(item)) {
+          item.forEach((v) => {
+            if (v.answerType !== '0') {
+              v.index = i++
+            } else {
+              i = 1
+            }
+            results.push(v)
+          })
+        } else {
+          if (item.answerType !== '0') {
+            item.index = i++
+          } else {
+            i = 1
+          }
+          results.push(item)
+        }
+      })
+      // this.previewData = results
+      // this.questionnaireVisible = true
+      // 打开自定义问卷预览弹框
+      this.previewCustomData = {
+        // templateName: res.templateName || '',
+        // templateDescribe: res.templateDescribe || '',
+        questionnaireCategory: this.questionnaireCategory,
+        isAnonymous: this.questionnaireAnonymous,
+        questions: results
+      }
+      this.isOpenPreview = true
+    },
+    // 查看进度 dialog 表格 完成情况 筛选
+    filter(list) {
+      const state = list.list[0]
+      if (state === '1') {
+        this.checkProgressTableList = this.checkProgressTableListBack.filter(
+          (v) => v.createdDate
+        )
+      } else {
+        this.checkProgressTableList = this.checkProgressTableListBack.filter(
+          (v) => !v.createdDate
+        )
+      }
+    },
+    // 查看进度 dialog 表格 完成情况 重置
+    reset() {
+      this.checkProgressTableList = this.checkProgressTableListBack
+    },
+    // 查看进度 dialog 导出
+    checkProgressExport() {
+      const { evaId } = this.checkProgressRow
+      const data = { evaId, classId: this.classId }
+      this.$axios
+        .post('/classFileFunc/downloadClassSingleEvaStu', data, {
+          ...jsonHeaders,
+          responseType: 'blob'
+        })
+        .then((res) => {
+          handleBlob(res)
+        })
+    },
+    // 打开手工补录
+    openSupplement() {
+      if (this.trainingCourseAssessmentStats === '审批中') {
+        return this.$message.warning('手动录入申请正在审批中！')
+      } else if (this.trainingCourseAssessmentStats === '审批通过') {
+        return this.$message.warning('审批已通过，请勿重复！')
+      }
+      const data = { classId: this.classId }
+      this.$axios
+        .post(
+          '/fn/classes/manager/eva/findClassEvaluateSupply',
+          data,
+          jsonHeaders
+        )
+        .then((res) => {
+          const { code, data } = res.data
+          if (code === 0) {
+            this.handworkSupplementVisible = true
+            const { courses, isNewAll, isNewCource, isNewTeacher } = data
+            const list = CopyObj(this.trainTableListBack)
+            if (isNewTeacher === 'N') {
+              list.pop()
+            }
+            if (isNewCource === 'N') {
+              list.splice(1, 1)
+            }
+            if (isNewAll === 'N') {
+              list.splice(0, 1)
+            }
+            this.trainTableList = list
+            this.courseTableList = courses
+          }
+        })
+    },
+    // 打开手工补录
+    openSupplementDetail() {
+      const data = { classId: this.classId }
+      fetchClassEvaSupplyDetail(data)
+      .then(res => {
+        this.courseTableList = res.courses // 课程
+        this.supplementForm = {
+          unuseReason: res.unuseReason, // 培训班未使用评估原因
+          auditUsers: res.magAuditUsers, // 审批人um
+          auditUsersum: res.magAuditUsersum, // 审批人名称+um
+          auditUsersname: res.magAuditUsersname // 审批人名称
+        }
+        const list = CopyObj(this.trainTableListBack)
+        list.forEach(m => {
+          m[m.score] = res[m.score]
+          m[m.advice] = res[m.advice]
+        })
+        this.trainTableList = list
+        this.handworkSupplementVisible = true
+      })
+    },
+    // 审批链确认事件
+    approvalChainConfirm(data) {
+      this._.merge(this.supplementForm, data)
+    },
+    // 手工补录确认事件
+    handworkSupplementComfirm() {
+      if (!this.supplementForm.unuseReason) {
+        return this.$message.warning('请填写培训班未使用评估原因')
+      }
+      // 检查评分是否填写
+      let flag
+      flag = this.courseTableList.some((v, i) => {
+        if (v.teacherScore === 0) {
+          this.$message.warning(`培训班评估信息第${i + 1}行评分未填写`)
+          return true
+        }
+      })
+      if (flag) return
+      flag = this.trainTableList.some((v) => {
+        if (v[v.score] === 0) {
+          this.$message.warning(`${v.title}评分未填写`)
+          return true
+        }
+      })
+      if (flag) return
+      if (!this.supplementForm.auditUsers) {
+        return this.$message.warning('请选择审批链')
+      }
+      const data = CopyObj(this.supplementForm)
+      this.trainTableList.forEach((v) => {
+        data[v.score] = v[v.score]
+        data[v.advice] = v[v.advice]
+      })
+      data.courses = this.courseTableList
+      data.classId = this.classId
+      return this.$axios
+        .post(
+          '/fn/classes/manager/eva/addClassEvaSupplyEoa',
+          { data },
+          jsonHeaders
+        )
+        .then((res) => {
+          const { code, data } = res.data
+          if (code === 0) {
+            this.handworkSupplementVisible = false
+            this.$message.success('补录成功')
+            this.tabClick({ name: 'record' })
+          }
+        })
+    },
+    handworkSupplementClose() {
+      resetObj(this.supplementForm)
+      this.handworkSupplementVisible = false
+    },
+    // 培训讲师评估 表格合并发放
+    assessmentSpanMethod({ row, column, rowIndex, columnIndex }) {
+      const columns = [0, 3, 4, 5]
+      if (columns.includes(columnIndex)) {
+        let n = 1
+        if (
+          row.groupStr !==
+          (this.assessmentTableList[rowIndex - 1] || {}).groupStr
+        ) {
+          this.assessmentTableList.slice(rowIndex + 1).some((v) => {
+            if (row.groupStr === v.groupStr) {
+              return !n++
+            } else {
+              return true
+            }
+          })
+          return [n, 1]
+        }
+        return [0, 0]
+      }
+    },
+    // 培训讲师评估 是否可以评估
+    assessmentSelectable(row, index) {
+      return row.isEva === 'Y'
+    },
+    // 重置数据
+    resetData() {
+      this.activeName = 'assessment'
+      this.questionnaireData = {}
+      this.assessmentTableList = []
+      this.trainAssessment = false
+      this.trainAssessmentState = false
+      this.questionnaireCategory = ''
+      this.questionnaireAnonymous = 'N'
+    },
+    getChartData() {
+      this.$axios
+        .post(
+          '/fn/classes/manager/eva/findEvaAll',
+          { classId: this.classId },
+          jsonHeaders
+        )
+        .then((res) => {
+          const { code, data } = res.data
+          if (code === 0) {
+            this.charData = data
+            this.renderChart()
+          }
+        })
+    },
+    // 渲染图表
+    renderChart() {
+      const self = this
+      const { total, zero, one, two, three, four } = this.charData || {}
+      const data = [
+        {
+          name: '0-2分',
+          value: zero
+        },
+        {
+          name: '2-4分',
+          value: one
+        },
+        {
+          name: '4-6分',
+          value: two
+        },
+        {
+          name: '6-8分',
+          value: three
+        },
+        {
+          name: '8-10分',
+          value: four
+        }
+      ]
+      const chart = this.chart || (this.chart = echarts.init(this.$refs.chart))
+      chart.setOption({
+        legend: {
+          orient: 'vertical',
+          right: 20,
+          bottom: 20,
+          selectedMode: false,
+          formatter(value) {
+            const item = data.find((v) => v.name === value)
+            return [
+              `{text|${value}}`,
+              `{line|}`,
+              `{percentage|${(myFloat(item.value / total) * 100).toFixed()}%}`,
+              `${item.value}人`
+            ].join('')
+          },
+          textStyle: {
+            rich: {
+              text: {
+                width: 40
+              },
+              line: {
+                color: 'red',
+                width: 0,
+                height: 20,
+                borderWidth: 1,
+                borderColor: '#7d8292'
+              },
+              percentage: {
+                width: 60,
+                padding: [0, 0, 0, 20]
+              }
+            }
+          }
+        },
+        series: [
+          {
+            type: 'pie',
+            radius: ['50%', '70%'],
+            center: ['20%', '50%'],
+            label: {
+              position: 'center',
+              formatter: `评分人数\n{personnel|${total}人}`,
+              rich: {
+                personnel: {
+                  fontSize: 20,
+                  height: 30
+                }
+              }
+            },
+            itemStyle: {
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            data
+          }
+        ]
+      })
+    },
+    checkProgressClose() {
+      this.$refs.tableColumnfiltersRef.$reset()
+      this.checkProgressVisible = false
+    },
+    doInitThing() {
+      const rParams = this.$route.params
+      if (Object.keys(rParams).length) {
+        // 问卷页
+        if (rParams?.fromPage === 'CustomQuestionnaire') {
+          // 问卷页【确认】
+          if (rParams.opraType === 'confirm' 
+            && this.questionnaireCategory3Label
+            && this.questionnaireCategory3Label !== rParams.templateId) {
+            // 当从“问卷页”中【确认】返回时，需要重置 templateId，templateName 值
+            const params = this.$route.params
+            this.questionnaireCategory3Label = params.templateId
+            this.questionnaireShowTitle = params.templateName
+            this.questionnaireCategory = params.templateId
+          }
+        } else {
+          const params = this.params || this.$route.params
+          if (params.id) {
+            this.classId = params.id
+            this.dateEnd = params.dateEnd
+            this.resetData()
+            this.initData()
+          }
+        }
+      }
+    },
+    changeAnonymous (v) {
+      if (v === 'Y') {
+        hintFrame('选择匿名后，此培训班的所有问卷都将匿名，包括已发起的问卷！', noop, '是否确认匿名？')
+        .catch(err => {
+          this.questionnaireAnonymous = 'N'
+        })
+      }
+    }
+  },
+  computed: {
+    isTemplate() {
+      return (
+        this.questionnaireCategory &&
+        this.questionnaireCategory !== 'new_custom' &&
+        this.questionnaireCategory !== 'new_simple'
+      )
+    },
+    assessmentDisabled() {
+      return this.isAlreadyAponsor || (this.params && formatDate(new Date()) < this.params.dateStart)
+    },
+    multipleSelectionIsShow() {
+      return this.assessmentTableList.every((v) => v.isEva === 'Y')
+    },
+    assessmentStatsAdopt () {
+      return this.trainingCourseAssessmentStats === '审批通过'
+    }
+  },
+  activated() {
+    this.doInitThing();
+  },
+  created() {
+    // 第一次进入页时 或 切换编辑页面Tab页面时 触发
+    this.handworkSupplementComfirm = throttle(this.handworkSupplementComfirm)
+    this.initiateAssessment = throttle(this.initiateAssessment)
+    if(this.params) {
+      // this.doInitThing();
+      const params = this.params || this.$route.params
+      if (params.id) {
+        this.classId = params.id
+        this.dateEnd = params.dateEnd
+        this.resetData()
+        this.initData()
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.establish__trainingCourse-assessment {
+  .tabs-card {
+    .el-card__body {
+      padding: 0;
+    }
+    .el-tabs__content {
+      padding: 5px 20px 20px;
+    }
+    i.hint {
+      position: absolute;
+      top: 1px;
+      right: -23px;
+    }
+    i.trainingCourseHint {
+      position: absolute;
+      top: 1px;
+    }
+    .chart {
+      width: 400px;
+      height: 192px;
+      margin-top: 55px;
+    }
+  }
+  &__questionnaire {
+    .el-dialog__body {
+      .content {
+        min-height: 370px;
+      }
+    }
+   .gary-color p {
+      margin-top: 20px;
+      span {
+        display: inline-block;
+      }
+    }
+  }
+  &__er-code {
+    img {
+      width: 250px;
+      height: 250px;
+    }
+    .el-dialog__footer {
+      text-align: center;
+    }
+  }
+  &__handwork-upplement {
+    .cause {
+      textarea {
+        height: 180px;
+      }
+    }
+  }
+  .custom-btn {
+    color: rgb(253, 103, 32);
+    font-weight: bold;
+    margin-left: -20px;
+    padding: 2px 10px;
+    cursor: pointer;
+    :hover {
+      color: rgb(247, 89, 16);
+      text-decoration: underline;
+    }
+  }
+  .title__menu_desc {
+    font-weight: 100;
+    font-size: 12px;
+    color: $themeColor;
+  }
+}
+</style>
