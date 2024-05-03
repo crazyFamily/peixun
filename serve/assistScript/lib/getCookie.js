@@ -75,4 +75,3 @@ async function getCookie() {
 if (require.main.filename === module.filename) {
     getCookie();
 }
-

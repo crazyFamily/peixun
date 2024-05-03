@@ -2,141 +2,346 @@ const express = require('express')
 const app = express()
 const Mock = require('mockjs')
 
-app.post('/fn/qc/foster/qcFosterPlanList', function (req, res) {
-  const data = {
+app.post('/common/lixiang/queryLadderCourse', function (req, res) {
+  let data = Mock.mock({
     code: 0,
-    data: {
-      list: [
-        {
-          planId: 1,
-          proId: 83,
-          annual: '2022',
-          projectId: 'Y22035',
-          projectName: '耀你不一样（科技条线）2022',
-          projectType: '28002',
-          projectTypeDesc: '耀你不一样(条线)',
-          lineGroupId: '85',
-          organId: null,
-          lineName: '科技条线',
-          organName: '',
-          outline:
-            '4545454545454545554545江山帝景发射基地【】阿斯顿福建省【附件爱上【大姐夫爱哦的金佛我阿斯加德覅警示牌递交发票是低级房破我阿斯加德覅偶加上低价佛阿斯加德佛我加上低叫法升级  破is大姐夫皮哦啊时代峻峰怕水电费\n斯蒂芬紧迫阿斯加封皮a\n\n是递减法是哦大姐夫拍世纪东方\n\n时代峻峰IPA时代峻峰 \n\n时代峰峻怕死的假发票ad\n\n是点击佛安排的就\n\n使劲地扶贫就按审批单据\n\n受打击非怕死的假发票桥儿头\n\n时代峻峰扒鸡大泼妇\n\n微胖界热平稳阿萨德饭啊\nsadf\nsad\na\n手动阀\n\n ',
-          planFileUrl:
-            'htttt://e66c01ed-bucket.pabosuat.sdb.com.cn/UDMP-ca56170ba4e172626cbd21fa5bb9e93dd3f4f0451e-e66c01ed-20220617102616-00000001/1?attname=RobeeStudio_V2022.1.1.1.zip&e=1663989917&token=Vm99oMQ9DtGUu5mdwRHDpLqYi2JTGuna8r7KGL2o:6Dmj6Ehoc-z_b_sGYgGevDneLqk=',
-          planFileUdmpId: 'UDMP-ca56170ba4e172626cbd21fa5bb9e93dd3f4f0451e-e66c01ed-20220617102616-00000001',
-          planFileName: 'RobeeStudio_V2022.1.1.1.zip',
-          status: '1',
-          statusDesc: '已提交',
-          projectBlg: '科技条线',
-          createdBy: 'CHENHAOWEN395',
-          orgId: 'S000002922',
-          orgName: '平安银行',
-          updatedBy: 'WANGZIWEN182',
-          advisers: 'SHIBOXIN392|AMYCHOI',
-          createdTime: '2022-06-09T08:10:22.000+0000',
-          updatedTime: '2022-09-13T02:18:58.000+0000',
-          startDate: '2022-06-01',
-          endDate: '2023-07-01',
-          adviserList: null,
-          fileList: null,
-          parentOrgIds: null,
-          updatedName: '平安文'
-        },
-      ],
-      total: 25,
-      page: 0,
-      size: 0
-    }
-  }
+    'data|1-10': [
+      {
+        id: '@id',
+        courseOid: '@id',
+        courseId: '@id',
+        courseName: '@ctitle',
+        courseDate: '@date',
+        startDate: '@date',
+        endDate: '@date',
+        'startHour|0-24': '0',
+        'startMin0-60': '0',
+        'endHour|0-24': '0',
+        'endtMin|0-60': '60',
+        teacherNo: '@id',
+        'teacherType|1': ['01001', '01000', '01002', '01003'],
+        teacherName: '@cname',
+        'courseType|1': ['05002', '05003', '05001'],
+        courseMold: '@id',
+        'courseScore|1-10': '1',
+        teacherId: '@id',
+        teacherSex: '1',
+        supplyName: '@cname',
+        'isCommonCourse|1': ['Y', 'N']
+      }
+    ]
+  })
   res.send(data)
 })
 
-// 潜才培养方案详情
-app.post('/fn/qc/foster/fosterPlanDetail', function (req, res) {
-  const data = {
+//  1、混合培训知鸟课程、知鸟直播、知鸟考试、案例列表查询：
+app.post('/fn/classes/mixed/selectMixedTrainingPage', function (req, res) {
+  const data = Mock.mock({
     code: 0,
     data: {
-      planId: 1,
-      proId: 83,
-      annual: '2022',
-      projectId: 'Y22035',
-      projectName: '耀你不一样（科技条线）2022',
-      projectType: '28002',
-      projectTypeDesc: '耀你不一样(条线)',
-      lineGroupId: '85',
-      organId: null,
-      lineName: '科技条线',
-      organName: '',
-      outline:
-        '4545454545454545554545江山帝景发射基地【】阿斯顿福建省【附件爱上【大姐夫爱哦的金佛我阿斯加德覅警示牌递交发票是低级房破我阿斯加德覅偶加上低价佛阿斯加德佛我加上低叫法升级  破is大姐夫皮哦啊时代峻峰怕水电费\n斯蒂芬紧迫阿斯加封皮a\n\n是递减法是哦大姐夫拍世纪东方\n\n时代峻峰IPA时代峻峰 \n\n时代峰峻怕死的假发票ad\n\n是点击佛安排的就\n\n使劲地扶贫就按审批单据\n\n受打击非怕死的假发票桥儿头\n\n时代峻峰扒鸡大泼妇\n\n微胖界热平稳阿萨德饭啊\nsadf\nsad\na\n手动阀\n\n ',
-      planFileUrl: null,
-      planFileUdmpId: 'UDMP-ca56170ba4e172626cbd21fa5bb9e93dd3f4f0451e-e66c01ed-20220617102616-00000001',
-      planFileName: 'RobeeStudio_V2022.1.1.1.zip',
-      status: '1',
-      statusDesc: null,
-      projectBlg: '科技条线',
-      createdBy: 'CHENHAOWEN395',
-      orgId: 'S000002922',
-      orgName: '平安银行',
-      updatedBy: 'WANGZIWEN182',
-      advisers: null,
-      createdTime: '2022-06-09T08:10:22.000+0000',
-      updatedTime: '2022-09-13T02:18:58.000+0000',
-      startDate: '2022-06-01',
-      endDate: '2023-07-01',
-      adviserList: [
+      page: 1,
+      size: 10,
+      total: 100,
+      'list|10': [
         {
-            createdBy: null,
-            updatedBy: null,
-            createdDate: null,
-            updatedDate: null,
-            id: null,
-            umId: 'SHIBOXIN392',
-            empName: '徐瑞鸾',
-            empno: null,
-            blgOrgId: null,
-            blgOrgName: null,
-            blgStripLine: null,
-            dateHire: null,
-            postDesc: null,
-            allPrnNodeOrg: null,
-            leaved: null,
-            dateLeave: null
-          },
-          {
-            createdBy: null,
-            updatedBy: null,
-            createdDate: null,
-            updatedDate: null,
-            id: null,
-            umId: 'AMYCHOI',
-            empName: '平安丽凤',
-            empno: null,
-            blgOrgId: null,
-            blgOrgName: null,
-            blgStripLine: null,
-            dateHire: null,
-            postDesc: null,
-            allPrnNodeOrg: null,
-            leaved: null,
-            dateLeave: null
-          }
-        ],
-        fileList: [
-          {
-            id: 2701471,
-            udmpId: 'UDMP-ca56170ba4e172626cbd21fa5bb9e93dd3f4f0451e-e66c01ed-20220617102616-00000001',
-            fileName: 'RobeeStudio_V2022.1.1.1.zip',
-            fileUrl:
-              'htttt://e66c01ed-bucket.pabosuat.sdb.com.cn/UDMP-ca56170ba4e172626cbd21fa5bb9e93dd3f4f0451e-e66c01ed-20220617102616-00000001/1?attname=RobeeStudio_V2022.1.1.1.zip&e=1663990100&token=Vm99oMQ9DtGUu5mdwRHDpLqYi2JTGuna8r7KGL2o:A71pS85HwRD4mFeHgpT2kcdz94I=',
-            module: 'fosterPlan',
-            submodule: 'plan_file',
-            busiId: '1',
-            sortNum: 0,
-            sizes: 0,
-            fileDuration: 0,
-            fileType: null,
-            durationUpdateFlag: 'N',
-            fileAlias: null,
-            filePlayBar: null,
-  
+          // 混合培训类型：course知鸟课程，live知鸟直播，test知鸟考试，case案例
+          'trainingType|1': ['course', 'live', 'test', 'case'],
+          // 知鸟课程id、知鸟直播id、知鸟考试id、案例id
+          trainingId: '@id',
+          // 培训名称
+          trainingName: '@cword',
+          //是否结训条件：0否，1是
+          'isFinishCondition|1': ['0', '1'],
+          // 排序号
+          'sortNo|100-1000': 1,
+          // 学员人数
+          'studentNum|100-1000': 1,
+          // 完成人数
+          'completeNum|100-1000': 1,
+          // 添加人
+          createdBy: '@cname',
+          // 直播状态：0未开始，1直播中，2已结束，3回放中
+          'liveStatus|1': ['0', '1', '2', '3'],
+          'liveStatusDesc|1': ['未开始', '直播中', '已结束', '回放中'],
+          // 直播开始时间
+          startTime: '@date',
+          // 混合培训id
+          id: '@id'
+        }
+      ]
+    }
+  })
+  res.send(data)
+})
+
+// 2、混合培训添加知鸟课程、知鸟直播、知鸟考试、案例：
+app.post('/fn/classes/mixed/saveMixedTraining', function(req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 3、查询知鸟课程列表：
+app.post('/fn/classes/mixed/selectZnCourseList', function(req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      page: 1,
+      size: 10,
+      total: 100,
+      'list|10': [
+        {
+          // 课程id
+          courseId: '@id',
+          // 课程名称
+          courseName: '@cword',
+          // 制作人
+          developPerson: '@cname',
+          // 课件类型； 0:图文，1：混合，2：小游戏，3：纯视频，5：纯音频，6：电子书
+          'coursewareType|1': ['0', '1', '2','3','5','6'],
+          // 课程时长
+          'duration|100-1000': 1
+        }
+      ]
+    }
+  })
+  res.send(data)
+})
+
+// 4、查询知鸟直播列表：
+app.post('/fn/classes/mixed/selectZnLiveList', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      page: 1,
+      size: 10,
+      total: 100,
+      'list|1-10': [
+        {
+          // 直播id
+          liveId: '@id',
+          // 直播名称
+          liveName: '@cword',
+          // 直播状态：0未开始，1直播中，2已结束，3回放中
+          'liveStatus|1': ['0', '1', '2', '3'],
+          // 直播创建人
+          developPerson: '@cname',
+          // 直播开始时间
+          startTime: '@date'
+        }
+      ]
+    }
+  })
+  res.send(data)
+})
+
+// 5、查询知鸟考试列表：
+app.post('/fn/classes/mixed/selectZnTestList', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      page: 1,
+      size: 10,
+      total: 100,
+      'list|1-10': [
+        {
+          // 考试id
+          testId: '@id',
+          // 考试名称
+          testName: '@cword',
+          // 考试创建人
+          developPerson: '@cname',
+          // 创建时间
+          startTime: '@date'
+        }
+      ]
+    }
+  })
+  res.send(data)
+})
+
+// 6、完成明细列表查询/导出：
+app.post('/fn/classes/mixed/trainingCompleteDetail', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      page: 1,
+      size: 10,
+      total: 100,
+      'list|1-10': [
+        {
+          // 学员姓名
+          empName: '@cname',
+          // um号
+          umId: '@id',
+          // 完成状态
+          completeStatus: '',
+          // 完成时间
+          completeTime: '@date',
+          // 考试成绩
+          'score|100-1000': 1
+        }
+      ]
+    }
+  })
+  res.send(data)
+})
+
+// 7、知鸟直播详情数据：
+app.post('/fn/classes/mixed/selectZnLiveDetail', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      // 直播时长
+      'duration|100-1000': 1,
+      // 直播观看人次
+      'browseSum|100-1000': 1,
+      // 同时在线峰值
+      'onlineMax|100-1000': 1,
+      // 总观众人数
+      'totalUserNum|100-1000': 1,
+      // 直播观众人数
+      'liveUserNum|100-1000': 1,
+      // 回看观众人数
+      'replayUserNum|100-1000': 1,
+      // 点赞数
+      'upSum|100-1000': 1,
+      // 用户评分
+      'avgRating|100-1000': 1
+    }
+  })
+  res.send(data)
+})
+
+// 8、批量设置结训条件
+app.post('/fn/classes/mixed/updateFinishCondition', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 9、调整混合培训顺序：
+app.post('/fn/classes/mixed/updateTrainingSortNo', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 10、导出完成明细：
+app.post('/fn/classes/mixed/exportCompleteDetail', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 混合培训-混合培训数量查询 
+app.post('/fn/classes/mixed/selectMixedTrainingNum', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      'courseNum|1-1000': 0,
+      'liveNum|1-1000': 0,
+      'testNum|1-1000': 0,
+      'caseNum|1-1000': 0
+    }
+  })
+  res.send(data)
+})
+
+// 混合培训-交流圈-主题列表 
+app.post('/fn/classes/communicate/listCommunicateSubject', function (req, res) {
+  const data = Mock.mock({
+    code: '0',
+    'data|10': [
+      {
+        classId: '@id',
+        subjectId: '@id',
+        subjectTitle: '@title',
+        subjectContent: '@paragraph()',
+        // 发布状态:0下架,1发布
+        'publishStatus|1': ['0', '1'],
+        'publishStatusDesc|1': ['下架', '发布'],
+        sortNo: '@id',
+        updatedBy: '@id',
+        updatedByName: '@name',
+        updatedDate: '@date',
+        'commentCount|1-1000': 1,
+        'likeCount|1-1000': 1
+      }
+    ]
+  })
+  data.data = data.data.map((row) => ({ ...row, publishStatusDesc: row.publishStatus === '0' ? '下架' : '发布'}))
+  res.send(data)
+})
+
+// 混合培训-交流圈-删除 
+app.post('/fn/classes/communicate/deleteCommunicateSubject', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 混合培训-交流圈-上下架 
+app.post('/fn/classes/communicate/upOrDownCommunicateSubject', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 混合培训-交流圈-排序 
+app.post('/fn/classes/communicate/updateCommunicateSubjectSortNo', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 混合培训-交流圈-保存主题
+app.post('/fn/classes/communicate/saveCommunicateSubject', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {}
+  })
+  res.send(data)
+})
+
+// 混合培训-交流圈-查看主题
+app.post('/fn/classes/communicate/communicateSubjectDetail', function (req, res) {
+  const data = Mock.mock({
+    code: 0,
+    data: {
+      subjectId: '@id',
+      subjectTitle: '@title',
+      subjectContent: '@paragraph()',
+      picList: [
+        {
+          fileName: '1 (1).png',
+          type: 'image/png',
+          udmpId: 'UDMP-1d973f137eef3b59c643447421dcd808e635d691c9-e66c01ed-20230816073028-00000001'
+        },
+        {
+          fileName: '1 (2).png',
+          type: 'image/png',
+          udmpId: 'UDMP-6a9b06a7546360a31814751e6bf50b2b3f72975f65-e66c01ed-20230816073035-00000001'
+        }
+      ]
+    }
+  })
+  res.send(data)
+})
+
+
+module.exports = app
