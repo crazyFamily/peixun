@@ -130,7 +130,8 @@ export default {
       blgStripLineMaping: {
         FL: '非零',
         LS: '零售',
-        JF: '金服'
+        JF: '金服',
+        CX: '橙信'
       },
       blgStripLine: '',
       title: ''

@@ -93,7 +93,6 @@
       :show="uploadCaseShow"
       :uploadParams="uploadParams"
       :originalList="uploadForm.znCoursewareList"
-      useUdmp
       @update:show="closeUploadCase"
       @comfirm="comfirmUploadCase"
       ref="uploadModelRef">

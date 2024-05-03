@@ -5,7 +5,7 @@
     </el-card>
     <el-card class="mt10">
       <p class="shallow l24">
-        归档信息（可上传文件格式为：xls.doc.htm.pdf.ppt.mht.msg.rar.zip.txt.html.docx.xlsx.pptx.png.gif.jpg.jpeg.mp4.mp3.mov，文件大小≤5M）
+        归档信息（可上传文件格式为：xls.doc.htm.pdf.ppt.mht.msg.rar.zip.txt.html.docx.xlsx.pptx.png.gif.jpg.jpeg，文件大小≤5M）
       </p>
       <gc-table class="general__table mt15" :list="list" :tableList="tableList">
         <el-table-column width="164" label="操作">
@@ -17,7 +17,7 @@
               >查看</span
             >
             <div v-else class="aic">
-              <template v-if="state!=='detail'">
+              <template>
                 <span class="active"  @click="otherInformation = true">上传</span>
                 <span class="line"></span>
               </template>
@@ -123,7 +123,7 @@
     >
       <div class="df">
         <span class="shallow l26 mr20">选择文件</span>
-        <gc-fileInput btn-text="上传文件" @change="fileChange" />
+        <gc-fileInput btn-text="上传文件" :accept="ACCEPTSTR + ',' + ACCEPTSTR.toUpperCase()" :size="10 * 1024 * 1024" msgSizeLimit="10M" @change="fileChange" />
       </div>
       <div class="mt20 df" v-if="files.length">
         <span class="sw-48 tar shallow l26 mr20">已上传</span>
@@ -151,15 +151,14 @@
       <div class="df checkInformation">
         <div class="left sw-100">文档</div>
         <div class="right">
-          <a
+          <span
             class="item active"
             v-for="file in alreadyFiles"
             :key="file.udmpId"
-            :href="handleUdmpHref(file.udmpId)"
-            :download="file.archiveName"
+            @click="handleDownloadFile(file)"
           >
             {{ file.archiveName }}
-          </a>
+          </span>
         </div>
       </div>
     </gc-model>
@@ -250,15 +249,14 @@
       <div class="df checkInformation">
         <div class="left sw-100">文档</div>
         <div class="right">
-          <a
+          <span
             class="item active"
             v-for="file in EstabAlreadyFiles"
             :key="file.udmpId"
-            :href="handleUdmpHref(file.udmpId)"
-            :download="file.fileName"
+            @click="handleDownloadFile(file)"
           >
             {{ file.fileName }}
-          </a>
+          </span>
         </div>
       </div>
     </gc-model>
@@ -269,17 +267,18 @@
 import {
   CopyObj,
   handleBlob,
-  uploadFile,
   sizeChange,
   jsonHeaders,
   manyLineHint,
   currentChange,
-  handleUdmpHref,
   downHeaders,
   handleDownload,
-  templateDownload
+  templateDownload,
+  downloadFileAsAlink
 } from '@/util/utils'
 import { ESTABLISH_COURSE_MAP } from '@/util/constants'
+import { uploadFileToUdmp, fileDownload } from '@/util/udmp'
+import { ACCEPTSTR } from '../enum'
 export default {
   name: 'TrainingCoursePigeonhole',
   props: {
@@ -605,7 +604,6 @@ export default {
       sizeChange,
       currentChange,
       // 处理udmp链接函数
-      handleUdmpHref,
       dialogMaping: {
         '02': () => {
           this.checkAttendance = true
@@ -661,7 +659,8 @@ export default {
         2: '不及格',
         1: '未参加'
       },
-      checkEstabInformation: false
+      checkEstabInformation: false,
+      ACCEPTSTR
     }
   },
   methods: {
@@ -751,15 +750,26 @@ export default {
           handleBlob(res)
         })
     },
+    async handleDownloadFile (row) {
+      try {
+        downloadFileAsAlink(await fileDownload(row.udmpId))
+      } catch (error) {}
+    },
     // 选中文件 事件
     fileChange($event) {
-      const files = $event.target.files[0]
-      const data = { files, reimClass: '', busiId: '' }
-      uploadFile(data).then((res) => {
-        const { code, data } = res.data
-        if (code === 0) {
-          this.files.push(...data)
+      const file = $event.target.files[0]
+      uploadFileToUdmp([{ file }])
+      .then(res => {
+        if (res.length) {
+          const [fileData] = res
+          this.files.push({
+            udmpId: fileData.doc_id,
+            fileName: file.name,
+            sizes: fileData.file.size
+          })
         }
+      }).catch(err => {
+        console.log(err, '错误');
       })
     },
     // 删除一个文件

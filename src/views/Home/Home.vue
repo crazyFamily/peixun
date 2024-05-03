@@ -215,7 +215,12 @@ export default {
         私行财富学习管理: require('../../assets/svg/sicai-yuan.svg'),
         案例中心: require('../../assets/svg/anlizhongxin3.svg'),
         首页运营: require('../../assets/svg/anlizhongxin3.svg'),
-        阶梯培训管理: require('../../assets/svg/jietipeixunguanli1.svg')
+        阶梯培训管理: require('../../assets/svg/jietipeixunguanli1.svg'),
+        数据大屏: require('../../assets/svg/shouye-datadashboard.svg'),
+        潜才培养管理: require('../../assets/svg/shouye-qiancai.svg'),
+        新人培养管理: require('../../assets/svg/shouye-xinrenpeiyang.svg'),
+        校招轮岗管理: require('../../assets/svg/shouye-xiaozhao.svg'),
+        学习档案: require('../../assets/svg/shouye-xuexidangan.svg'),
       },
       moduleList: [],
       // 查询资讯入参
@@ -270,7 +275,7 @@ export default {
         item.icon = commonMenuIconMap[item.menuId] || item.icon
         if (item.menuId === '20800000000') {
           item.thirdPartyUrl =
-            'httt://training.pab.com.cn/training-web/index.html'
+            'http://training.pab.com.cn/training-web/index.html'
         }
       })
       this.moduleList = res
