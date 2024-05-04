@@ -5,7 +5,7 @@
       附件信息 <span class="sec-title">（签报将自动生成计划明细表，无需重复上传）</span>
     </div>
     <div class="menu-right">
-      <gc-fileInput width="auto" @change="accessoryChange">
+      <gc-fileInput width="auto" :accept="ACCEPTSTR + ',' + ACCEPTSTR.toUpperCase()" :size="10 * 1024 * 1024" msgSizeLimit="10M" @change="accessoryChange">
         <span class="icons__add active">
           <i class="icons__add__icon"></i>
           新增
@@ -32,7 +32,8 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { uploadFile } from '@/util/utils'
+import {  ACCEPTSTR } from '../../Establish/enum'
+import { uploadFileToUdmp } from '@/util/udmp'
 import { Message } from 'element-ui'
 import store from '@/store'
 const accessoryList = [
@@ -55,7 +56,7 @@ const accessoryList = [
 // 文件上传
 const accessoryTableList = ref([])
 watch(
- () => store.getters['planManagement/getAccessoryFiles'],
+  () => store.getters['planManagement/getAccessoryFiles'],
   (n) => {
     accessoryTableList.value = n
   }
@@ -66,12 +67,21 @@ const updateFileDatas = (files) => {
 }
 
 const accessoryChange = async ($event) => {
-  const files = $event.target.files[0]
-  if (!files) return
-  const { code, data } = (await uploadFile({ files, reimClass: '', busiId: '' }))?.data
-  if(code === 0) {
-    updateFileDatas(accessoryTableList.value.concat(data))
-  }
+  const file = $event.target.files[0]
+  if (!file) return
+  uploadFileToUdmp([{ file }])
+    .then(res => {
+      if (res.length) {
+        const [fileData] = res
+        updateFileDatas(accessoryTableList.value.concat([{
+          udmpId: fileData.doc_id,
+          fileName: file.name,
+          sizes: fileData.file.size
+        }]))
+      }
+    }).catch(err => {
+      console.log(err, '错误');
+    })
 }
 
 const selectedList = ref([])

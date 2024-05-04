@@ -49,7 +49,6 @@ import { fetchListFixedChain } from '@/fetch/public'
 import { ApprovalChainTransition, ApprovalChainTransitionStr, CopyObj } from '@/util/utils'
 import { useAnnual } from '../hooks/useAnnual'
 import { Message } from 'element-ui'
-import { LINE_LS } from '@/util/constants'
 const { getAnnualPackageInfo, isForbidEdit } = useAnnual()
 const { mergeReactive } = useBaseDataEvents()
 const approvalChainForm = reactive({
@@ -104,7 +103,7 @@ const getApprovalChain = async (blgDept) => {
 }
 
 const approvalChainCardConfirm = (data) => {
- const approvalData = CopyObj(store.getters['planManagement/getAnnaulApprovalData'])
+  const approvalData = CopyObj(store.getters['planManagement/getAnnaulApprovalData'])
   approvalData.chain = data
   store.commit('planManagement/updateApprovalData', approvalData)
 }

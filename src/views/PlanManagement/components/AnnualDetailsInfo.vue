@@ -7,9 +7,9 @@
       <el-tab-pane label="非培训班计划" name="mistakeTrainingCoursePlan">
         <MistakeTrainingCoursePlan></MistakeTrainingCoursePlan>
       </el-tab-pane>
-      <el-tab-pane label="被分配计划" name="annualDispense" v-if="isShowDispense">
+      <!-- <el-tab-pane label="被分配计划" name="annualDispense" v-if="isShowDispense">
         <AnnualDispensePLan></AnnualDispensePLan>
-      </el-tab-pane>
+      </el-tab-pane> -->
       <!-- <el-tab-pane label="预留费用" name="reservedCost">
         <ReservedCost></ReservedCost>
       </el-tab-pane> -->
@@ -23,13 +23,13 @@ import TrainingCoursePlan from './TrainingCoursePlan.vue'
 import MistakeTrainingCoursePlan from './MistakeTrainingCoursePlan.vue'
 import AnnualDispensePLan from './AnnualDispensePLan.vue'
 import store from '@/store'
-import { LINE_LS } from '@/util/constants'
+import { systemConfigParameters } from '../../../util/utils'
 const activeName = ref('trainingCoursePlan')
-// 只有零售显示分配的数据
-const isShowDispense = computed(() => {
-  const line = store.getters['planManagement/getCurrentTopSearchParams']?.busiType[0]
-  return line === LINE_LS
-})
+// 只有零售显示分配的数据,橙信也展示分配的数据，需求变更，都不展示被分配计划
+// const isShowDispense = computed(() => {
+//   const line = store.getters['planManagement/getCurrentTopSearchParams']?.busiType[0]
+//   return line === systemConfigParameters().defaultBusiType
+// })
 </script>
 <script>
 export default {

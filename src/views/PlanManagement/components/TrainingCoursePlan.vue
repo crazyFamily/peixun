@@ -36,13 +36,13 @@
         <template slot-scope="scope">
           <el-tooltip
             placement="left"
-           :visible-arrow="false"
+            :visible-arrow="false"
             popper-class="bgf shadow-1"
           >
             <div slot="content" class="tooltip__operation">
               <span class="active" @click="handlecheckPlan(scope.row)">查看</span>
               <span class="active" v-if="!readly" @click="handleEdit(scope.row)">修改</span>
-              <span class="active" v-if="renderDispenseButton(scope.row)" @click="handleDispense(scope.row)">分配</span>
+              <!-- <span class="active" v-if="renderDispenseButton(scope.row)" @click="handleDispense(scope.row)">分配</span> -->
             </div>
             <el-button class="button-48-24">操作</el-button>
           </el-tooltip>
@@ -72,11 +72,11 @@ import { CopyObj } from '@/plugins/until'
 import { fetchDeletePlan, fetchListPlanInfos, fetchReportPlanPackageClasses, fetchFindPlanInfoDetail } from '@/fetch/planManagement'
 import { useAnnual } from '@/views/PlanManagement/hooks/useAnnual'
 import { Message } from 'element-ui'
-import { customHint } from '@/util/utils'
+import { systemConfigParameters } from '@/util/utils'
 import store from '@/store'
 import { useTable } from '@/hooks/useTable'
 import { fetchListPlanDict } from '@/fetch/public'
-import { LINE_LS, YES_STATUS } from '@/util/constants'
+import { YES_STATUS } from '@/util/constants'
 import { CLASS_TYPES_MAP, EOA_DONE, LADDER_TRAIN_TYPE, TRAINING_COURSE_TYPE } from '../enum'
 import CheckPlan from './CheckPlan.vue'
 import EditDispensePLan from './EditDispensePLan.vue'
@@ -107,7 +107,7 @@ const trainingCoursePlanForm = reactive(CopyObj(baseParams))
 
 // 培训类型过滤器选项
 const trainTypeDescOptions = ref([])
-fetchListPlanDict({ line: LINE_LS, type: TRAINING_COURSE_TYPE }).then((data) => {
+fetchListPlanDict({ line: systemConfigParameters().defaultBusiType, type: TRAINING_COURSE_TYPE }).then((data) => {
   trainTypeDescOptions.value = data.trainTypes.map((row) => ({
     value: row.dataEncode,
     label: row.dataValue
@@ -137,7 +137,7 @@ const BASE_COLUMNS = [
     prop: 'className'
   },
   {
-    label: '培训类型',
+    label: '项目类型',
     width: '104',
     prop: 'trainTypeDesc',
     ...tableFilterSetting('classTypeList', trainTypeDescOptions)
@@ -173,11 +173,11 @@ const BASE_COLUMNS = [
     width: '92',
     prop: 'termNum'
   },
-  {
-    label: '已分配期数',
-    width: '92',
-    prop: 'dispenseNum'
-  },
+  // {
+  //   label: '已分配期数',
+  //   width: '92',
+  //   prop: 'dispenseNum'
+  // },
   {
     label: '创建人',
     width: '92',
@@ -191,10 +191,10 @@ const BASE_COLUMNS = [
 ]
 
 const trainingCoursePlanList = computed(() => {
-  // 非零售条线，去掉 已分配期数 字段
-  if(store.getters['planManagement/getCurrentTopSearchParams']?.busiType[0] !== LINE_LS) {
-    return BASE_COLUMNS.filter(row => row.prop !== 'dispenseNum')
-  }
+  // 非零售条线，去掉 已分配期数 字段 需求变更零售非零合并成非零
+  // if(store.getters['planManagement/getCurrentTopSearchParams']?.busiType[0] !== systemConfigParameters().defaultBusiType) {
+  //   return BASE_COLUMNS.filter(row => row.prop !== 'dispenseNum')
+  // }
   return BASE_COLUMNS
 })
 
@@ -203,9 +203,10 @@ watch(
   () => store.getters['planManagement/getAnnualClasses'],
   (n) => {
     trainingCoursePlanTableList.value = n
-   trainingCoursePlanForm.total = getAnnualInfo()?.classesTotal
+    trainingCoursePlanForm.total = getAnnualInfo()?.classesTotal
     trainingCoursePlanForm.packageId = getAnnualPackageInfo()?.planPackageId
     trainingCoursePlanForm.currPage = 1
+    trainingCoursePlanForm.pageSize = 5
   }
 )
 
@@ -267,7 +268,7 @@ const handlecheckPlan = async (row) => {
     planId: annualPlanId,
     dept: getAnnualPackageInfo()?.blgDept,
     line: getAnnualPackageInfo()?.blgStripLine
- }
+  }
   const res = await fetchFindPlanInfoDetail(params)
   checkPlanProps.value = {
     data: res,
@@ -295,8 +296,8 @@ const currentRowId = ref('')
 
 // 分配按钮显示逻辑
 const renderDispenseButton = (row) => {
-  // 只有零售有分配的需求
-  if(store.getters['planManagement/getCurrentTopSearchParams']?.busiType[0] !== LINE_LS) return false
+  // 只有零售有分配的需求，橙信也展示分配
+  if(store.getters['planManagement/getCurrentTopSearchParams']?.busiType[0] !== systemConfigParameters().defaultBusiType) return false
   if(row.trainType !== LADDER_TRAIN_TYPE) return false
   if(getAnnualPackageInfo()?.applyStatus !== EOA_DONE) return false
   if(readly.value) return false

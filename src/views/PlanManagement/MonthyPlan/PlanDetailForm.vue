@@ -61,7 +61,7 @@
           />
         </el-form-item>
         <el-form-item label="计划举办时间" prop="startDate">
-        <DateRange
+          <DateRange
             v-model="baseInfoForm"
             start-key="startDate"
             end-key="endDate"

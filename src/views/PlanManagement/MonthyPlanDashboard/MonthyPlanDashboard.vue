@@ -46,7 +46,7 @@
               </div>
             </div>
             <div style="padding: 0 20px;">
-             <!-- 内容 -->
+              <!-- 内容 -->
               <BaseWrapper hidden-title>
                 <GcEditor @change="handleChangeContent" :content-text="editorContent" width="100%"></GcEditor>
               </BaseWrapper>
@@ -93,16 +93,16 @@
             </div>
 
             <div class="detail-wrapper">
-            <BaseWrapper v-show="dataDashboardInfo.content">
+              <BaseWrapper v-show="dataDashboardInfo.content">
                 <EditorViewContainer>
-                  <div class="content-wrapper" v-html="dataDashboardInfo.content"></div>
+                  <div class="content-wrapper" v-html="$xss(dataDashboardInfo.content)"></div>
                 </EditorViewContainer>
               </BaseWrapper>
 
               <!-- 计划概述 -->
               <BaseWrapper :title="dataDashboardInfo.overviewTitle" v-show="dataDashboardInfo.overview">
                 <EditorViewContainer>
-                  <div class="content-wrapper" v-html="dataDashboardInfo.overview"></div>
+                  <div class="content-wrapper" v-html="$xss(dataDashboardInfo.overview)"></div>
                 </EditorViewContainer>
               </BaseWrapper>
 
@@ -119,7 +119,7 @@
               <!-- 说明 -->
               <BaseWrapper v-show="dataDashboardInfo.remark">
                 <EditorViewContainer>
-                  <div class="content-wrapper" v-html="dataDashboardInfo.remark"></div>
+                  <div class="content-wrapper" v-html="$xss(dataDashboardInfo.remark)"></div>
                 </EditorViewContainer>
               </BaseWrapper>
             </div>
@@ -515,7 +515,7 @@ export default {
         width: 100%;
         margin: 30px 0;
       }
-     .top-box {
+      .top-box {
         margin-bottom: 20px;
       }
     }

@@ -13,7 +13,7 @@
                 {{ coursePlanBaseInfo.planDeptName }}
               </gc-readonlyInput>
               <gc-readonlyInput label="计划科目"> 常规预算 </gc-readonlyInput>
-              <gc-readonlyInput label="培训类型">
+              <gc-readonlyInput label="项目类型">
                 {{ coursePlanBaseInfo.trainTypeDesc }}
               </gc-readonlyInput>
               <gc-readonlyInput label="是否消保培训">
@@ -48,7 +48,7 @@
               <gc-readonlyInput label="业务模块">
                 {{ coursePlanBaseInfo.channelTypeDesc }}
               </gc-readonlyInput>
-              <gc-readonlyInput label="培训类型">
+              <gc-readonlyInput label="项目类型">
                 {{ coursePlanBaseInfo.trainTypeDesc }}
               </gc-readonlyInput>
               <gc-readonlyInput label="是否消保培训">
@@ -56,7 +56,7 @@
               </gc-readonlyInput>
               <gc-readonlyInput label="培训系列">
                 {{ coursePlanBaseInfo.trainSeriesDesc }}
-             </gc-readonlyInput>
+              </gc-readonlyInput>
               <gc-readonlyInput label="子系列">
                 {{ coursePlanBaseInfo.childSeriesDesc }}
               </gc-readonlyInput>
@@ -80,7 +80,7 @@
             <template v-if="blgStripLine === 'LS'">
               <gc-readonlyInput label="计划科目"> 常规预算 </gc-readonlyInput>
             </template>
-            <gc-readonlyInput label="培训类型">
+            <gc-readonlyInput label="项目类型">
               {{ coursePlanBaseInfo.trainTypeDesc }}
             </gc-readonlyInput>
             <gc-readonlyInput label="是否消保培训">
@@ -120,7 +120,7 @@
             </template>
 
             <template v-if="scope.row.stuNumShow">
-             <gc-readonlyInput width="90" class="margin-0">
+              <gc-readonlyInput width="90" class="margin-0">
                 {{ scope.row.stuNum }}
               </gc-readonlyInput>
               <span>人</span>
@@ -180,7 +180,7 @@
         class="mt20 general__table"
         :list="apportionUnitList"
         :tableList="apportionUnitTableList"
-     >
+      >
         <el-table-column label="分摊人数" min-width="374">
           <template slot-scope="scope">
             <div class="aic">
@@ -257,7 +257,7 @@ export default {
         trainType: [
           {
             required: true,
-            message: '请选择培训类型',
+            message: '请选择项目类型',
             trigger: 'change'
           }
         ],
@@ -383,7 +383,7 @@ export default {
           stuNumShow: false,
           dayNumShow: false
         },
-       {
+        {
           expenseType: '000203',
           expenseTypeDesc: '外部培训费',
           childDesc: '外派培训费',
@@ -453,7 +453,7 @@ export default {
           unitTotalFee: '',
           unitExpenseShow: false,
           stuNumShow: false,
-         dayNumShow: false
+          dayNumShow: false
         },
         {
           expenseType: '000403',
@@ -530,7 +530,7 @@ export default {
       ],
       // 分摊单位表格 字段数组
       apportionUnitList: [
-       {
+        {
           type: 'index',
           label: '序号',
           width: '64'
@@ -568,7 +568,7 @@ export default {
       this.coursePlanBaseInfo = data.planInfoVo || {}
       this.coursePlanBaseInfo.blgDeptName = this.blgDeptName
       const costInfoTableList = this.defaultCostInfoTableList.map((v) => {
-        const item = data.planExpenseList.find(
+        const item = data.planExpenseList?.find(
           (k) => v.expenseType === k.expenseType
         )
         const result = item && this._.merge(CopyObj(v), item)
@@ -665,7 +665,7 @@ export default {
     },
     // 业务模块 change 事件
     channelTypeChange() {
-     this.$set(this.coursePlanBaseInfo, 'keyJobs', '')
+      this.$set(this.coursePlanBaseInfo, 'keyJobs', '')
       const data = this.selectOptions.channelTypes.find(
         (v) => v.dataEncode === this.coursePlanBaseInfo.channelType
       )

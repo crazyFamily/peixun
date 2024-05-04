@@ -30,7 +30,7 @@ const { getAnnualPackageInfo, checkPackageFetched, checkForbidStatus } = useAnnu
  *   dept: string 机构代码
  *   pageState: 'info|edit' 页面状态
  *   data: Object 编辑状态拉取回来计划明细数据
- *   classType: string 培训类型
+ *   classType: string 项目类型
  *   selectOptions: Array 下拉选择项
  *   blgDeptName: string 机构名称
  *   blgStripLine: string 条线
@@ -47,7 +47,6 @@ watch(
   (n) => {
     if (n === 'edit') {
       editCompProps.value = CopyObj(store.getters['planManagement/getCurrentEditCompProps'])
-      console.log(editCompProps, '===>> editCompProps');
     }
     status.value = n
   }
@@ -120,7 +119,7 @@ const submitEditPlan = async (data, state) => {
   if(state === 'edit') {
     await fetchUpdatePlan(params)
     Message.success('修改成功')
-   store.dispatch('planManagement/changeAnnualEditComp', {status: 'info'})
+    store.dispatch('planManagement/changeAnnualEditComp', {status: 'info'})
   }
   annualPlanInfoRef.value.query()
 }

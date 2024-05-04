@@ -129,7 +129,7 @@ export default {
       Object.keys(data).forEach((v) => {
         params += '&' + [v, data[v]].join('=')
       })
-     const url = `/tms-new/api/planupload/downloadApportion?${params.slice(1)}`
+      const url = `/tms-new/api/planupload/downloadApportion?${params.slice(1)}`
       window.location = url
     },
     // 查看分摊详情 dialog 表格 合计函数

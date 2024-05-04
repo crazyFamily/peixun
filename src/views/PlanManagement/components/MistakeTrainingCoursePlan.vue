@@ -51,7 +51,7 @@
       </el-table-column>
     </table-pagination>
     <!-- 查看培训班计划 dialog  -->
-   <gc-model
+    <gc-model
       width="1200px"
       title="查看培训班计划"
       class="check-training-plan"
@@ -72,7 +72,8 @@ import { fetchFindPlanInfoDetail, fetchListPlanInfos, fetchReportPlanPackageNonC
 import store from '@/store'
 import { CLASS_TYPES_MAP, TRAINING_COURSE_TYPE, NOT_TRAINING_COURSE_TYPE } from '../enum'
 import CheckPlan from './CheckPlan.vue'
-import { LINE_LS, YES_STATUS } from '@/util/constants'
+import { YES_STATUS } from '@/util/constants'
+import { systemConfigParameters } from '@/util/utils'
 import { useTable } from '@/hooks/useTable'
 import { fetchListPlanDict } from '@/fetch/public'
 const {
@@ -100,7 +101,7 @@ const baseParams = {
 }
 // 培训类型过滤器选项
 const trainTypeDescOptions = ref([])
-fetchListPlanDict({ line: LINE_LS, type: NOT_TRAINING_COURSE_TYPE }).then((data) => {
+fetchListPlanDict({ line: systemConfigParameters().defaultBusiType, type: NOT_TRAINING_COURSE_TYPE }).then((data) => {
   trainTypeDescOptions.value = data.trainTypes.map((row) => ({
     value: row.dataEncode,
     label: row.dataValue
@@ -123,7 +124,7 @@ const mistakeTrainingCoursePlanList = [
     prop: 'className'
   },
   {
-    label: '培训类型',
+    label: '项目类型',
     width: '104',
     prop: 'trainTypeDesc',
     ...tableFilterSetting('classTypeList', trainTypeDescOptions)
@@ -170,6 +171,7 @@ watch(
     mistakeTrainingCoursePlanForm.total = getAnnualInfo()?.nonclassesTotal
     mistakeTrainingCoursePlanForm.packageId = getAnnualPackageInfo()?.planPackageId
     mistakeTrainingCoursePlanForm.currPage = 1
+    mistakeTrainingCoursePlanForm.pageSize = 5
   }
 )
 
@@ -178,7 +180,7 @@ const formatParams = (params) => {
   const data = CopyObj(params)
   data.page = data.currPage
   data.size = data.pageSize
- return data
+  return data
 }
 
 // 获取非培训班数据

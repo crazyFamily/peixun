@@ -4,19 +4,20 @@
       <el-card class="search-card">
         <el-form :model="queryForm" :inline="true">
           <el-form-item label="机构">
-            <gc-institution
-              v-model="queryForm.busiType"
-              @change="orgNameChange"
-              style="vertical-align: middle;"
-            >
+            <gc-institution ref="institutionRef" 
+              v-model="queryForm.busiType" 
+              :defaultShow="true"
+              hasResetBlgStripLine
+              @setDataFinish="orgSetDataFinishHandle"
+              @change="orgNameChange" style="vertical-align: middle">
             </gc-institution>
             <!-- <el-checkbox class="ml10" v-model="queryForm.isGotSubBranch">含下属机构</el-checkbox> -->
           </el-form-item>
-          <el-form-item label="年份" class="search-card__date">
+          <el-form-item label="年度" class="search-card__date">
             <el-date-picker
               v-model="queryForm.year"
               type="year"
-              placeholder="选择年份"
+              placeholder="选择年度"
               :clearable="false"
               value-format="yyyy"
               popper-class="date-picker"
@@ -24,16 +25,10 @@
             </el-date-picker>
           </el-form-item>
           <el-form-item label="提交人">
-            <el-input
-              v-model="queryForm.submitBy"
-              placeholder="请输入提交人"
-            ></el-input>
+            <el-input v-model="queryForm.submitBy" placeholder="请输入提交人"></el-input>
           </el-form-item>
           <el-form-item label="计划名称">
-            <el-input
-              v-model="queryForm.planPackageName"
-              placeholder="请输入计划名称"
-            ></el-input>
+            <el-input v-model="queryForm.planPackageName" placeholder="请输入计划名称"></el-input>
           </el-form-item>
         </el-form>
         <div class="search-card__button">
@@ -48,23 +43,19 @@
                 <i class="instructor-icons__download__icon"></i>
                 导出</span
               >
-              <span
-                class="instructor-icons__modification"
-                @click="revocationOnePlan"
-              >
-                <i class="instructor-icons__modification__icon"></i>
-                撤回修改
-              </span>
             </div>
             <gc-table
               ref="planManagementTableRef"
               class="general__table mt20 table-radio"
               :list="planManagementList"
               :tableList="planManagementTableList"
-              @selection-change="
-                tableSelectionChange($refs, $event, 'planManagementTableRef')
-             "
+              @selection-change="tableSelectionChange($refs, $event, 'planManagementTableRef')"
             >
+              <el-table-column label="计划名称" slot="planPackageName" prop="planPackageName" width="350">
+                <template slot-scope="scope">
+                  <el-link type="primary" @click="queryPlanDetails(scope.row)">{{ scope.row.planPackageName }}</el-link>
+                </template>
+              </el-table-column>
               <el-table-column width="100" prop="applyStatusDesc">
                 <template slot="header">
                   <gc-tablecolumnfilters
@@ -83,28 +74,20 @@
               </el-table-column>
               <el-table-column label="操作" min-width="140" fixed="right">
                 <template v-slot:default="scope">
-                  <span class="" @click="queryPlanDetails(scope.row)">
+                  <!-- <span class="" @click="queryPlanDetails(scope.row)">
                     <el-tooltip content="查看" popper-class="icon-popper">
                       <i class="operation__check"></i>
                     </el-tooltip>
-                  </span>
-                  <span
-                    class="ml20"
-                    @click="exportPlan(scope.row)"
-                    v-if="scope.row.applyStatus === '02002'"
-                  >
+                  </span> -->
+                  <span class="" @click="exportPlan(scope.row)" v-if="scope.row.applyStatus === '02002'">
                     <el-tooltip content="导出" popper-class="icon-popper">
                       <i class="operation__download"></i>
                     </el-tooltip>
                   </span>
                   <span
-                    class="ml20"
+                    :class="{'ml20':scope.row.applyStatus === '02002'}"
                     @click="delPlan(scope.row)"
-                    v-if="
-                      scope.row.applyStatus === '02000' ||
-                      scope.row.applyStatus === '02004' ||
-                      scope.row.applyStatus === '02003'
-                    "
+                    v-if="scope.row.applyStatus === '02000' || scope.row.applyStatus === '02004' || scope.row.applyStatus === '02003'"
                   >
                     <el-tooltip content="删除" popper-class="icon-popper">
                       <i class="operation__del"></i>
@@ -134,9 +117,7 @@
     <div v-show="showIndex === 1" class="check-plain">
       <el-card class="back">
         <div class="menu-right margin-0">
-          <el-button class="button-w80-h30" @click="showIndex = 0"
-            >返回</el-button
-          >
+          <el-button class="button-w80-h30" @click="showIndex = 0">返回</el-button>
         </div>
       </el-card>
       <Plain
@@ -156,23 +137,14 @@
     </div>
 
     <!-- 分摊详情 dialog -->
-    <ApportionDetailsDialog
-      :data="apportionComponentData"
-      ref="apportionDetailsDialog"
-    />
+    <ApportionDetailsDialog :data="apportionComponentData" ref="apportionDetailsDialog" />
   </div>
 </template>
 
 <script>
-import {
-  hintFrame,
-  sizeChange,
-  jsonHeaders,
-  currentChange,
-  tableSelectionChange,
-  ApprovalChainTransitionStr,
-  handleDownload
-} from '../../util/utils'
+// import store from '@/store'
+// import { fetchUserOrgTree } from '@/fetch/public'
+import { hintFrame, sizeChange, jsonHeaders, currentChange, tableSelectionChange, ApprovalChainTransitionStr, handleDownload } from '../../util/utils'
 import Plain from './components/Plan'
 import ApportionDetailsDialog from './components/ApportionDetailsDialog'
 import { fetchExportPlanPackages } from '@/fetch/planManagement'
@@ -207,9 +179,7 @@ export default {
           width: '54'
         },
         {
-          width: '350',
-          label: '计划名称',
-          prop: 'planPackageName'
+          slot: 'planPackageName'
         },
         {
           width: '110',
@@ -223,7 +193,7 @@ export default {
         },
         {
           width: '228',
-          label: '计划所属机构',
+          label: '计划所属单位',
           prop: 'blgDeptName'
         }
       ],
@@ -237,7 +207,7 @@ export default {
         },
         {
           label: '审批中',
-         value: '02001'
+          value: '02001'
         },
         {
           label: '已通过',
@@ -274,24 +244,17 @@ export default {
   methods: {
     // 查询
     query() {
-      if (this.queryForm.busiType < 2) {
+      if (this.queryForm.busiType.length < 2) {
         return this.$message.warning('请先选条线和机构')
       } else if (!this.queryForm.year) {
-        return this.$message.warning('请先选年份')
+        return this.$message.warning('请先选年度')
       }
       this.queryForm.currPage = 1
       this.getYearPlanList()
     },
     // 处理查询数据
     handleQueryForm() {
-      const {
-        year,
-        currPage: page,
-        pageSize: size,
-        status,
-        submitBy,
-        planPackageName
-      } = this.queryForm
+      const { year, currPage: page, pageSize: size, status, submitBy, planPackageName } = this.queryForm
       const data = { year, page, size, status, submitBy, planPackageName }
       ;[data.line, data.dept] = this.queryForm.busiType
       this.useBlgStripLine = data.line
@@ -312,59 +275,18 @@ export default {
     },
     // 获取年度计划数据
     getYearPlanList() {
-     const data = this.handleQueryForm()
-      this.$axios
-        .post('/fn/plan/manage/listPlanPackages', data, jsonHeaders)
-        .then((res) => {
-          const { code, data } = res.data
-          if (code === 0) {
-            const { list, total } = data
-            list.forEach((v) => {
-              v.submitDate = v.submitDate?.split(' ')[0]
-            })
-            this.planManagementTableList = list
-            this.total = total
-          }
-        })
-    },
-    // 退回一条计划
-    revocationOnePlan() {
-      const selection = this.$refs.planManagementTableRef.$children[0].selection
-      if (selection.length < 1) {
-        return this.$message.warning('请先选择一条计划')
-      }
-      this.$alert('确定退回修改计划吗？', '提示', {
-        confirmButtonText: '确定',
-        showCancelButton: true,
-        cancelButtonClass: 'cancel',
-        customClass: `loginTimeout`
+      const data = this.handleQueryForm()
+      this.$axios.post('/fn/plan/manage/listPlanPackages', data, jsonHeaders).then((res) => {
+        const { code, data } = res.data
+        if (code === 0) {
+          const { list, total } = data
+          list.forEach((v) => {
+            v.submitDate = v.submitDate?.split(' ')[0]
+          })
+          this.planManagementTableList = list
+          this.total = total
+        }
       })
-        .then((valied) => {
-          if (valied === 'confirm') {
-            const row = selection[0]
-            const { applyStatus, planPackageId: packageId } = row
-            if (!['02001', '02002'].includes(applyStatus)) {
-              return this.$message.warning('只有审批中，已通过才能撤回')
-            }
-            const { year } = this.queryForm
-            const data = { year, packageId }
-            ;[data.line, data.dept] = this.queryForm.busiType
-            this.$axios
-              .post(
-                '/fn/plan/manage/returnAndBackPlanPackage',
-                data,
-                jsonHeaders
-              )
-              .then((res) => {
-                const { code, data } = res.data
-                if (code === 0) {
-                  this.$message.success('撤回成功')
-                  this.getYearPlanList()
-                }
-              })
-          }
-        })
-        .catch((err) => err)
     },
     // 选择部门变化事件
     orgNameChange(v) {
@@ -377,19 +299,17 @@ export default {
       this.useDept = dept
       this.useYear = year
       const data = { year, line, dept }
-      this.$axios
-        .post('/fn/plan/annual/findPackageInfo', data, jsonHeaders)
-        .then((res) => {
-         const { code, data } = res.data
-          if (code === 0) {
-            this.planPackageData = data
-            this.showIndex = 1
-            const auditUsersUm = this.planPackageData.planPackage.auditUsersum
-            if (auditUsersUm) {
-              this.auditUsersUm = auditUsersUm
-            }
+      this.$axios.post('/fn/plan/annual/findPackageInfo', data, jsonHeaders).then((res) => {
+        const { code, data } = res.data
+        if (code === 0) {
+          this.planPackageData = data
+          this.showIndex = 1
+          const auditUsersUm = this.planPackageData.planPackage.auditUsersum
+          if (auditUsersUm) {
+            this.auditUsersUm = auditUsersUm
           }
-        })
+        }
+      })
       this.getApprovalChain(row)
     },
     // 获取审批链 数据
@@ -399,18 +319,16 @@ export default {
         orgId: this.useDept,
         blgStripLine: row.blgStripLine
       }
-      this.$axios
-        .post('/fn/commons/eoa/listFixedChain', { data }, jsonHeaders)
-        .then((res) => {
-          let { code, data } = res.data
-          if (code === 0) {
-            data = data?.fixedList || []
-            const auditUsersUm = ApprovalChainTransitionStr(data)
-            if (auditUsersUm.length) {
-              this.auditUsersUm = auditUsersUm.join('')
-            }
+      this.$axios.post('/fn/commons/eoa/listFixedChain', { data }, jsonHeaders).then((res) => {
+        let { code, data } = res.data
+        if (code === 0) {
+          data = data?.fixedList || []
+          const auditUsersUm = ApprovalChainTransitionStr(data)
+          if (auditUsersUm.length) {
+            this.auditUsersUm = auditUsersUm.join('')
           }
-        })
+        }
+      })
     },
     // 打开分摊详情
     openApportionDetails() {
@@ -430,28 +348,33 @@ export default {
       hintFrame('确认删除该计划？').then((res) => {
         if (!res) return
         const { planYear: year, blgDept: dept, blgStripLine: line } = row
-        this.$axios
-          .post(
-            '/fn/plan/manage/deletePackageInfo',
-            { year, dept, line },
-            jsonHeaders
-          )
-          .then((res) => {
-            const { code } = res.data
-            if (code === 0) {
-              this.$message.success('删除成功')
-              this.query()
-            }
-          })
+        this.$axios.post('/fn/plan/manage/deletePackageInfo', { year, dept, line }, jsonHeaders).then((res) => {
+          const { code } = res.data
+          if (code === 0) {
+            this.$message.success('删除成功')
+            this.query()
+          }
+        })
       })
     },
     async exportHandle() {
       const data = this.handleQueryForm()
       await fetchExportPlanPackages(data)
     },
+    orgSetDataFinishHandle() {
+      this.query()
+    },
   },
   mounted() {
-   this.$set(this.queryForm, 'year', new Date().getFullYear() + '')
+    this.$set(this.queryForm, 'year', new Date().getFullYear() + '')
+    // const userInfo = store.getters['getUserInfo']
+
+    // const params = { module: 'planModule', busiType: userInfo.blgStripLine }
+    // fetchUserOrgTree(params).then((res) => {
+    //   this.queryForm.busiType = [userInfo.blgStripLine, res[0].orgList[0].orgId]
+    //   this.$refs.institutionRef.setContentValue([res[0].orgList[0].orgName])
+    //   this.query()
+    // })
   },
   computed: {
     apportionComponentData() {

@@ -22,7 +22,7 @@
               <el-form-item label="所属部门" class="org-item-style">
                 <TopNodeInstitution :disabled="isRelationClass" v-model="coursePlanBaseInfo.topNodeOrgs" :busi-type="blgStripLine" :top-node="topNode" width="250px" ref="topNodeInstitutionRef"></TopNodeInstitution>
               </el-form-item>
-              <el-form-item label="培训类型" prop="trainType">
+              <el-form-item label="项目类型" prop="trainType">
                 <gc-select
                   k="dataValue"
                   v="dataEncode"
@@ -35,7 +35,7 @@
               </el-form-item>
               <el-form-item label="是否消保培训" prop="ifConformance">
                 <gc-select
-   class="padding-0"
+                  class="padding-0"
                   :options="[{label: '是', value: 'Y'}, {label: '否', value: 'N'}]"
                   v-model="coursePlanBaseInfo.ifConformance"
                   :disabled="isRelationClass"
@@ -76,7 +76,7 @@
                   ></el-input>
                 </el-form-item>
               </template>
- <el-form-item label="培训系列" prop="trainSeries">
+              <el-form-item label="培训系列" prop="trainSeries">
                 <gc-select
                   k="dataValue"
                   v="dataEncode"
@@ -103,19 +103,15 @@
               <el-form-item label="" class="block"></el-form-item>
             </div>
           </div>
-          <div class="form-box" v-else-if="blgStripLine === 'LS'">
+          <!-- <div class="form-box" v-else-if="blgStripLine === systemConfigParameters().defaultBusiType">
             <div class="ls-form-wrapper">
               <el-form-item label="所属部门" class="org-item-style">
-                <!-- <el-input
-                  disabled
-                  v-model="coursePlanBaseInfo.blgDeptName"
-                ></el-input> -->
-           <TopNodeInstitution :disabled="isRelationClass" v-model="coursePlanBaseInfo.topNodeOrgs" :busi-type="blgStripLine" :top-node="topNode" width="250px" ref="topNodeInstitutionRef"></TopNodeInstitution>
+                <TopNodeInstitution :disabled="isRelationClass" v-model="coursePlanBaseInfo.topNodeOrgs" :busi-type="blgStripLine" :top-node="topNode" width="250px" ref="topNodeInstitutionRef"></TopNodeInstitution>
               </el-form-item>
               <el-form-item label="计划科目">
                 <el-input disabled value="常规预算"></el-input>
               </el-form-item>
-              <el-form-item label="培训类型" prop="trainType">
+              <el-form-item label="项目类型" prop="trainType">
                 <gc-select
                   k="dataValue"
                   v="dataEncode"
@@ -149,7 +145,7 @@
                 </el-form-item>
               </template>
               <template v-else>
-           <el-form-item label="业务模块">
+                <el-form-item label="业务模块">
                   <gc-select
                     k="dataValue"
                     v="dataEncode"
@@ -187,7 +183,7 @@
                   ></gc-select>
                 </el-form-item>
               </template>
-      <template v-if="classTypeShowState">
+              <template v-if="classTypeShowState">
                 <el-form-item
                   label="项目名称"
                   prop="className"
@@ -196,16 +192,6 @@
                     v-model="coursePlanBaseInfo.className"
                     :disabled="isRelationClass"
                   ></el-input>
-                  <!-- <gc-select
-                    k="className"
-                    v="classId"
-                    class="padding-0"
-                    :options="classNameOptions"
-                    v-model="coursePlanBaseInfo.className"
-                    @change="classChange"
-                    :disabled="isChange"
-                  >
-                  </gc-select> -->
                 </el-form-item>
               </template>
               <template v-else>
@@ -235,7 +221,7 @@
                   k="dataValue"
                   v="dataEncode"
                   class="padding-0"
-            :options="trainSeriesChildOptions"
+                  :options="trainSeriesChildOptions"
                   v-model="coursePlanBaseInfo.childSeries"
                   :disabled="isRelationClass"
                 ></gc-select>
@@ -249,7 +235,7 @@
                 </el-form-item>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- 非零的 -->
           <div class="form-box" v-else>
             <div class="ls-form-wrapper">
@@ -266,7 +252,7 @@
                   :disabled="isRelationClass"
                 ></gc-select>
               </el-form-item>
-              <el-form-item label="培训类型" prop="trainType">
+              <el-form-item label="项目类型" prop="trainType">
                 <gc-select
                   k="dataValue"
                   v="dataEncode"
@@ -281,7 +267,7 @@
               <el-form-item label="是否消保培训" prop="ifConformance">
                 <gc-select
                   class="padding-0"
-            :options="[{label: '是', value: 'Y'}, {label: '否', value: 'N'}]"
+                  :options="[{label: '是', value: 'Y'}, {label: '否', value: 'N'}]"
                   v-model="coursePlanBaseInfo.ifConformance"
                   :disabled="isRelationClass"
                 >
@@ -324,10 +310,9 @@
                     :options="trainSeriesChildOptions"
                     v-model="coursePlanBaseInfo.childSeries"
                     :disabled="isRelationClass"
-                    @change="FLChildSeriesChange"
                   ></gc-select>
                 </el-form-item>
-          </template>
+              </template>
               <template v-else>
                 <el-form-item label="子系列">
                   <gc-select
@@ -340,16 +325,30 @@
                   ></gc-select>
                 </el-form-item>
               </template>
-              <el-form-item label="关键岗位">
-                  <el-input
-                  v-model="coursePlanBaseInfo.keyJobs"
-                  :disabled="isRelationClass"
-                  maxlength="50"
-                  show-word-limit
-                  class="input-limit-style"
-                >
-                </el-input>
-              </el-form-item>
+              <template v-if="FLkeyPositionOptions.length">
+                <el-form-item label="关键岗位" :key="hasKeyJobsRequire" prop="keyJobs">
+                  <gc-select
+                    k="dataValue"
+                    v="dataEncode"
+                    class="padding-0"
+                    :options="FLkeyPositionOptions"
+                    v-model="coursePlanBaseInfo.keyJobs"
+                    :disabled="isRelationClass"
+                  ></gc-select>
+                </el-form-item>
+              </template>
+              <template v-else>
+                <el-form-item label="关键岗位">
+                    <el-input
+                    v-model="coursePlanBaseInfo.keyJobs"
+                    :disabled="isRelationClass"
+                    maxlength="50"
+                    show-word-limit
+                    class="input-limit-style"
+                  >
+                  </el-input>
+                </el-form-item>
+              </template>
               <el-form-item label="项目名称" prop="className">
                 <el-input
                   v-model="coursePlanBaseInfo.className"
@@ -370,18 +369,18 @@
             </div>
           </div>
         </div>
-     <!-- 非培训班的 -->
+        <!-- 非培训班的 -->
         <div class="form-box" v-else>
           <div class="ls-form-wrapper">
             <el-form-item label="所属部门" class="org-item-style">
               <TopNodeInstitution :disabled="isRelationClass" v-model="coursePlanBaseInfo.topNodeOrgs" :busi-type="blgStripLine" :top-node="topNode" width="250px" ref="topNodeInstitutionRef"></TopNodeInstitution>
             </el-form-item>
-            <template v-if="blgStripLine === 'LS'">
+            <!-- <template v-if="blgStripLine === systemConfigParameters().defaultBusiType">
               <el-form-item label="计划科目">
                 <el-input value="常规预算" disabled></el-input>
               </el-form-item>
-            </template>
-            <el-form-item label="培训类型" prop="trainType">
+            </template> -->
+            <el-form-item label="项目类型" prop="trainType">
               <gc-select
                 k="dataValue"
                 v="dataEncode"
@@ -414,11 +413,11 @@
               ></el-input>
             </el-form-item>
             <!-- 占位用 -->
-            <template v-if="blgStripLine !== 'LS'">
+            <template>
               <el-form-item label="" class="block"></el-form-item>
             </template>
           </div>
-      </div>
+        </div>
 
         <el-form-item label="备注" label-width="100px" class="mr10 area-style">
           <el-input
@@ -448,7 +447,7 @@ import {
   jsonHeaders,
   downloadFile,
   openFileInput,
-  downloadAdapter
+  // systemConfigParameters
 } from '../../../util/utils'
 import CostInfoTable from '../../../components/chunk/CostInfoTable'
 import AddApportionUnit from '../../../components/chunk/AddApportionUnit'
@@ -473,7 +472,7 @@ export default {
     selectOptions: {
       type: Object,
       default: () => ({})
-   },
+    },
     pageState: String,
     currentOrg: {
       type: Object,
@@ -533,7 +532,7 @@ export default {
           //   trigger: 'change'
           // }
         ],
-   trainSeries: [
+        trainSeries: [
           {
             required: true,
             message: '请选择培训系列',
@@ -602,7 +601,7 @@ export default {
           {
             required: true,
             message: '请选择是否为消保培训',
-           trigger: 'change'
+            trigger: 'change'
           },
         ]
       },
@@ -634,6 +633,7 @@ export default {
       openFileInput,
       // 关键岗位下拉选项
       keyPositionOptions: [],
+      FLkeyPositionOptions: [],
       // 培训子序列下拉选项
       trainSeriesChildOptions: [],
       // 添加 零售 非零 金服分摊单位 树组件数据
@@ -651,11 +651,17 @@ export default {
         JF: {
           busiType: 'JF',
           label: '金服'
-        }
+        },
+        CX: {
+          busiType: 'CX',
+          label: '橙信'
+        },
       },
       apportionUnitFileState: true,
       // 传递给费用信息组件的数据
-      costInfoTableData: null
+      costInfoTableData: null,
+      // systemConfigParameters,
+      hasKeyJobsRequire: Date.now()
     }
   },
   methods: {
@@ -667,7 +673,7 @@ export default {
       } else {
         data = this.data ? CopyObj(this.data) : {}
       }
-    let keyJobs, childSeries, className
+      let keyJobs, childSeries, className
       if (data.planInfoVo) {
         keyJobs = data.planInfoVo.keyJobs
         childSeries = data.planInfoVo.childSeries
@@ -687,6 +693,9 @@ export default {
         this.channelTypeChange()
         this.trainSeriesChange()
         if (keyJobs !== '-1') {
+          if(this.coursePlanBaseInfo.trainType === LADDER_TRAIN_TYPE) {
+            this.FLkeyPositionOptions = this.selectOptions.keyJobs || []
+          }
           this.$set(this.coursePlanBaseInfo, 'keyJobs', keyJobs)
         }
         if (childSeries !== '-1') {
@@ -723,7 +732,7 @@ export default {
           const { code, data } = res.data
           if (code === 0) {
             this.classNameOptions = data
-   }
+          }
         })
     },
     // 新增计划 - 批量上传
@@ -763,17 +772,6 @@ export default {
           })
         })
     },
-    // 模板下载
-    templateDownload() {
-      // 映射表
-      let map = {
-        LS: 'PLAN_LS_SHARE',
-        FL: 'PLAN_FL_SHARE',
-        JF: 'PLAN_JF_SHARE'
-      }
-      downloadAdapter({ templateCode: map[this.blgStripLine] })
-      // window.location = `/tms-new/api/common/file/download/annualPlanShare?line=${this.blgStripLine}`;
-    },
     // 业务模块 change 事件
     channelTypeChange() {
       this.$set(this.coursePlanBaseInfo, 'keyJobs', '')
@@ -784,17 +782,17 @@ export default {
     },
     // 培训系列 change 事件
     trainSeriesChange() {
-  this.$set(this.coursePlanBaseInfo, 'childSeries', '')
+      this.$set(this.coursePlanBaseInfo, 'childSeries', '')
       const data = this.selectOptions?.trainSeries?.find(
         (v) => v.dataEncode === this.coursePlanBaseInfo.trainSeries
       )
       this.trainSeriesChildOptions = data ? data.childPlanDict : []
     },
     // 关键岗位change 事件
-    keyJobsChange(val) {
-      const obj = this.keyPositionOptions.find((v) => v.dataEncode === val)
-      this.coursePlanBaseInfo.keyJobsDesc = obj.dataValue
-    },
+    // keyJobsChange(val) {
+    //   const obj = this.keyPositionOptions.find((v) => v.dataEncode === val)
+    //   this.coursePlanBaseInfo.keyJobsDesc = obj.dataValue
+    // },
     // 双击添加 一个分摊项
     addApportionUnit(data) {
       this.apportionUnitTableList.push(...data)
@@ -839,7 +837,7 @@ export default {
           this.$emit('valiedFailing')
         })
     },
-   // 删除一项分摊
+    // 删除一项分摊
     delOneItem(index) {
       this.apportionUnitTableList.splice(index, 1)
     },
@@ -854,50 +852,52 @@ export default {
       }
     },
     // 项目名称变化事件
-    classChange(classId) {
-      const classObj = this.classNameOptions.find((v) => v.classId === classId)
-      this.coursePlanBaseInfo.classId = classObj.classId
-      this.coursePlanBaseInfo.className = classObj.className
+    // classChange(classId) {
+    //   const classObj = this.classNameOptions.find((v) => v.classId === classId)
+    //   this.coursePlanBaseInfo.classId = classObj.classId
+    //   this.coursePlanBaseInfo.className = classObj.className
 
-      this.$set(
-        this.coursePlanBaseInfo,
-        'trainSeries',
-        classObj.trainSeries === '-1' ? '' : classObj.trainSeries
-      )
-      this.trainSeriesChange()
-      this.$nextTick(() => {
-        this.$set(
-          this.coursePlanBaseInfo,
-          'childSeries',
-          classObj.childSeries === '-1' ? '' : classObj.childSeries
-        )
-      })
-    },
+    //   this.$set(
+    //     this.coursePlanBaseInfo,
+    //     'trainSeries',
+    //     classObj.trainSeries === '-1' ? '' : classObj.trainSeries
+    //   )
+    //   this.trainSeriesChange()
+    //   this.$nextTick(() => {
+    //     this.$set(
+    //       this.coursePlanBaseInfo,
+    //       'childSeries',
+    //       classObj.childSeries === '-1' ? '' : classObj.childSeries
+    //     )
+    //   })
+    // },
     // 非零的培训类型change事件
     FLChnage() {
-      if (!this.classTypeShowState) {
-        this.$refs.coursePlanRef.clearValidate('trainSeries')
-        this.$set(this.coursePlanBaseInfo, 'keyJobs', '')
-        this.$set(this.coursePlanBaseInfo, 'trainSeries', '')
-        this.$set(this.coursePlanBaseInfo, 'childSeries', '')
+      this.$set(this.coursePlanBaseInfo, 'keyJobs', '')
+      this.coursePlanBaseInfo.keyJobsDesc = ''
+      if (this.coursePlanBaseInfo.trainType === LADDER_TRAIN_TYPE) {
+        this.hasKeyJobsRequire = Date.now()
+        this.FLkeyPositionOptions = this.selectOptions.keyJobs || []
+      } else {
+        this.FLkeyPositionOptions = []
       }
     },
-    FLChildSeriesChange() {
-      // 非零/金服条线不需要特殊处理关键岗位
-      if (this.isFLrequired) return
-      if (this.classTypeShowState) {
-        const item = this.trainSeriesChildOptions.find(
-          (v) => v.dataEncode === this.coursePlanBaseInfo.childSeries
-        )
-        this.keyPositionOptions = item.childPlanDict
-        this.$set(
-          this.coursePlanBaseInfo,
-          'keyJobs',
-          item?.childPlanDict[0]?.dataEncode || ''
-        )
-      }
-    },
-  changeToInfoStatus() {
+    // FLChildSeriesChange() {
+    //   // 非零/金服条线不需要特殊处理关键岗位
+    //   if (this.isFLrequired) return
+    //   if (this.classTypeShowState) {
+    //     const item = this.trainSeriesChildOptions.find(
+    //       (v) => v.dataEncode === this.coursePlanBaseInfo.childSeries
+    //     )
+    //     this.keyPositionOptions = item.childPlanDict
+    //     this.$set(
+    //       this.coursePlanBaseInfo,
+    //       'keyJobs',
+    //       item?.childPlanDict[0]?.dataEncode || ''
+    //     )
+    //   }
+    // },
+    changeToInfoStatus() {
       this.$store.dispatch('planManagement/changeAnnualEditComp', {status: 'info'})
     },
     handleReset() {
@@ -960,7 +960,7 @@ export default {
             'keyJobs',
             'childSeries'
           ])
-       }
+        }
       },
       immediate: true
     },
@@ -989,11 +989,13 @@ export default {
         this.blgStripLine || this.$store.state.userInfo.blgStripLine
       return this.treeMaping[blgStripLine] || {}
     },
+    // 需求变更，零售也采用非零的
     isFLladderType() {
-      if(this.blgStripLine === LINE_FL || this.blgStripLine === LINE_JF) {
-        return this.coursePlanBaseInfo.trainType === LADDER_TRAIN_TYPE
-      }
-      return false
+      return this.coursePlanBaseInfo.trainType === LADDER_TRAIN_TYPE
+      // if(this.blgStripLine === LINE_FL || this.blgStripLine === LINE_JF) {
+      //   return this.coursePlanBaseInfo.trainType === LADDER_TRAIN_TYPE
+      // }
+      // return false
     },
     // 是否为项目性培训
     isProjectTrainType() {
@@ -1003,10 +1005,11 @@ export default {
     isCollegeTrainType() {
       return this.coursePlanBaseInfo.trainType === COLLEGE_TRAIN_TYPE
     },
-    // 非零需求，统一修改为必选
+    // 非零需求，统一修改为必选，统一采用非零
     isFLrequired() {
-      if(this.blgStripLine === LINE_FL || this.blgStripLine === LINE_JF) return true
-      return this.classTypeShowState
+      return true
+      // if(this.blgStripLine === LINE_FL || this.blgStripLine === LINE_JF) return true
+      // return this.classTypeShowState
       // return (this.classTypeShowState || this.isProjectTrainType || this.isCollegeTrainType)
     },
     topNode() {
@@ -1018,7 +1021,7 @@ export default {
       const v = this.treeMaping[k]
       v.loadNode = this[v.busiType + 'loadNode']
     })
-   if(this?.data?.planInfoVo?.planDept || Object.keys(this.currentOrg).length) {
+    if(this?.data?.planInfoVo?.planDept || Object.keys(this.currentOrg).length) {
       // 如果详情数据里有机构部门，那以详情机构为优先
       this.coursePlanBaseInfo.topNodeOrgs = [this.blgStripLine, this?.data?.planInfoVo?.planDept || this.currentOrg.orgId]
     }

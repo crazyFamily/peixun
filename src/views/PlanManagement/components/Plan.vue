@@ -44,8 +44,6 @@
           <gc-table 
             class="general__table"
             ref="trainingCourseTable"
-            :showSummary="true"
-            :summaryMethod="summaryTrainingCoursePlan"
             :list="trainingCoursePlanList"
             :tableList="trainingCoursePlanTableList"
           >
@@ -53,11 +51,11 @@
               <el-table-column min-width="110" prop="trainTypeDesc">
                 <template slot="header">
                   <gc-tablecolumnfilters
-                    label="培训类型"
+                    label="项目类型"
                     ref="tablecolumnfilters"
                     className="table__screen__icon"
                     :list="trainTypeDescOptions"
-                  confirmText="确定"
+                    confirmText="确定"
                     popperClass="circular m183"
                     @filter="trainTypeDescFilter"
                   >
@@ -115,7 +113,7 @@
           <div class="menu-right" v-if="!readly">
             <div>
               <span
-               class="instructor-icons__add"
+                class="instructor-icons__add"
                 @click="addTrainingCourse('01002')"
               >
                 <i class="instructor-icons__add__icon"></i>
@@ -154,8 +152,6 @@
           <gc-table
             class="general__table"
             ref="mistakeTrainingCourseTable"
-            :showSummary="true"
-            :summaryMethod="summaryMistakeTrainingCoursePlan"
             :list="mistakeTrainingCoursePlanList"
             :tableList="mistakeTrainingCoursePlanTableList"
           >
@@ -163,7 +159,7 @@
               <el-table-column min-width="110" prop="trainTypeDesc">
                 <template slot="header">
                   <gc-tablecolumnfilters
-                    label="培训类型"
+                    label="项目类型"
                     ref="tablecolumnfilters"
                     className="table__screen__icon"
                     :list="unTrainTypeDescOptions"
@@ -191,7 +187,7 @@
                     <el-tooltip content="修改" popper-class="icon-popper">
                       <i class="operation__edit"></i>
                     </el-tooltip>
-               </span>
+                  </span>
                 </div>
               </template>
             </el-table-column>
@@ -223,118 +219,6 @@
             <span class="text">每页显示</span>
           </gc-pagination>
         </el-tab-pane>
-        <!-- <el-tab-pane label="预留费用" name="reservedCost">
-          <div class="menu-right" v-if="!readly">
-            <div>
-              <span class="instructor-icons__add" @click="addReservedCost">
-                <i class="instructor-icons__add__icon"></i>
-                新增</span
-              >
-            </div>
-            <div>
-              <span
-                class="instructor-icons__del"
-                @click="
-                  handleDel('reservedCostTableRef', 'getReservedCostList')
-                "
-              >
-                <i class="instructor-icons__del__icon"></i>
-                删除</span
-              >
-            </div>
-            <div>
-              <span
-                class="instructor-icons__download"
-                @click="
-                  handleExport(
-                    '/fn/plan/annual/reportReverseFeePage',
-                    $parent.handleQueryForm()
-                )
-                "
-              >
-                <i class="instructor-icons__download__icon"></i>
-                导出</span
-              >
-            </div>
-          </div>
-          <gc-table
-            class="general__table"
-            ref="reservedCostTableRef"
-            :showSummary="true"
-            :summaryMethod="summaryReservedCost"
-            :list="reservedCostList"
-            :tableList="reservedCostTableList"
-          >
-            <el-table-column label="预留费用（元）" min-width="292" prop="unitExpense">
-              <template slot-scope="scope">
-                <span v-show="!scope.row.edit">{{
-                  scope.row.unitTotalFee
-                }}</span>
-                <el-input
-                  v-show="scope.row.edit"
-                  class="w120"
-                  v-model="scope.row.unitTotalFee"
-                ></el-input>
-              </template>
-            </el-table-column>
-            <el-table-column
-              label="预留费用余额（元）"
-              min-width="304"
-              prop="unitTotalFee"
-            ></el-table-column>
-            <el-table-column label="备注" min-width="356">
-              <template slot-scope="scope">
-                <span v-show="!scope.row.edit">{{
-                  scope.row.otherExpenseDescribe
-                }}</span>
-                <el-input
-                  v-show="scope.row.edit"
-                  v-model="scope.row.otherExpenseDescribe"
-                ></el-input>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作" min-width="124" fixed="right">
-              <div slot-scope="scope" v-if="!readly">
-                <span
-                  class=""
-                  v-show="!scope.row.edit"
-                  @click="reservedCostEdit(scope.row)"
-                >
-                  <el-tooltip content="修改" popper-class="icon-popper">
-                    <i class="operation__edit"></i>
-                  </el-tooltip>
-                </span>
-                <span
-                  class=""
-                  v-show="scope.row.edit"
-                @click="reservedCostEdit(scope.row)"
-                >
-                  <el-tooltip content="完成" popper-class="icon-popper">
-                    <i class="operation__curriculumStorageAccomplish"></i>
-                  </el-tooltip>
-                </span>
-              </div>
-            </el-table-column>
-          </gc-table>
-          <gc-pagination
-            :total="reservedCostForm.total"
-            layout="prev, pager, next,slot, sizes"
-            prev-text=""
-            next-text=""
-            :page-sizes="[5, 10]"
-            :page-size="reservedCostForm.pageSize"
-            :current-page="reservedCostForm.currPage"
-            @sizeChange="
-              sizeChange($event, reservedCostForm, getReservedCostList)
-            "
-            @currentChange="
-              currentChange($event, reservedCostForm, getReservedCostList)
-            "
-            class="between"
-          >
-            <span class="text">每页显示</span>
-          </gc-pagination>
-        </el-tab-pane> -->
       </el-tabs>
     </el-card>
 
@@ -366,13 +250,13 @@ import {
   jsonHeaders,
   handleExport,
   currentChange,
-  handleDownload
+  handleDownload,
+  systemConfigParameters
 } from '@/util/utils'
 import { NOT_TRAINING_COURSE_TYPE } from '../enum'
 import { fetchListPlanDict } from '@/fetch/public'
 import { fetchCalPlanTotalInfo } from '@/fetch/planManagement'
 import CheckPlan from './CheckPlan'
-import { LINE_LS } from '@/util/constants'
 import AnnualBaseInfo from './AnnualBaseInfo.vue'
 
 export default {
@@ -415,7 +299,7 @@ export default {
           prop: 'className'
         },
         {
-          label: '培训类型',
+          label: '项目类型',
           width: '104',
           slot: 'trainTypeDesc',
           prop: 'trainTypeDesc'
@@ -424,7 +308,7 @@ export default {
           label: '是否消保培训',
           prop: 'ifConformanceDesc',
           width: '120',
-       },
+        },
         {
           label: '业务模块',
           width: '104',
@@ -494,7 +378,7 @@ export default {
           prop: 'className'
         },
         {
-          label: '培训类型',
+          label: '项目类型',
           width: '104',
           slot: 'trainTypeDesc',
           prop: 'trainTypeDesc'
@@ -503,7 +387,7 @@ export default {
           label: '是否消保培训',
           prop: 'ifConformanceDesc',
           width: '100',
-       },
+        },
         {
           label: '总期数',
           width: '100',
@@ -561,53 +445,54 @@ export default {
       classType: '',
       // 求和函数
       sum,
-      handleExport
+      handleExport,
+      systemConfigParameters
     }
   },
   methods: {
-    summaryMethod(param, tableName) {
-    const { columns, data } = param, sums = []
-      const meta = {
-        'trainingCoursePlan': {
-          termNum: 'trainingCoursePlanTotalTerm',
-          studentTotal: 'trainingCoursePlanTotalStu',
-          totalFee: 'trainingCoursePlanTotalFee'
-        },
-        'mistakeTrainingCoursePlan': {
-          termNum: 'mistakeTrainingCoursePlanTotalTerm',
-          studentTotal: 'mistakeTrainingCoursePlanTotalStu',
-          totalFee: 'mistakeTrainingCoursePlanTotalFee'
-        },
-        'reservedCost': {
-          unitExpense: 'reservedCostTotalFee',
-          unitTotalFee: 'reservedCostTotalFee',
-        },
-      }
+    // summaryMethod(param, tableName) {
+    //   const { columns, data } = param, sums = []
+    //   const meta = {
+    //     'trainingCoursePlan': {
+    //       termNum: 'trainingCoursePlanTotalTerm',
+    //       studentTotal: 'trainingCoursePlanTotalStu',
+    //       totalFee: 'trainingCoursePlanTotalFee'
+    //     },
+    //     'mistakeTrainingCoursePlan': {
+    //       termNum: 'mistakeTrainingCoursePlanTotalTerm',
+    //       studentTotal: 'mistakeTrainingCoursePlanTotalStu',
+    //       totalFee: 'mistakeTrainingCoursePlanTotalFee'
+    //     },
+    //     'reservedCost': {
+    //       unitExpense: 'reservedCostTotalFee',
+    //       unitTotalFee: 'reservedCostTotalFee',
+    //     },
+    //   }
 
-      columns.forEach((column, index) => {
-        const { property } = column
-        if (index === 0) {
-          sums[index] = '总价';
-          return;
-        }
-        if (Object.keys(meta[tableName]).includes(property)) {
-          sums[index] = this[meta[tableName][property]]
-          return
-        }
-      })
-      return sums;
-    },
-    // 培训班计划
-    summaryTrainingCoursePlan (param) {
-      return this.summaryMethod(param, 'trainingCoursePlan')
-    },
-    // 非培训班计划
-    summaryMistakeTrainingCoursePlan (param) {
-      return this.summaryMethod(param, 'mistakeTrainingCoursePlan')
-    },
-    summaryReservedCost (param) {
-      return this.summaryMethod(param, 'reservedCost')
-    },
+    //   columns.forEach((column, index) => {
+    //     const { property } = column
+    //     if (index === 0) {
+    //       sums[index] = '总价';
+    //       return;
+    //     }
+    //     if (Object.keys(meta[tableName]).includes(property)) {
+    //       sums[index] = this[meta[tableName][property]]
+    //       return
+    //     }
+    //   })
+    //   return sums;
+    // },
+    // // 培训班计划
+    // summaryTrainingCoursePlan (param) {
+    //   return this.summaryMethod(param, 'trainingCoursePlan')
+    // },
+    // // 非培训班计划
+    // summaryMistakeTrainingCoursePlan (param) {
+    //   return this.summaryMethod(param, 'mistakeTrainingCoursePlan')
+    // },
+    // summaryReservedCost (param) {
+    //   return this.summaryMethod(param, 'reservedCost')
+    // },
     // tabs 培训班计划 表格 数据获取
     getTrainingCoursePlanList() {
       const data = CopyObj(this.trainingCoursePlanForm)
@@ -673,7 +558,7 @@ export default {
         const trainingCoursePlanCal = totalData.find((v) => v.planClassType == 1) || {}
         this.trainingCoursePlanTotalTerm = trainingCoursePlanCal.totalTerm
         this.trainingCoursePlanTotalStu = trainingCoursePlanCal.totalStu
-      this.trainingCoursePlanTotalFee = trainingCoursePlanCal.totalFee
+        this.trainingCoursePlanTotalFee = trainingCoursePlanCal.totalFee
       }
       // 非培训班计划 - 总计
       if (['all', 'mistakeTrainingCoursePlan'].includes(tableName)) {
@@ -773,7 +658,7 @@ export default {
         })
       this.checkTrainingPlanVisible = true
     },
-   openApportionDetails() {
+    openApportionDetails() {
       this.$emit('openApportionDetails')
     },
     // 培训类型筛选函数(重置函数)
@@ -835,7 +720,7 @@ export default {
     // 导出计划
     exportPlan() {
       const { planPackageId } = this.planPackageForm
-     this.$axios
+      this.$axios
         .get('/planupload/exportPlanInfo', {
           params: { planPackageId },
           responseType: 'blob'
@@ -857,7 +742,7 @@ export default {
   },
   mounted () {
     // 加载“培训类型”的筛选项
-    fetchListPlanDict({line: 'LS', type: '01001' })
+    fetchListPlanDict({line: systemConfigParameters().defaultBusiType, type: '01001' })
     .then(data => {
       const trainTypes = (data?.trainTypes) || []
       this.trainTypeDescOptions = trainTypes.map(m => {
@@ -875,13 +760,13 @@ export default {
       ]
     })
     // 加载培训类型
-    fetchListPlanDict({ line: LINE_LS, type: NOT_TRAINING_COURSE_TYPE })
+    fetchListPlanDict({ line: systemConfigParameters().defaultBusiType, type: NOT_TRAINING_COURSE_TYPE })
     .then((data) => {
       this.unTrainTypeDescOptions = data.trainTypes.map((row) => ({
         value: row.dataEncode,
         label: row.dataValue
       }))
-      console.log('非培训班-培训类型', this.unTrainTypeDescOptions)
+      console.log('非培训班-项目类型', this.unTrainTypeDescOptions)
     })
   }
 }
@@ -896,7 +781,7 @@ export default {
       display: flex;
       height: 40px;
       padding: 0 20px;
-     background-color: #f7f8fa;
+      background-color: #f7f8fa;
       color: #7d8292;
       line-height: 40px;
       justify-content: space-between;

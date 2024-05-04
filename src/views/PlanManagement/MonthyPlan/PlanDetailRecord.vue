@@ -45,13 +45,13 @@
     <!-- 内容card -->
     <el-card class="mt10">
       <div class="menu-right">
-        <template v-if="isAdmin">
+        <template v-if="isOrgAdmin">
           <template v-if="orgOptions.length && !planIsRelease">
             <span class="instructor-icons__upload" @click="openImportForm()"><i class="instructor-icons__upload__icon"></i>批量添加</span>
             <span class="instructor-icons__add" @click="openBaseForm('add')"><i class="instructor-icons__add__icon"></i>添加</span>
             <span class="instructor-icons__add" @click="submitPlanDetail()"><i class="instructor-icons__submit__icon"></i>提交</span>
           </template>
-         <span v-if="!planIsRelease" class="instructor-icons__del" @click="deletePlanDetail()"><i class="instructor-icons__del__icon"></i>删除</span>
+          <span v-if="!planIsRelease" class="instructor-icons__del" @click="deletePlanDetail()"><i class="instructor-icons__del__icon"></i>删除</span>
         </template>
         <el-popover @show="openTableHeader"  transfer trigger="click" ref="popovercasescoreRef">
           <div class="mt12">
@@ -97,15 +97,17 @@
             </gc-tablecolumnfilters>
           </template>
           <template slot-scope="scope">
-           <el-button type="text" @click="openViewOrgForm(scope.row)" v-if="scope.row.hasBranch === YES_STATUS">是</el-button>
+            <el-button type="text" @click="openViewOrgForm(scope.row)" v-if="scope.row.hasBranch === YES_STATUS">是</el-button>
             <span v-else style="padding: 0px 10px;">否</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="105px" fixed="right" v-if="isAdmin">
+        <!-- 判断是否普通用户 -->
+        <el-table-column label="操作" width="105px" fixed="right" v-if="isOrgAdmin">
           <template slot-scope="scope">
-            <div>
+            <!-- 判断是否包含有机构权限 -->
+            <div v-if="scope.row.isOrgAdmin === YES_STATUS">
               <span v-if="scope.row.status === NO_INT" class="item active mr10" @click="openBaseForm('edit', scope.row)">编辑</span>
-              <span class="item active" v-if="scope.row.status === YES_INT" @click="openRelateClass(scope.row)">检视</span>
+              <span class="item active" :class="{ 'pass': scope.row.checkType !== NO_INT}" v-if="scope.row.status === YES_INT" @click="openRelateClass(scope.row)">{{ scope.row.checkType === NO_INT ? '检视' : '已检视' }}</span>
             </div>
           </template>
         </el-table-column>
@@ -139,7 +141,7 @@
             active-value="N" inactive-value="Y"
           ></el-switch>
         </el-form-item>
-      <el-form-item label="邮件内容" prop="classId">
+        <el-form-item label="邮件内容" prop="classId">
           
         </el-form-item>
       </el-form>
@@ -235,7 +237,7 @@
           ></el-input>
         </el-form-item>
       </el-form>
-   </gc-model>
+    </gc-model>
 
   </div>
 </template>
@@ -282,7 +284,7 @@ const props = defineProps({
 // 获取分行选项
 const branchOrgOptons = ref([])
 async function getBranchOrgOptons () {
- const res = await fetchSelectAllBranchOrg()
+  const res = await fetchSelectAllBranchOrg()
   branchOrgOptons.value = res.map(m => {
     m.value = m.treeId
     m.label = m.treeName
@@ -330,6 +332,7 @@ const queryFormRules = {
 
 const {
   isAdmin,
+  isOrgAdmin,
   dropdownOrgValue,
   planMonthOptions,
   orgOptions,
@@ -543,7 +546,7 @@ function closeRelateClass () {
   relateClassShow.value = false
   relateClassFormRef.value?.clearValidate()
 }
-// 状态描述 1 成功可用 2 不存在，3 未结训:只能关联已结训的培训班，请先结训  4 该培训班本期已关联，请勿重复关联
+// 状态描述 1 成功可用 2 不存在，3 未结训:只能关联已结训的培训班，请先结训  4 该培训班本期已关联，请勿重复关联
 function handleResList (res) {
   let list = []
   if (res.status === '2') {
@@ -602,7 +605,7 @@ function closeTableHeader () {
 // 表头设置-关闭弹框
 function resetTableHeader () {
   // tableHeaderShow.value = false
- tableHeaderArr.value = columnList.value.map(m => m.prop)
+  tableHeaderArr.value = columnList.value.map(m => m.prop)
   comfirmTableHeader()
 }
 // 表头设置-确认
@@ -715,7 +718,7 @@ async function submitPlanDetail () {
       // await customHint(`${year}年${month}期"${orgNamesStr}"无培训计划，请确认是否提交？`, '提示', '取消')
       await customHint(`${resNoPlanDetail.msg}无培训计划，请确认是否提交？`, '提示', '取消')
     } else {
-     await customHint('提交的培训项目不能修改和删除，确认是否提交？', '提示', '取消')
+      await customHint('提交的培训项目不能修改和删除，确认是否提交？', '提示', '取消')
     }
     await fetchSubmitPlanMonthDetailByOrg(params)
     Message.success(`提交成功`)
@@ -832,7 +835,7 @@ watch(() => {
     &:first-child {
       border-left: 1px solid #e4e7ed;
       border-bottom-left-radius: 6px;
-     border-top-left-radius: 6px;
+      border-top-left-radius: 6px;
     }
     &:last-child {
       border-right: 1px solid #e4e7ed;
@@ -858,6 +861,9 @@ watch(() => {
   span {
     color: #909399;
   }
+}
+.item.active.pass {
+  color: #12BA8D;
 }
 .student-branch {
   width: 350px;

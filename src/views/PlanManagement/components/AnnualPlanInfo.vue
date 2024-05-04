@@ -60,8 +60,8 @@ import { fetchBatchplan, fetchWithdrawPlanPackage } from '@/fetch/planManagement
 import AnnualAccessoryFiles from './AnnualAccessoryFiles.vue'
 import AnnualApproval from './AnnualApproval.vue'
 import InstructorBatchImport from '@/components/dialogs/InstructorBatchImport.vue'
-import { fetchCheckZone } from '@/fetch/templateManament'
-import { LINE_LS } from '@/util/constants'
+// import { fetchCheckZone } from '@/fetch/templateManament'
+// import { LINE_LS } from '@/util/constants'
 import { downloadAdapter, getLoadingStatus } from '@/util/utils'
 import { APPLY_EOA_DOING, APPLY_EOA_DONE, PLAN_LINE_MAP } from '../enum'
 import ErrotHint from '@/components/dialogs/ErrotHint.vue'
@@ -187,8 +187,10 @@ const batchAddChange = ($event) => {
 const batchAddTemplateDownload = async () => {
   if (!checkPackageFetched()) return
   const params = store.getters['planManagement/getCurrentTopSearchParams']
-  let [line, dept] = params.busiType
-  line === LINE_LS && (line = await fetchCheckZone({ line, dept }))
+  const [line] = params.busiType
+  // let [line, dept] = params.busiType
+  // 橙信后端fetchCheckZone返回的是ZH,下载模板需要对应为PLAN_CX
+  // line === LINE_LS && (line = await fetchCheckZone({ line, dept }))
   console.log(line, PLAN_LINE_MAP, '-->>');
   downloadAdapter({ templateCode: PLAN_LINE_MAP[line] })
 }
@@ -202,7 +204,7 @@ const planFallbak = async () => {
     year: getAnnualPackageInfo().planYear,
     line: getAnnualPackageInfo().blgStripLine,
     dept: getAnnualPackageInfo().blgDept
- }
+  }
   await fetchWithdrawPlanPackage(data)
   Message.success('撤回成功')
   query()

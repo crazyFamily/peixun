@@ -44,7 +44,7 @@
           <span v-show="!scope.row.edit">{{ scope.row.otherExpenseDescribe }}</span>
           <el-input v-show="scope.row.edit" v-model="scope.row.otherExpenseDescribe"></el-input>
         </template>
-     </el-table-column>
+      </el-table-column>
       <el-table-column label="操作" min-width="124" fixed="right">
         <div slot-scope="scope" v-if="!readly">
           <span class="" v-show="!scope.row.edit" @click="reservedCostEdit(scope.row)">

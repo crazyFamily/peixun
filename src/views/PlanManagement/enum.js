@@ -15,20 +15,20 @@ export const CLASS_TYPES_MAP = {
 }
 
 
-// 总行
-const TEMPLATE_ZH = 'ZH'
-// 分行 
-const TEMPLATE_FH = 'FH'
+// 零售
+const TEMPLATE_LS = 'LS'
 // 非零
 const TEMPLATE_FL = 'FL'
 // 金服
 const TEMPLATE_JF = 'JF'
-// 导出模板的条线表
+// 橙信
+const TEMPLATE_CX = 'CX'
+// 导出模板的条线表,需求变更，零售计划导入模板也是采用非零的
 export const PLAN_LINE_MAP = {
-  [TEMPLATE_ZH]: 'PLAN_LS_ZH',
-  [TEMPLATE_FH]: 'PLAN_LS_FH',
+  [TEMPLATE_LS]: 'PLAN_FL',
   [TEMPLATE_FL]: 'PLAN_FL',
-  [TEMPLATE_JF]: 'PLAN_JF'
+  [TEMPLATE_JF]: 'PLAN_JF',
+  [TEMPLATE_CX]: 'PLAN_CX'
 }
 
 

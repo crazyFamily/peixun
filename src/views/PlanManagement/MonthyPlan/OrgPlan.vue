@@ -53,7 +53,7 @@
             <el-button type="text" @click="gotoPlanDetail(scope.row)">{{scope.row.planClassNum}}</el-button>
           </template>
         </el-table-column>
-     </table-pagination>
+      </table-pagination>
     </el-card>
 
     <!-- 新增/编辑计划 -->
@@ -107,7 +107,7 @@
       @comfirm="comfirmEmailUserList">
       <p class="mb10 color-theme">注：默认邮件通知所有机构的计划管理员，已提交月度计划将自动调整为不再通知，未提交状态的可通过开关调整是否邮件通知</p>
       <gc-table
-       :list="emailUserListColumnList"
+        :list="emailUserListColumnList"
         :tableList="renderEmailUserListDataList"
         v-loading="getLoadingStatus('LOADING_SELECT_EMAIL_USER_LIST')"
         ref="importManageTableRef">
@@ -328,7 +328,7 @@ const comfirmBaseForm = () => {
       params.emailContent = baseForm.emailContent || emailContent.value
       params.planMonth = baseForm.planMonth.replace('-','').substr(0,6)
       await fetchSaveOrUpdateMonthPlan(params)
-     await getPlanMonthOptions(true, params.planMonth)
+      await getPlanMonthOptions(true, params.planMonth)
       _queryDataList()
       closeBaseForm()
       emits('reloadOptions', { reload: true })
@@ -429,7 +429,7 @@ const queryFormRef = ref(null)
 const tablePaginationRef = ref(null)
 const dropdownTreeRef = ref(null)
 function  _queryDataList () {
- queryFormRef.value.validate(valid => {
+  queryFormRef.value.validate(valid => {
     if (!valid) return
     queryDataList()
   })

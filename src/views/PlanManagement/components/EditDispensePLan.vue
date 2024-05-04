@@ -14,7 +14,7 @@
             <div class="content">
               <p class="item name">机构名称： <span class="value">{{ dispenseInfo.blgDeptName }}</span></p>
               <p class="item">业务模块： <span class="value">{{ dispenseInfo.channelTypeDesc }}</span></p>
-              <p class="item">培训系列：<span class="value">{{ dispenseInfo.trainSeriesDesc }}</span></p>
+              <p class="item">项目类型：<span class="value">{{ dispenseInfo.trainSeriesDesc }}</span></p>
               <p class="item">总期数：<span class="value">{{ dispenseInfo.termNum }}</span></p>
               <p class="item name">项目名称：<span class="value">{{ dispenseInfo.className }}</span></p>
               <p class="item">关键岗位：<span class="value">{{ dispenseInfo.keyJobsDesc }}</span></p>
@@ -40,7 +40,7 @@
                       <el-form-item label="分配单位" :prop="`datas.${index}.blgDept`" :rules="formRules.blgDept">
                         <gc-institution v-model="editDispenseFormData.datas[index].blgDept" :org-url="API_SELECT_FIXED_TREE" :fetch-params="{ busiType: blgLine }"></gc-institution>
                       </el-form-item>
-                     <el-form-item label="分配期数" :prop="`datas.${index}.dispenseNum`" :rules="formRules.dispenseNum">
+                      <el-form-item label="分配期数" :prop="`datas.${index}.dispenseNum`" :rules="formRules.dispenseNum">
                         <el-input v-model="editDispenseFormData.datas[index].dispenseNum"></el-input>
                       </el-form-item>
                       <el-form-item label="">
@@ -188,7 +188,7 @@ const handleSave = () => {
       emit('save')
     } else {
       const data = {
-       annualPlanId: props.id,
+        annualPlanId: props.id,
         dispenseList: editDispenseFormData.datas.map((row) => ({ ...row, blgDept: row.blgDept[1] }))
       }
       await fetchAddDispensePlan(data)
@@ -303,7 +303,7 @@ const handleCancelLog = () => {
   handleCloseLog()
 }
 const handleSaveLogEdit = async () => {
- dispenseLogFormRef.value.validate(async v => {
+  dispenseLogFormRef.value.validate(async v => {
     if(!v) return
     const data = {
       id: currentEditLogRow.value.id,
