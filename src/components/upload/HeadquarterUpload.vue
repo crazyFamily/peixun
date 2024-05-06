@@ -12,7 +12,8 @@
         :before-upload="uploadInterceptor"
       >
         <i class="el-icon-upload"></i>
-        <div class="el-upload__text">将文件拖到此处，或点击上传</div>
+        <div class="el-upload__text">{{hintTxt}}</div>
+        <div v-if="extentionTxt" class="el-upload-extention__text">{{extentionTxt}}</div>
       </el-upload>
       <div class="buttons">
         <el-button v-if="templateCode" @click="downloadHandle">导入模板下载</el-button>
@@ -68,6 +69,14 @@ export default {
   name: 'HeadquarterUpload',
 
   props: {
+    hintTxt:{
+      type:String,
+      default:'将文件拖到此处，或点击上传'
+    },
+    extentionTxt:{
+      type:String,
+      default:''
+    },
     templateCode: {
       type: String,
       default: ''
@@ -78,7 +87,7 @@ export default {
     params: {
       type: Object
     },
-  tableColumns: {
+    tableColumns: {
       type: Array,
       default: () => []
     },
@@ -167,13 +176,14 @@ export default {
             if (res.succList && !res.sucessList) res.sucessList = res.succList
             if (res.failList && !res.errorList) res.errorList = res.failList
             let { sucessList = [], errorList = [], succBatchId, failBatchId } = res
+
             this._statisticsResultHandle(sucessList, errorList, succBatchId, failBatchId)
           } else {
             this._fileResultHandle(file, res, 'success')
           }
           this.isUploading = false
         })
-      .catch((e) => {
+        .catch((e) => {
           console.error(e)
           this.isUploading = false
           if (!this.statistics) this._fileResultHandle(file, 'failed')
@@ -245,7 +255,7 @@ export default {
   }
 }
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 $base-space: 10px;
 $upload-width: 360px;
 
@@ -290,5 +300,12 @@ $upload-width: 360px;
   font-size: 14px;
   margin: 0 5px;
   display: inline-block;
+}
+.el-upload-extention__text{
+  opacity: 0.3;
+  font-size: 12px;
+  color: #000000;
+  line-height: 18px;
+  font-weight: 400;
 }
 </style>

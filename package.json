@@ -8,16 +8,21 @@
     "build-prd": "vue-cli-service build",
     "build-dev": "vue-cli-service build --morden --mode dev",
     "build-fat": "vue-cli-service build --morden --mode fat",
-    "build-oldfat": "vue-cli-service build --morden --mode fat",
     "build-uat": "vue-cli-service build --morden --mode uat",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",
+    "servecx": "cross-env VUE_APP_SYSTEM_CONFIG=CX vue-cli-service serve --mode development.local",
+    "build-cxprd": "cross-env VUE_APP_SYSTEM_CONFIG=CX vue-cli-service build",
+    "build-cxdev": "cross-env VUE_APP_SYSTEM_CONFIG=CX vue-cli-service build --morden --mode dev",
+    "build-cxfat": "cross-env VUE_APP_SYSTEM_CONFIG=CX vue-cli-service build --morden --mode fat",
+    "build-cxuat": "cross-env VUE_APP_SYSTEM_CONFIG=CX vue-cli-service build --morden --mode uat",
+    "lint": "vue-cli-service lint --no-fix",
     "dev": "node ./serve/assistScript/lib/getCookie.js dev && npm run serve",
     "fat": "node ./serve/assistScript/lib/getCookie.js fat && npm run serve",
     "node-serve": "node ./serve/service/index.js",
     "node-ticket": "node ./serve/sessionTicket/index.js"
   },
   "dependencies": {
+    "@pa/webtrends": "^1.0.22",
     "@riophae/vue-treeselect": "^0.4.0",
     "babel-polyfill": "^6.26.0",
     "clipboard": "^2.0.11",
@@ -36,6 +41,7 @@
     "qrcodejs2": "^0.0.2",
     "sass-resources-loader": "^2.2.4",
     "sortablejs": "^1.14.0",
+    "xss": "1.0.6",
     "vue": "2.7.8",
     "vue-aplayer": "^1.6.1",
     "vue-router": "^3.1.5",
@@ -73,7 +79,8 @@
     "sass": "^1.26.7",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-axios": "0.0.4",
-    "vue-cli-plugin-element-ui": "^1.1.4"
+    "vue-cli-plugin-element-ui": "^1.1.4",
+    "cross-env": "^5.2.0"
   },
   "optionalDependencies": {
     "fsevents": "~2.3.2"

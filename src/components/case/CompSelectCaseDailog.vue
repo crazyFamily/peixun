@@ -7,7 +7,8 @@
       @comfirm="comfirmHandle"
       top="5vh"
       width="1200px"
-      title=" "
+      :title="title"
+      auto-height
     >
       <div class="form-container">
         <el-form :model="queryForm" inline ref="formRef">
@@ -15,7 +16,8 @@
             <gc-institution
               :orgUrl="APIAllTree"
               :leftShow="false"
-              :default-show="false"
+              :default-show="defaultShow"
+              @setDataFinish="orgIdsFinish"
               v-model="queryForm.orgIds"
               busiType="LS"
               placeholder="案例所属机构"
@@ -30,7 +32,7 @@
           </el-form-item>
           <el-form-item prop="caseAuthor">
             <el-input
- v-model.trim="queryForm.caseAuthor"
+              v-model.trim="queryForm.caseAuthor"
               placeholder="案例制作人/分享人"
             ></el-input>
           </el-form-item>
@@ -40,7 +42,7 @@
               placeholder="案例上传人(姓名/UM号)"
             ></el-input>
           </el-form-item>
-          <el-form-item prop="caseType">
+          <el-form-item prop="caseType" style="margin-right: 20px;">
             <el-checkbox v-model="queryForm.isPerfect" true-label="Y" false-label="">仅优秀案例</el-checkbox>
           </el-form-item>
           <el-form-item>
@@ -59,7 +61,7 @@
           @click="caseItemSelectHandle(item)"
           title=""
         >
- <div class="item-img-container">
+          <div class="item-img-container">
             <template v-if="item.caseType === 'mix'">
               <img
                 src="~@/assets/images/case-introduce-play-mix.svg"
@@ -91,7 +93,7 @@
             <img :src="handleUdmpHref(item.thumbnail)" alt="" />
             <div class="item-footer">{{ secondToHour(item.caseDuration) }}</div>
           </div>
- <el-tooltip placement="top" :disabled="item.caseName.length <= 20">
+          <el-tooltip placement="top" :disabled="item.caseName.length <= 20">
             <div slot="content"> {{ item.caseName }} </div>
             <p class="item-name">{{ item.caseName }}</p>
           </el-tooltip>
@@ -104,6 +106,7 @@
         :current-page="queryForm.currPage"
         @sizeChange="sizeChange($event, queryForm, getList)"
         @currentChange="currentChange($event, queryForm, getList)"
+        class="case-pagination between"
       >
         <span class="text">每页显示</span>
       </gc-pagination>
@@ -131,9 +134,17 @@ export default {
       type: Boolean,
       default: false
     },
+    defaultShow: {
+      type: Boolean,
+      default: false
+    },
     selectedList: {
       type: Array,
       default: () => []
+    },
+    title: {
+      type: String,
+      default: ' '
     }
   },
 
@@ -154,7 +165,7 @@ export default {
         pageSize: 14,
         currPage: 1
       },
- pageSizes: [14, 28],
+      pageSizes: [14, 28],
       selectCaseList: [],
       sizeChange,
       currentChange,
@@ -168,7 +179,7 @@ export default {
       handler(n) {
         this.isDialogShow = n
         if (n) {
-          this.query()
+          this.reset()
           this.selectCaseList = CopyObj(this.selectedList)
         }
       },
@@ -180,12 +191,13 @@ export default {
 
   computed: {},
 
-  mounted() {
-    this.getList()
-  },
-
   methods: {
-query() {
+    orgIdsFinish() {
+      if(this.defaultShow) {
+        this.query()
+      }
+    },
+    query() {
       this.queryForm.currPage = 1
       this.getList()
     },
@@ -201,7 +213,11 @@ query() {
         isPerfect: '',
         total: 0,
       })
-      this.getList()
+      if(this.defaultShow) {
+        this.$refs.institutionRef.createTreeData()
+      } else {
+        this.getList()
+      }
     },
     isCaseActive(caseItem) {
       return Boolean(
@@ -219,7 +235,7 @@ query() {
       this.resetData()
       this.$emit('update:show', false)
     },
-comfirmHandle() {
+    comfirmHandle() {
       this.$emit('save', CopyObj(this.selectCaseList))
       this.closeHandle()
     },
@@ -254,7 +270,7 @@ comfirmHandle() {
     cursor: pointer;
 
     &.active {
- .item-img-container {
+      .item-img-container {
         border: 4px solid $themeColor;
       }
     }
@@ -286,7 +302,7 @@ comfirmHandle() {
 
     .item-footer {
       $base-height: 24px;
- width: 100%;
+      width: 100%;
       height: $base-height;
       line-height: $base-height;
       padding: 0 10px;
@@ -312,5 +328,9 @@ comfirmHandle() {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
+}
+
+.case-pagination {
+  top: 0
 }
 </style>

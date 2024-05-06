@@ -53,7 +53,7 @@ export default {
       type: String,
       default: 'label'
     },
-   onlyLS: {
+    onlyLS: {
       type: Boolean,
       default: false
     },
@@ -94,7 +94,8 @@ export default {
       busiTypeMap: {
         LS: '零售',
         FL: '非零',
-        JF: '金服'
+        JF: '金服',
+        CX: '橙信'
       },
       treeNodeAll: []
     }
@@ -128,7 +129,7 @@ export default {
         return fetchAllTree(param)
       }
     },
-   getOrgList (m) {
+    getOrgList (m) {
       if (this.getOrgListFn) {
         return this.getOrgListFn(m)
       } else {
@@ -175,7 +176,7 @@ export default {
           }
         })
       } else {
-      _data = _data.map(m => {
+        _data = _data.map(m => {
           const allPrnNodeArr = m.allPrnNode?.split('|') || []
           allPrnNodeArr.pop()
           return {
@@ -217,7 +218,7 @@ export default {
           m.blgStripLine === node.blgStripLine &&
           m.allPrnNodeArr?.length &&
           m.allPrnNodeArrOriginal.includes(node.orgId)
-   }
+      }
       originalList.filter(filterFn).forEach(item => {
         // 追加一级上级节点，allPrnNodeArr 就会少一条父节点
         orgIdSet.add(item.allPrnNodeArr.shift())
@@ -264,7 +265,7 @@ export default {
               if (subNode.orgId === option.orgId){
                 this.loadOriginalTreeChildren(subNode, option)
               }
-           })
+            })
           }
           if (this.treeOptions?.length && option.blgStripLine === 'LS' && this.treeOptions[0].blgStripLine !== 'LS') {
             console.log('将"零售"节点插入到第一个节点')
@@ -320,7 +321,7 @@ export default {
         return res
       })
     },
- // 加载“树子节点”
+    // 加载“树子节点”
     async _getTreeData(param, isChildrenFetch = false) {
       let res = await this.loadChildrenNode(param)
       let orgList = this.getOrgList(res)
@@ -375,7 +376,7 @@ export default {
           resArr.forEach(res => {
             const orgList = this.getOrgList(res).map(m => ({...m, isDepartRoot: true }))
             rootArr.push(...orgList)
-        })
+          })
           return this._formatTreeData(rootArr)
         }
         return []
@@ -420,7 +421,7 @@ export default {
       // const vObj = this.treeNodeAll.filter(m => this.treeData?.includes(m.orgId))
       // console.log(this.treeNodeAll, vObj)
       const vObj = this.treeData.map(m => {
-     return this.treeNodeAll.find(v => v.orgId === m)
+        return this.treeNodeAll.find(v => v.orgId === m)
       })
       return vObj
     },

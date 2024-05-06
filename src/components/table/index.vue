@@ -8,6 +8,7 @@
       :data="tableList"
       :span-method="spanMethod"
       @selection-change="change"
+      tooltip-effect="light"
       v-bind="$attrs"
       v-on="$listeners"
       ref="gcTable"
@@ -81,7 +82,7 @@ export default {
       type: Boolean,
       default: false
     },
- queryForm: {
+    queryForm: {
       type: Object
     },
     getList: {
@@ -128,7 +129,7 @@ export default {
         })
       }
       if (this.drop) {
-   const tbody = $(this.$el).find('tbody')[0]
+        const tbody = $(this.$el).find('tbody')[0]
         const that = this
         const sortable = new Sortable(tbody, {
           handle: '.drop',
@@ -193,4 +194,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+.el-tooltip__popper.is-light{
+  box-shadow: 0px 0px 10px 0px rgba(66,70,86,0.18);
+  border: none!important;
+}
+</style>

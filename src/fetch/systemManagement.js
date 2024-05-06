@@ -32,3 +32,15 @@ export const fetchFindNoManagementOrgs = (params) =>
 export const fetchExportNoManagementOrgs = (params) =>
   httpServe('/fn/commons/management/findNoManagementOrgs', { data: { ...params, tips: 'N' } }, { headers: { responseType: 'blob' } })
 
+// 系统管理-权限分配-添加权限
+export const fetchAddUserRole = (params) =>
+  httpServe('/fn/system/roleApply/addUserRole', { data: params } )
+// 系统管理-权限分配-删除权限
+export const fetchDeleteUserRole = (params) =>
+  httpServe('/fn/system/roleApply/deleteUserRole', { data: params } )
+// 系统管理-权限分配-校验是否有权限添加
+export const fetchCheckRoleApplyByUm = (params) =>
+  httpServe('/fn/system/roleApply/checkRoleApplyByUm', { data: params } )
+// 系统管理-权限分配-校验是否有权限添加
+export const fetchListUserRole = (params) =>
+  httpServe('/fn/system/func/listUserRole', { data: params } )

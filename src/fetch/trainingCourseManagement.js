@@ -46,3 +46,13 @@ export const fetchClassManagerList = (...params) =>
 // 培训班管理-查询非培训班列表
 export const fetchNoClassManagerList = (...params) =>
   httpServe('/fn/classes/manager/nonClass/listNonClassManager', ...params, { loading: 'LOADING_ESTABLISH_NOCLASSMANAGEMENT_LIST' })
+
+// 培训班编辑 导入成功
+export const fetchHandleSupplyment = (params)=>
+  httpServe('/fn/classes/manager/afterTrain/addSuccAttendanceStudentList', params)
+// 培训班编辑 手工批量导入
+export const fetchImportBatchSupplyment =  (params) =>
+  httpServe('/classFileFunc/attendanceSupplementBatchImport',  params,{...dataHeaders})
+//培训班手工补录 失败导出
+export const fetchExportFailSupplyment = (params)=>
+  httpServe('/fn/classes/manager/nonClass/listNonClassManager', ...params)

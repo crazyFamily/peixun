@@ -47,7 +47,7 @@ export default {
       type: Array,
       default: () => [5]
     },
-   background: {
+    background: {
       type: Boolean,
       default: false
     },
@@ -97,7 +97,7 @@ export default {
       this.$emit('currentChange', { [this.currentName]: current })
     },
     handlePaginationChange() {
-    this.$nextTick(() => {
+      this.$nextTick(() => {
         $('.el-pagination__sizes .el-input__inner').val(function (
           index,
           oldcontent
@@ -158,7 +158,8 @@ export default {
     height: 24px;
     .el-input--suffix {
       position: relative;
-      top: -3px;
+      // top: -3px;
+      top: -1px;
       width: 60px;
       .el-input__inner {
         height: 24px !important;

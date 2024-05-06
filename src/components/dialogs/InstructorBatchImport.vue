@@ -15,7 +15,7 @@
       <div class="instructor-batch-import__upload__right">
         <div
           class="instructor-batch-import__upload__right__btn"
-          @click="openFileInput('lecturerManagement-apply-batch-modification')"
+          @click="openFileInput(`lecturerManagement-apply-batch-modification${randomKey}`)"
         >
           <div class="instructor-icons__upload margin-0">
             <i class="instructor-icons__upload__icon"></i>
@@ -27,10 +27,10 @@
           type="file"
           name=""
           ref="InstructorBatchImportInput"
-          id="lecturerManagement-apply-batch-modification"
+          :id="`lecturerManagement-apply-batch-modification${randomKey}`"
           @change="change"
           accept=".xls,.xlsx"
-       />
+        />
         <div
           class="instructor-batch-import__upload__right__btn"
           @click="templateDownload"
@@ -61,7 +61,7 @@
     </div>
     <div
       v-if="$slots.default && $slots.default.length"
-   class="instructor-batch-import__info"
+      class="instructor-batch-import__info"
     >
       <div class="instructor-batch-import__info__left hide">注意事项</div>
       <div class="instructor-batch-import__info__right">
@@ -93,7 +93,8 @@ export default {
   data() {
     return {
       openFileInput,
-      files: []
+      files: [],
+      randomKey: Math.random() // bugfix
     }
   },
   methods: {
@@ -132,7 +133,7 @@ export default {
         this.files = [$event.target.files[0]]
       }
       this.$emit('change', $event)
-   },
+    },
     download($event, file) {
       localDownload(file, $event.target, this.download)
     },
@@ -175,7 +176,7 @@ export default {
     margin-top: 20px;
     line-height: 18px;
     color: #7d8292;
-   &__left {
+    &__left {
       margin-right: 20px;
     }
     &__right {

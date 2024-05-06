@@ -6,6 +6,8 @@
       :picker-options="startPickerOptions"
       v-bind="startProps"
       :disabled="disabled"
+      :popper-class="popperClass"
+      :default-value="defaultValue"
       @change="handleDateRangeChange"
       :style="width ? `width: ${width};`: ''"
     >
@@ -17,6 +19,8 @@
       :picker-options="endPickerOptions"
       v-bind="endProps"
       :disabled="disabled"
+      :popper-class="popperClass"
+      :default-value="defaultValue"
       @change="handleDateRangeChange"
       :style="width ? `width: ${width};`: ''"
     >
@@ -37,7 +41,7 @@ const props = defineProps({
     type: Object,
     default: () => {}
   },
-endOptions: {
+  endOptions: {
     type: Object,
     default: () => {}
   },
@@ -61,6 +65,14 @@ endOptions: {
   dataRangeDisableDate: {
     type: Function,
     default: () => {}
+  },
+  defaultValue: {
+    default: () => {
+      return new Date()
+    }
+  },
+  popperClass: {
+    type: String
   }
 })
 

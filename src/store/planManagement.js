@@ -75,173 +75,173 @@ const BASE_ANNUAL_DATA = {
 }
 
 export default {
-    // 计划管理 vuex
-    namespaced: true,
-    state: {
-      ...CopyObj(BASE_ANNUAL_DATA)
+  // 计划管理 vuex
+  namespaced: true,
+  state: {
+    ...CopyObj(BASE_ANNUAL_DATA)
+  },
+  mutations: {
+    /**
+     * 切换状态
+     * @param {*} status:string = 'info|edit'
+     */
+    changeStatus(state, status) {
+      state.annualStatus = status
     },
-    mutations: {
-      /**
-       * 切换状态
-       * @param {*} status:string = 'info|edit'
-       */
-      changeStatus(state, status) {
-        state.annualStatus = status
-      },
-      // 数据重置
-      resetAnnualDatas(state) {
-        const data = CopyObj(BASE_ANNUAL_DATA)
-        Object.keys(data).forEach(key => {
-          state[key] = data[key]
-        })
-      },
-      // 查询条件有变更的时候进行更新
-      updateSearchParams(state, params) {
-        state.currentTopSearchParams = Object.assign({}, state.currentTopSearchParams, CopyObj(params)) 
-      },
-      // 更新附件列表
-      updateAccessoryFiles(state, files) {
-        state.accessoryFiles = CopyObj(files)
-      },
-      // 更新审批链数据
-      updateApprovalData(state, data) {
-        state.annaulApprovalData = CopyObj(data)
-      }
+    // 数据重置
+    resetAnnualDatas(state) {
+      const data = CopyObj(BASE_ANNUAL_DATA)
+      Object.keys(data).forEach(key => {
+        state[key] = data[key]
+      })
     },
-    actions: {
-      // 获取年度计划信息
-      getAnnualPlanInfo({ state }, params) {
-        return new Promise((resolve, reject) => {
-          fetchFindPackageInfo(params)
-            .then((res) => {
-              state.annualPlanInfo = res || {}
-              state.annualPackageInfo = formatAnnualPackageInfo(res.planPackage || {}, res)
-              state.accessoryFiles = res.files
-              state.annualClasses = res.classes
-              state.annualNonclasses = res.nonclasses
-              state.annualDispenseList = res.dispenseList
-              state.annualReverseFee = res.reverseFee
-              res?.planCal && (state.annaulTotalPlanCount = formatTotalCountDatas(res?.planCal))
-              return resolve()
-            })
-            .catch((error) => {
-              return reject(error)
-            })
-        })
-      },
-      // 获取字典表数据，用于培训班/非培训班查询项，业务模块和关键岗位之类的
-      getBaseInfoSelectOptions({ state }, params) {
-        console.log(params, '===>> params')
-        return new Promise((resolve, reject) => {
-          fetchListPlanDict(params)
-            .then((res) => {
-              state.baseSelectOptions = res
-              return resolve()
-            })
-            .catch((error) => {
-              return reject(error)
-            })
-        })
-      },
-  // 获取计划明细
-  getPlanDetailInfo({ state }, params) {
-    return new Promise((resolve, reject) => {
-      const data = {
-        planId: params.annualPlanId,
-        dept: state.annualPackageInfo?.blgDept,
-        line: state.annualPackageInfo?.blgStripLine
-      }
-      fetchFindPlanInfoDetail(data)
-        .then((res) => {
-          return resolve(res)
-        })
-        .catch((error) => {
-          return reject()
-        })
-    })
+    // 查询条件有变更的时候进行更新
+    updateSearchParams(state, params) {
+      state.currentTopSearchParams = Object.assign({}, state.currentTopSearchParams, CopyObj(params))
+    },
+    // 更新附件列表
+    updateAccessoryFiles(state, files) {
+      state.accessoryFiles = CopyObj(files)
+    },
+    // 更新审批链数据
+    updateApprovalData(state, data) {
+      state.annaulApprovalData = CopyObj(data)
+    }
   },
-  // 组装编辑组件的数据结构
-  formatEditCompProps({ state, dispatch }, params) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const fetchParams = {
-          type: params.classType,
-          line: state.annualPlanInfo?.blgStripLine || state.currentTopSearchParams?.busiType[0]
+  actions: {
+    // 获取年度计划信息
+    getAnnualPlanInfo({ state }, params) {
+      return new Promise((resolve, reject) => {
+        fetchFindPackageInfo(params)
+          .then((res) => {
+            state.annualPlanInfo = res || {}
+            state.annualPackageInfo = formatAnnualPackageInfo(res.planPackage || {}, res)
+            state.accessoryFiles = res.files
+            state.annualClasses = res.classes
+            state.annualNonclasses = res.nonclasses
+            state.annualDispenseList = res.dispenseList
+            state.annualReverseFee = res.reverseFee
+            res?.planCal && (state.annaulTotalPlanCount = formatTotalCountDatas(res?.planCal))
+            return resolve()
+          })
+          .catch((error) => {
+            return reject(error)
+          })
+      })
+    },
+    // 获取字典表数据，用于培训班/非培训班查询项，业务模块和关键岗位之类的
+    getBaseInfoSelectOptions({ state }, params) {
+      console.log(params, '===>> params')
+      return new Promise((resolve, reject) => {
+        fetchListPlanDict(params)
+          .then((res) => {
+            state.baseSelectOptions = res
+            return resolve()
+          })
+          .catch((error) => {
+            return reject(error)
+          })
+      })
+    },
+    // 获取计划明细
+    getPlanDetailInfo({ state }, params) {
+      return new Promise((resolve, reject) => {
+        const data = {
+          planId: params.annualPlanId,
+          dept: state.annualPackageInfo?.blgDept,
+          line: state.annualPackageInfo?.blgStripLine
         }
-        await dispatch('getBaseInfoSelectOptions', fetchParams)
-        if (!state.annualPlanInfo) return resolve({})
-        // 使用currentTopSearchParams是为了兼容没有计划信息的时候，后端返回为空的状态
-        const currentEditCompProps = CopyObj({
-          dept: state.annualPackageInfo?.blgDept || state.currentTopSearchParams.busiType[1],
-          // 不传则认为是新增
-          pageState: params.planStatus || 'create',
-          data: {},
-          classType: params.classType,
-          selectOptions: state.baseSelectOptions,
-          blgDeptName: state.annualPackageInfo?.blgDeptName || state.currentTopSearchParams.blgDeptName,
-          blgStripLine: state.annualPackageInfo?.blgStripLine || state.currentTopSearchParams.busiType[0],
-          year: state.annualPackageInfo?.planYear || state.currentTopSearchParams.year,
-          currentOrg: state.currentTopSearchParams.currentOrg || {}
-        })
+        fetchFindPlanInfoDetail(data)
+          .then((res) => {
+            return resolve(res)
+          })
+          .catch((error) => {
+            return reject()
+          })
+      })
+    },
+    // 组装编辑组件的数据结构
+    formatEditCompProps({ state, dispatch }, params) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const fetchParams = {
+            type: params.classType,
+            line: state.annualPlanInfo?.blgStripLine || state.currentTopSearchParams?.busiType[0]
+          }
+          await dispatch('getBaseInfoSelectOptions', fetchParams)
+          if (!state.annualPlanInfo) return resolve({})
+          // 使用currentTopSearchParams是为了兼容没有计划信息的时候，后端返回为空的状态
+          const currentEditCompProps = CopyObj({
+            dept: state.annualPackageInfo?.blgDept || state.currentTopSearchParams.busiType[1],
+            // 不传则认为是新增
+            pageState: params.planStatus || 'create',
+            data: {},
+            classType: params.classType,
+            selectOptions: state.baseSelectOptions,
+            blgDeptName: state.annualPackageInfo?.blgDeptName || state.currentTopSearchParams.blgDeptName,
+            blgStripLine: state.annualPackageInfo?.blgStripLine || state.currentTopSearchParams.busiType[0],
+            year: state.annualPackageInfo?.planYear || state.currentTopSearchParams.year,
+            currentOrg: state.currentTopSearchParams.currentOrg || {}
+          })
 
-        if (params.planStatus === 'edit') {
-          currentEditCompProps.data = await dispatch('getPlanDetailInfo', params)
-        }
+          if (params.planStatus === 'edit') {
+            currentEditCompProps.data = await dispatch('getPlanDetailInfo', params)
+          }
 
-        state.currentEditCompProps = currentEditCompProps
-        return resolve(currentEditCompProps)
-      } catch (error) {
-        return reject(error)
-      }
-    })
-  },
-  /**
-   * 打开/关闭编辑组件
-   * @param {*} params = {
-   *  classType?: string
-   *  status: 'info|edit'
-   *  planStatus?: 'create|edit'
-   *  annualPlanId?: string  在planStatus为edit的情况下需要传id
-   * }
-   * @returns
-   */
-   changeAnnualEditComp({ state, dispatch, commit }, params) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        params.status === 'edit' && (await dispatch('formatEditCompProps', params))
-        commit('changeStatus', params.status)
-        return resolve()
-      } catch (error) {
-        return reject(error)
-      }
-    })
-  },
-  // 获取总计数据
-  getTotalCountDatas({ state }, classTypeList) {
-    return new Promise(async (resolve, reject) => {
-      fetchCalPlanTotalInfo({ packageId: state.annualPackageInfo.planPackageId, classTypeList: classTypeList })
-        .then((res) => {
-          state.annaulTotalPlanCount = formatTotalCountDatas(res)
-          return resolve()
-        })
-        .catch((error) => {
+          state.currentEditCompProps = currentEditCompProps
+          return resolve(currentEditCompProps)
+        } catch (error) {
           return reject(error)
-        })
-    })
+        }
+      })
+    },
+    /**
+     * 打开/关闭编辑组件
+     * @param {*} params = {
+     *  classType?: string
+     *  status: 'info|edit'
+     *  planStatus?: 'create|edit'
+     *  annualPlanId?: string  在planStatus为edit的情况下需要传id
+     * }
+     * @returns
+     */
+    changeAnnualEditComp({ state, dispatch, commit }, params) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          params.status === 'edit' && (await dispatch('formatEditCompProps', params))
+          commit('changeStatus', params.status)
+          return resolve()
+        } catch (error) {
+          return reject(error)
+        }
+      })
+    },
+    // 获取总计数据
+    getTotalCountDatas({ state }, classTypeList) {
+      return new Promise(async (resolve, reject) => {
+        fetchCalPlanTotalInfo({ packageId: state.annualPackageInfo.planPackageId, classTypeList: classTypeList })
+          .then((res) => {
+            state.annaulTotalPlanCount = formatTotalCountDatas(res)
+            return resolve()
+          })
+          .catch((error) => {
+            return reject(error)
+          })
+      })
+    }
+  },
+  getters: {
+    getAnnualStatus: (state) => state.annualStatus,
+    getAnnualInfo: (state) => state.annualPlanInfo,
+    getAnnualPackageInfo: (state) => state.annualPackageInfo,
+    getAnnualClasses: (state) => state.annualClasses,
+    getNnnualNonclasses: (state) => state.annualNonclasses,
+    getCurrentEditCompProps: (state) => state.currentEditCompProps,
+    getAccessoryFiles: (state) => state.accessoryFiles,
+    getAnnualReverseFee: (state) => state.annualReverseFee,
+    getCurrentTopSearchParams: (state) => state.currentTopSearchParams,
+    getAnnaulApprovalData: (state) => state.annaulApprovalData,
+    getAnnaulTotalPlanCount: (state) => state.annaulTotalPlanCount,
+    getAnnualDispenseList: (state) => state.annualDispenseList
   }
-},
-getters: {
-  getAnnualStatus: (state) => state.annualStatus,
-  getAnnualInfo: (state) => state.annualPlanInfo,
-  getAnnualPackageInfo: (state) => state.annualPackageInfo,
-  getAnnualClasses: (state) => state.annualClasses,
-  getNnnualNonclasses: (state) => state.annualNonclasses,
-  getCurrentEditCompProps: (state) => state.currentEditCompProps,
-  getAccessoryFiles: (state) => state.accessoryFiles,
-  getAnnualReverseFee: (state) => state.annualReverseFee,
-  getCurrentTopSearchParams: (state) => state.currentTopSearchParams,
-  getAnnaulApprovalData: (state) => state.annaulApprovalData,
-  getAnnaulTotalPlanCount: (state) => state.annaulTotalPlanCount,
-  getAnnualDispenseList: (state) => state.annualDispenseList
-}
 }

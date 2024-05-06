@@ -51,60 +51,60 @@ export const fetchExportPushCaseFailUsersList = (params) =>
 export const fetchBatchImportCasePushUsers = (params) =>
   httpServe('/common/caseCenter/batchImportCasePushUsers', params)
 
-  // 案例推送--后管手工添加名单
+// 案例推送--后管手工添加名单
 export const fetchInsertManulUsers = (params) =>
-httpServe('/fn/caseCenter/pushCase/insertManulUsers', params)
+  httpServe('/fn/caseCenter/pushCase/insertManulUsers', params)
 
 // 案例推送--后管批量删除
 export const fetchBatchDeletePushCase = (params) =>
-httpServe('/fn/caseCenter/pushCase/batchDeletePushCase', params)
+  httpServe('/fn/caseCenter/pushCase/batchDeletePushCase', params)
 
 // 案例推送--后管撤回
 export const fetchUpdatePushCaseStatus = (params) =>
-httpServe('/fn/caseCenter/pushCase/updatePushCaseStatus', params)
+  httpServe('/fn/caseCenter/pushCase/updatePushCaseStatus', params)
 
 // 案例推送--后管新增或修改接口
 export const fetchInsertPushCaseForSave = (params) =>
-httpServe('/fn/caseCenter/pushCase/insertPushCaseForSave', params, { loading: 'LOADING_CASE_PUSH_SAVE' })
+  httpServe('/fn/caseCenter/pushCase/insertPushCaseForSave', params, { loading: 'LOADING_CASE_PUSH_SAVE' })
 
 // 案例推送--后管查询导入操作列表
 export const fetchCasePushImportList = (params) =>
-httpServe('/fn/caseCenter/pushCase/casePushImportList', params)
+  httpServe('/fn/caseCenter/pushCase/casePushImportList', params)
 
 // 案例推送--后管查询添加人员列表
 export const fetchListToPushCaseUsers = (params) =>
-httpServe('/fn/caseCenter/pushCase/listToPushCaseUsers', params)
+  httpServe('/fn/caseCenter/pushCase/listToPushCaseUsers', params)
 
 // 案例推送--后管查询详情
 export const fetchPushCaseDetail = (params) =>
-httpServe('/fn/caseCenter/pushCase/pushCaseDetail', params)
+  httpServe('/fn/caseCenter/pushCase/pushCaseDetail', params)
 
 // 案例推送--后管根据名称搜索人员
 export const fetchListManulUsers = (params) =>
-httpServe('/fn/caseCenter/pushCase/listManulUsers', params)
+  httpServe('/fn/caseCenter/pushCase/listManulUsers', params)
 
 // 案例推送--后管计算机构人数
 export const fetchCountOrgPushCaseUser = (params) =>
-httpServe('/fn/caseCenter/pushCase/countOrgPushCaseUser', {
-  ...params,
-  type: 'C'
-})
+  httpServe('/fn/caseCenter/pushCase/countOrgPushCaseUser', {
+    ...params,
+    type: 'C'
+  })
 
 // 案例推送--后管导出机构人员
 export const fetchExportOrgPushCaseUser = (params) =>
-httpServe(
-  '/fn/caseCenter/pushCase/countOrgPushCaseUser',
-  { ...params, type: 'E' },
-  {
-    headers: { responseType: 'blob' }
-  }
-)
+  httpServe(
+    '/fn/caseCenter/pushCase/countOrgPushCaseUser',
+    { ...params, type: 'E' },
+    {
+      headers: { responseType: 'blob' }
+    }
+  )
 
 // 案例推送--后管案例推送人员案例报表数据
 export const fetchStudyUsersRelaByCasePushData = (params) =>
-httpServe('/fn/caseCenter/pushCase/studyUsersRelaByCasePushData', {
-  data: { ...params.data, tip: 'Y' }
-})
+  httpServe('/fn/caseCenter/pushCase/studyUsersRelaByCasePushData', {
+    data: { ...params.data, tip: 'Y' }
+  })
 
 // 案例推送--导出后管案例推送人员案例报表数据
 export const fetchExportStudyUsersRelaByCasePushData = (params) =>
@@ -300,11 +300,6 @@ export const fetchDeleteZone = (params) =>
 export const fetchFindZoneById = (params) =>
   httpServe('/fn/caseCenter/zoneManager/findZoneById', params)
 
-// 案例专题-上传图片
-// export const fetchCourseImgUpload = (params) =>
-//   httpServe('/common/lixiang/shareFee', params, {
-//     headers: { responseType: 'blob' }
-//   })
 
 // ========================== 知鸟课程专题 ==========================
 // 知鸟课程专题-列表

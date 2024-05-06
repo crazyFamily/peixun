@@ -51,9 +51,9 @@ export default {
     const UA = window.navigator.userAgent.toLowerCase()
     const isIE = /msie|trident/.test(UA)
     const isEdge = UA.indexOf('edge/') > 0
-    
+
     if (isIE || isEdge) {
- // hintFrame('本系统已不支持IE浏览器，请使用谷歌浏览器')
+      // hintFrame('本系统已不支持IE浏览器，请使用谷歌浏览器')
       customHint('本系统已不支持IE浏览器，请使用谷歌浏览器', '提示', '', false, '复制链接')
       .then(() => {
         this.$refs.copyBtn.click()
@@ -78,8 +78,19 @@ export default {
   },
   watch: {
     $route(to, from) {
- this.isError = to.path.indexOf('error') >= 0
+      this.isError = to.path.indexOf('error') >= 0
       if (!this.isError) this.isError = from.path.indexOf('error') >= 0
+
+    },
+    '$route.path':{
+      handler(n){
+        if(n.includes('TrainingHomework')){
+          store.state.app.isFullScreen = true;
+        }else{
+          store.state.app.isFullScreen = false;
+          this.noFullScreen = true;
+        }
+      }
     },
     '$store.state.app.isFullScreen': {
       handler(n) {

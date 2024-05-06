@@ -8,6 +8,7 @@ import reimbursed from './reimbursed'
 import planManagement from './planManagement'
 import caseCenter from './caseCenter'
 import establish from './establish'
+import schoolRecruitmentManagement from './schoolRecruitmentManagement'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -87,6 +88,7 @@ export default new Vuex.Store({
     reimbursed,
     planManagement,
     caseCenter,
-    establish
+    establish,
+    schoolRecruitmentManagement
   }
 })

@@ -108,7 +108,7 @@ export const fetchUpdateDispensePlan = (params) => httpServe('/fn/plan/annual/up
 
 // 学员招募列表(Y展示)
 export const fetchSelectMonthPlanPage = (params) =>
-httpServe('/fn/plan/month/selectMonthPlanPage', { data: { ...params, tip: 'Y' }}, { loading: 'LOADING_MONTH_PLAN_PAGE' } )
+  httpServe('/fn/plan/month/selectMonthPlanPage', { data: { ...params, tip: 'Y' }}, { loading: 'LOADING_MONTH_PLAN_PAGE' } )
 
 // 学员招募列表导出(N展示)
 export const fetchExportMonthPlanPage = (params) =>
@@ -171,7 +171,7 @@ httpServe('/fn/plan/monthDetail/selectNoPlanDetailForOrg', params )
 
 // 月度计划-计划明细提交（选择机构）
 export const fetchSubmitPlanMonthDetailByOrg = (params) =>
-httpServe('/fn/plan/monthDetail/submitPlanMonthDetailByOrg', params )
+  httpServe('/fn/plan/monthDetail/submitPlanMonthDetailByOrg', params )
 
 // 月度计划-计划明细查询培训班编号
 export const fetchSelectClassInfoById = (params) =>

@@ -9,7 +9,9 @@ export default {
       courseNum: 0,
       liveNum: 0,
       testNum: 0,
-      caseNum: 0
+      caseNum: 0,
+      assignmentNum: 0,
+      subjectNum: 0
     }
   },
   mutations: {
@@ -18,7 +20,7 @@ export default {
     }
   },
   actions: {
-    getMixinsCountAsync({state}, classId) {
+    getMixinsCountAsync({ state }, classId) {
       return new Promise((resolve, reject) => {
         const data = { classId }
         fetchSelectMixedTrainingNum({ data })

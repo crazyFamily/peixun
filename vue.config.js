@@ -31,7 +31,7 @@ module.exports = {
       }
     }
   },
-
+  filenameHashing: false,
   configureWebpack: {
     output: {
       filename: `js/[name].${timestamp}.js`,
@@ -103,7 +103,7 @@ module.exports = {
     // 端口
     port: 3000,
     // proxy: "http://api.fps.qa.pab.com.cn/mock/1745"
-    // proxy: "http://tms.dev.pab.com.cn/tms-new/api"
-    proxy: Object.keys(proxyConfigData).length ? proxyConfigData : ''
+    proxy: "http://tms-new.fat.qa.pab.com.cn/tms-new/api",
+    // proxy: Object.keys(proxyConfigData).length ? proxyConfigData : ''
   }
 }

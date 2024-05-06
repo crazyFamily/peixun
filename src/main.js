@@ -8,7 +8,8 @@ import './plugins/axios'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import xss from 'xss';
+Vue.prototype.$xss = xss;
 // 引入 Webtrends 插件。
 import Webtrends from '@pa/webtrends'
 // 这里的appKey对应CMS的前端资源ID
@@ -37,7 +38,7 @@ import tablePagination from './components/table/table-pagination'
 import input from './components/input'
 import fileInput from './components/input/FileInput.vue'
 import InputNumber from './components/input/InputNumber.vue'
-import ProcessInput from './components/input/ProcessInput.vue'
+import UdmpUpload from './components/input/UdmpUpload.vue'
 import pagination from './components/pagination'
 import dropdown from './components/dropdown'
 import tablecolumnfilters from './components/tablecolumnfilters'
@@ -62,7 +63,7 @@ Vue.component(table.name, table)
 Vue.component(input.name, input)
 Vue.component(fileInput.name, fileInput)
 Vue.component(InputNumber.name, InputNumber)
-Vue.component(ProcessInput.name, ProcessInput)
+Vue.component(UdmpUpload.name, UdmpUpload)
 Vue.component(pagination.name, pagination)
 Vue.component(dropdown.name, dropdown)
 Vue.component(tablecolumnfilters.name, tablecolumnfilters)

@@ -41,7 +41,7 @@
         <el-tree
           lazy
           accordion
-        :data="treeData"
+          :data="treeData"
           :load="loadNode"
           :props="defaultProps"
           :highlight-current="true"
@@ -103,7 +103,7 @@ export default {
       type: Object,
       default: () => {}
     },
-  width: {
+    width: {
       type: String,
       default: '200px'
     },
@@ -116,6 +116,11 @@ export default {
     allowInvented: {
       type: Boolean,
       default: true
+    },
+    // 当重置数据需要展示左侧条线并且要默认选中第一个条线的第一个机构是传参
+    hasResetBlgStripLine: {
+      type: Boolean,
+      default: false
     },
     // 下拉窗类名
     popperClass: {
@@ -153,6 +158,7 @@ export default {
       FLTree: [],
       LSTree: [],
       JFTree: [],
+      CXTree: [],
       noLineTreeData: []
     }
   },
@@ -188,6 +194,8 @@ export default {
           item.label = '零售'
         } else if (item.busiType === 'FL') {
           item.label = '非零'
+        } else if (item.busiType === 'CX') {
+          item.label = '橙信'
         } else {
           item.label = '金服'
         }
@@ -217,7 +225,7 @@ export default {
         })
       }
     },
-   loadNode(node, resolve) {
+    loadNode(node, resolve) {
       const module = this.module
       const { data, level } = node
       let item
@@ -277,7 +285,7 @@ export default {
             this.blgStripLine.find(
               (v) => v.busiType === this.activeBlgStripLine
             ).label
-         )
+          )
         }
         this.content.splice(1, 1, orgName)
       } else {
@@ -293,12 +301,13 @@ export default {
       if (this.leftShow) {
         this.getBlgStripLine(fetchParams).then((res) => {
           if (this.defaultShow) {
-            if (this.blgStripLine.length < 2) {
+            if (this.blgStripLine.length < 2 || this.hasResetBlgStripLine) {
               this.handleClick(this.blgStripLine[0]).then((res) => {
                 const tree =
                   this.blgStripLineMaping[this.blgStripLine[0].busiType]
                 if (tree.length < 2) {
                   this.handleNodeClick(tree[0])
+                  this.$emit('setDataFinish', tree[0])
                 }
               })
             }
@@ -320,7 +329,6 @@ export default {
               v.leaf = v.isSpread ? v.isSpread === 'N' : this.level === 1
             })
             this.noLineTreeData = items
-
             // 添加默认显示
             if (this.defaultShow) {
               this.handleNodeClick(items[0])
@@ -333,9 +341,17 @@ export default {
     setContentValue(content) {
       this.content = content
     },
-  isNodeDisabled(node, data) {
+    isNodeDisabled(node, data) {
       if(!this.allowInvented && data.isInvented === 'Y') return true
       return false
+    },
+    resetBlgStripLineMaping() {
+      this.blgStripLineMaping = {
+        LS: this.LSTree,
+        FL: this.FLTree,
+        JF: this.JFTree,
+        CX: this.CXTree
+      }
     }
   },
   watch: {
@@ -362,7 +378,8 @@ export default {
     this.blgStripLineMaping = {
       LS: this.LSTree,
       FL: this.FLTree,
-      JF: this.JFTree
+      JF: this.JFTree,
+      CX: this.CXTree
     }
   },
   mounted() {
@@ -392,7 +409,7 @@ export default {
 
   .institution-tree {
     :deep() {
-    .el-tree-node {
+      .el-tree-node {
         .custom-tree-node {
           padding: 3px;
         }
@@ -458,7 +475,7 @@ export default {
     padding: 0 !important;
     margin: 2px 0 0 0 !important;
 
-  .blgStripLine {
+    .blgStripLine {
       width: 100px;
       flex-shrink: 0;
       line-height: 30px;

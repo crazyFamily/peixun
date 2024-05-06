@@ -56,7 +56,7 @@
           class="user-center-icon"
           @click="userCenterHandle"
         />
-   </el-tooltip>
+      </el-tooltip>
       <div class="component-head-pic">
         <!-- <el-dropdown class="gc-dropdown">
                     <span class="el-dropdown-link">
@@ -111,7 +111,7 @@ import {
   addAllowKeepAlive
 } from '../util/utils'
 export default {
-name: 'TopNav',
+  name: 'TopNav',
   data() {
     return {
       // 用户名
@@ -183,7 +183,7 @@ name: 'TopNav',
         path: '/permission'
       })
     },
-  // 标签栏左移
+    // 标签栏左移
     left() {
       const translateX = this.getTranslateX()
       if (translateX >= -200) {
@@ -246,7 +246,7 @@ name: 'TopNav',
       const left = this.$store.getters.keepAliveComponents[index - 1]
       const right = this.$store.getters.keepAliveComponents[index]
       const path = left ? left : right ? right : ''
-   this.$router.push((path && (path.customPath || path.path)) || '/')
+      this.$router.push((path && (path.customPath || path.path)) || '/')
     },
     // 下拉菜单点击
     menuCommandHandle(type, command) {
@@ -307,7 +307,7 @@ name: 'TopNav',
           } else if (index <= startIndex) {
             if (index === 0) {
               this.setTranslateX(0)
-         } else {
+            } else {
               this.setTranslateX(
                 -translateX +
                   tagWidthList
@@ -355,17 +355,6 @@ name: 'TopNav',
   -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
   background: #fff;
-}
-
-.component-head__logo {
-  display: block;
-  width: 152px;
-  height: 30px;
-  background: url(../assets/svg/head-pa-bank-logo.png) center center no-repeat;
-  -moz-background-size: 100% 100%;
-  -o-background-size: 100% 100%;
-  -webkit-background-size: 100% 100%;
-  background-size: 100% 100%;
 }
 
 .component-head__left {
@@ -463,7 +452,7 @@ name: 'TopNav',
         'Droid Sans', 'HelveticaNeue', 'Helvetica Neue', arial, sans-serif;
     }
   }
- .el-breadcrumb__item:nth-child(n + 1) {
+  .el-breadcrumb__item:nth-child(n + 1) {
     :deep(.el-breadcrumb__inner) {
       color: #212145;
       font-family: 'PingFangSC-Regular', 'Roboto-Regular', 'PingFang SC',
@@ -539,81 +528,81 @@ name: 'TopNav',
 .component-head-func__item:last-child:after {
   display: none;
 }
- .el-breadcrumb__item:nth-child(n + 1) {
-    :deep(.el-breadcrumb__inner) {
-      color: #212145;
-      font-family: 'PingFangSC-Regular', 'Roboto-Regular', 'PingFang SC',
-        'Droid Sans', 'HelveticaNeue', 'Helvetica Neue', arial, sans-serif;
-    }
-  }
-}
 
-.component-head__right {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-  -webkit-align-items: center;
-  align-items: center;
-  width: 286px;
-}
-
-.component-head-func {
-  position: relative;
-  z-index: 1;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-  -webkit-align-items: center;
-  align-items: center;
-  padding-right: 8px;
-}
-
-.component-head-func:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: auto;
-  margin: auto;
-  z-index: 1;
+.component-head-func__i-vitae {
   display: block;
-  height: 12px;
-  width: 0;
-  border-right: 1px solid #eaecf1;
+  margin-right: 4px;
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/head-func-vitae.svg) center center no-repeat;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  cursor: pointer;
 }
 
-.component-head-func__item {
-  position: relative;
-  z-index: 1;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-justify-content: flex-start;
-  justify-content: flex-start;
-  -webkit-align-items: center;
-  align-items: center;
-  padding: 0 12px;
-}
-
-.component-head-func__item:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: auto;
-  margin: auto;
-  z-index: 1;
+.component-head-func__i-favorite {
   display: block;
-  height: 12px;
-  width: 0;
-  border-right: 1px solid #eaecf1;
+  margin-right: 4px;
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/head-func-favorite.svg) center center no-repeat;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  cursor: pointer;
 }
 
-.component-head-func__item:last-child:after {
-  display: none;
+.component-head-func__i-message {
+  display: block;
+  margin-right: 4px;
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/head-func-message.svg) center center no-repeat;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.component-head-func__i-role {
+  display: block;
+  margin-right: 4px;
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/head-func-role.svg) center center no-repeat;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.component-head-func__i-permission {
+  display: block;
+  margin-right: 4px;
+  width: 18px;
+  height: 18px;
+  background: url(../assets/svg/head-func-permission.svg) center center
+    no-repeat;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.component-head-func__name {
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.component-head-func__name:hover {
+  color: #fd6720;
 }
 
 .component-head-pic {

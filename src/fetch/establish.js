@@ -152,7 +152,7 @@ export const fetchFindStudentFosterEvaluateAction = (params) =>
 
 // 学员培养评价-批量校验培养评价
 export const fetchImportBatchStudentFosterEvaluate = (params, options) =>
-httpServe('/common/classes/manager/importBatchStudentFosterEvaluate', params, {
+  httpServe('/common/classes/manager/importBatchStudentFosterEvaluate', params, {
     ...dataHeaders,
     ...options
   })
@@ -201,7 +201,7 @@ export const fetchTrainingCompleteDetail = ({ data }) =>
   
 // 查询知鸟课程
 export const fetchSelectZnCourseList = (params) =>
-httpServe('/fn/classes/mixed/selectZnCourseList', params, {  loading: 'LOADING_SELECT_ZNCOURSE_LIST' })
+  httpServe('/fn/classes/mixed/selectZnCourseList', params, {  loading: 'LOADING_SELECT_ZNCOURSE_LIST' })
 
 // 2、混合培训添加知鸟课程、知鸟直播、知鸟考试、案例：
 export const fetchSaveMixedTraining = (params) =>
@@ -242,4 +242,90 @@ httpServe('/fn/classes/mixed/exportCompleteDetail', params, { loading: 'LOADING_
 // 混合培训-查询是否在白名单人员中 
 export const fetchQueryWhiteList = (params) => httpServe('/fn/classes/mixed/queryWhiteList', params, { loading: 'LOADING_QUERY_WHITE_LIST' })
 
+// 混合培训-交流圈
+export const fetchListCommunicateSubject = (params) =>
+  httpServe('/fn/communicate/listCommunicateSubject', params, { loading: 'LOADING_LIST_COMMUNICATE_SUBJECT' })
+  
+// 混合培训-删除交流圈
+export const fetchDeleteCommunicateSubject = (params) =>
+httpServe('/fn/communicate/deleteCommunicateSubject', params, {
+  loading: 'LOADING_DELETE_COMMUNICATE_SUBJECT',
+})
 
+// 混合培训-交流圈上下架
+export const fetchUpOrDownCommunicateSubject = (params) =>
+  httpServe('/fn/communicate/upOrDownCommunicateSubject', params, {
+    loading: 'LOADING_UP_DOWN_COMMUNICATE_SUBJECT',
+  })
+
+// 混合培训-交流圈排序
+export const fetchUpdateCommunicateSubjectSortNo = (params) =>
+  httpServe('/fn/communicate/updateCommunicateSubjectSortNo', params, {
+    loading: 'LOADING_UPDATE_COMMUNICATE_SUBJECT_SORT_NO',
+  })
+
+// 混合培训-交流圈-保存主题
+export const fetchSaveCommunicateSubject = (params) =>
+  httpServe('/fn/communicate/saveCommunicateSubject', params, {
+    loading: 'LOADING_SAVE_COMMUNICATE_SUBJECT',
+  })
+
+// 混合培训-交流圈-查看主题
+export const fetchCommunicateSubjectDetail = (params) =>
+  httpServe('/fn/communicate/communicateSubjectDetail', params, {
+    loading: 'LOADING_COMMUNICATE_SUBJECT_DETAIL',
+  })
+
+// 混合培训-更新必修选修状态
+export const fetchUpdateRequiredStatus = (params) => httpServe('/fn/classes/mixed/updateRequiredStatus', params, { loading: 'LOADING_UPDATE_REQUIRED_STATUS' })
+
+// 混合培训-报表-主题评论报表 
+export const fetchReportCommunicateComment = (params) => httpServe('/fn/communicate/reportCommunicateComment', params, { loading: 'LOADING_REPORT_COMMUNICATE_COMMENT' })
+
+// 混合培训-报表-查询评论详情 
+export const fetchCommunicateCommentDetail = (params) => httpServe('/fn/communicate/findCommunicateCommentDetail', params, { loading: 'LOADING_COMMNUICATE_COMMENT_DETAIL' })
+
+// 混合培训-报表-查询评论列表
+export const fetchListCommunicateComment = (params) => httpServe('/fn/communicate/listCommunicateComment', params, { loading: 'LOADING_LIST_COMMNUNICATE_COMMENT' })
+
+// 混合培训-报表-删除评论
+export const deleteCommunicateCommentByCommentIds = (params) => httpServe('/fn/communicate/deleteCommunicateCommentByCommentIds', params, { loading: 'LOADING_DELETE_COMMNUNICATE_COMMENT' })
+
+// 混合培训-报表-屏蔽/恢复评论
+export const shieldCommunicateCommentByCommentIds = (params) => httpServe('/fn/communicate/shieldCommunicateCommentByCommentIds', params, { loading: 'LOADING_SHIELD_COMMUNICATE_COMMENT' })
+
+// 混合培训-作列表业
+export const listAssignment = (params) => httpServe('/fn/assignment/listAssignment', params, { loading: 'LOADING_LIST_ASSIGNMENT' })
+
+// 混合培训-保存作业
+export const saveAssignment = (params) => httpServe('/fn/assignment/saveAssignment', params, { loading: 'LOADING_SAVE_ASSIGNMENT' })
+
+// 混合培训-作业详情
+export const findAssignmentDetail = (params) => httpServe('/fn/assignment/findAssignmentDetail', params, { loading: 'LOADING_FIND_ASSIGNMENT_DETAIL' })
+
+// 混合培训-作业-查询学员提交的作业
+export const listAssignmentComment = (params) => httpServe('/fn/assignment/listAssignmentComment', params, { loading: 'LOADING_LIST_ASSIGNMENT_COMMENT' })
+
+// 混合培训-提交作业-查看作业题目
+export const findAssignmentDetailForSubmit = (params) => httpServe('/fn/assignment/findAssignmentDetailForSubmit', params, { loading: 'LOADING_DETAIL_ASSIGNMENT_SUBMIT' })
+
+// 混合培训-提交作业-查看本人答题详情
+export const findAssignmentCommentDetailByMyself = (params) => httpServe('/fn/assignment/findAssignmentCommentDetailByMyself', params, { loading: 'LOADING_ASSIGNMENT_DETAIL_MYSELF' })
+
+// 混合培训-作业排序
+export const updateAssignmentSortNo = (params) => httpServe('/fn/assignment/updateAssignmentSortNo', params, { loading: 'LOADING_UPDATE_ASSIGNMENT_SORT_NO'})
+
+// 混合培训-作业-删除作业
+export const deleteAssignment = (params) => httpServe('/fn/assignment/deleteAssignment', params, { loading: 'LOADING_DELETE_ASSIGNMENT' })
+
+// 混合培训-作业上下架
+export const updateAssignmentPublishStatus = (params) =>  httpServe('/fn/assignment/updateAssignmentPublishStatus', params, {loading: 'LOADING_UP_DOWN_ASSIGNMENT_SUBJECT'})
+
+//混合培训-学员提交作业
+export const saveAssignmentComment = (params) =>  httpServe('/fn/assignment/saveAssignmentComment', params, {loading: 'LOADING_SAVE_ASSIGNMENT_COMMENT'})
+
+// 混合培训-提交作业-查看学员答题详情
+export const findAssignmentCommentDetailByCommentId = (params) => httpServe('/fn/assignment/findAssignmentCommentDetailByCommentId', params, { loading: 'LOADING_FIND_ASSIGNMENT_DETAIL_COMMENT' })
+
+// 混合培训-作业-删除作业
+export const deleteAssignmentComment = (params) => httpServe('/fn/assignment/deleteAssignmentCommentByCommentId', params, { loading: 'LOADING_DELETE_ASSIGNMENT_COMMENT' })

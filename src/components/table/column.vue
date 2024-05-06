@@ -58,7 +58,7 @@ export default {
                * tablecolumnfilters组件过滤事件
                */
               filter($event) {
-              commonFilter(
+                commonFilter(
                   $event,
                   item.queryForm,
                   item.labelKey,
@@ -131,4 +131,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+.el-tooltip__popper {
+  max-width: 800px;
+}
+</style>

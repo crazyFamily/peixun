@@ -110,7 +110,7 @@ export const fetchListDelayApplyChain = (params) =>
 
 // 
 export const fetchImportBatchTrainingScore = (params, options) =>
-httpServe('/common/xr/training/offline/importBatchTrainingScore', params, {
+  httpServe('/common/xr/training/offline/importBatchTrainingScore', params, {
     ...dataHeaders,
     ...options
   })
@@ -148,3 +148,21 @@ export const fetchListTrainingUserLine = (params) => httpServe('/fn/xr/training/
 
 // 数据看板-根据能力层级查询年龄层占比
 export const fetchListUserAgeByLevel = (params) => httpServe('/fn/xr/training/board/listUserAgeByLevel', params)
+
+// 培养管理-查看线上营补考成绩
+export const fetchFindOnlineResitScore = (params) => httpServe('/fn/xr/training/offline/findOnlineResitScore', params)
+
+// 培养管理-线上营补考成绩上传
+export const fetchSaveOnlineResitScore = (params) => httpServe('/fn/xr/training/offline/saveOnlineResitScore', params)
+
+// 培养管理-补考成绩审核
+export const fetchVerifyOnlineResitScore = (params) => httpServe('/fn/xr/training/offline/verifyOnlineResitScore', params)
+
+// 培养管理-学员评价导入-模板导入校验
+export const fetchImportBatchTemplateEvaluate = (...params) => httpServe('/common/xr/training/offline/importBatchTemplateEvaluate', ...params)
+
+// 培养管理-学员评价导入-模板导入
+export const fetchHandleTemplateEvaluate = (...params) => httpServe('/fn/xr/training/offline/handleTemplateEvaluate', ...params)
+
+// 培养管理-学员评价导入-模板导入失败数据下载
+export const fetchExportFailTemplateEvaluate = (params) => httpServe('/fn/xr/training/offline/exportFailTemplateEvaluate', params, { headers: { responseType: 'blob' } })

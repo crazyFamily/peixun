@@ -94,4 +94,3 @@ describe("Aside组件", () => {
     expect(wrapper.vm.index).toBe(-1);
   });
 });
-

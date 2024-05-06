@@ -15,6 +15,9 @@ export const fetchDeleteTemplateManege = (...params) =>
 export const fetchDownTemplate = (...params) =>
   httpServe('/fn/system/func/downTemplate', ...params)
 
-// 判断部门归属
-export const fetchCheckZone = (...params) =>
-  httpServe('/fn/plan/annual/checkZone', ...params)
+// // 判断部门归属
+// export const fetchCheckZone = (...params) =>
+//   httpServe('/fn/plan/annual/checkZone', ...params)
+// 获取模板名称列表
+export const fetchListTemplateName = (...params) =>
+  httpServe('/fn/system/func/listTemplateName', ...params)

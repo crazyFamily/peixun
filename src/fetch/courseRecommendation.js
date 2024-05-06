@@ -176,4 +176,3 @@ export const fetchExportComment = (params) => httpServe('/fn/privatewealth/comme
 export const fetchProcessBatchKickOff = (params) => httpServe('/fn/privatewealth/comment/processBatchKickOff', params)
 // 笔记或者评论批量屏蔽
 export const fetchProcessBatchShield = (params) => httpServe('/fn/privatewealth/comment/processBatchShield', params)
-

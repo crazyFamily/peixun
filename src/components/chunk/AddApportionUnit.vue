@@ -70,8 +70,16 @@ export default {
       const blgStripLine =
         this.blgStripLine || this.$store.state.userInfo.blgStripLine
       if (blgStripLine !== 'JF') {
+        if (blgStripLine === 'CX') {
+          return [
+            {
+              orgName: '橙信',
+              blgStripLine: 'CX'
+            }
+          ]
+        }
         return [
-         {
+          {
             orgName: '零售',
             blgStripLine: 'LS'
           },
@@ -99,7 +107,7 @@ export default {
         this.$nextTick(() => {
           $('label.el-checkbox').css({ display: 'none' })
         })
-       return
+        return
       } else if (!data.blgStripLine) {
         return resolve([])
       } else {

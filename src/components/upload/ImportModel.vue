@@ -1,11 +1,15 @@
 <template>
   <div>
-    <gc-model :width="width" top="5vh" :title="title"
+    <gc-model
+      :width="width"
+      top="5vh"
+      :title="title"
       :visible="isDialogShow"
       @close="closeHandle"
       @cancel="closeHandle"
       @comfirm="comfirmHandle"
-      :isShowFooter="false">
+      :isShowFooter="false"
+    >
       <headquarter-upload
         :template-code="templateCode"
         :fetch-fn="importFetchFn"
@@ -14,7 +18,8 @@
         @faildExport="faildExportHandle"
         @uploadFinish="uploadFinishHandle"
         v-bind="$attrs"
-        ref="headquarterUploadRef" />
+        ref="headquarterUploadRef"
+      />
       <p class="space" style="height: 60px"></p>
       <div class="tanlents-upload-footer">
         <el-button class="item-button" @click="closeHandle">取消</el-button>
@@ -72,17 +77,24 @@ const successList = ref([])
 const successBatchId = ref('')
 const errorBatchId = ref('')
 
-watch(() => props.show, (newV) => {
-  isDialogShow.value = newV
-}, { immediate: true })
+watch(
+  () => props.show,
+  (newV) => {
+    isDialogShow.value = newV
+  },
+  { immediate: true }
+)
 
-const emits = defineEmits(['showChange','comfirm'])
+const emits = defineEmits(['showChange', 'comfirm'])
 const uploadParams = reactive({ batchId: uuid(), tip: 'N' })
-watch(() => props.uploadParams, (newV) => {
-  Object.keys(newV).forEach(key => {
-    set(uploadParams, key, newV[key])
-  })
-})
+watch(
+  () => props.uploadParams,
+  (newV) => {
+    Object.keys(newV).forEach((key) => {
+      set(uploadParams, key, newV[key])
+    })
+  }
+)
 
 function uploadFinishHandle({ sucessList, errorList, succBatchId, failBatchId }) {
   isCanSubmit.value = Boolean(sucessList.length || succBatchId)
@@ -117,7 +129,6 @@ async function faildExportHandle() {
   }
   await props.faildExportFetchFn(params)
 }
-
 </script>
 
 <style lang="scss" scoped>

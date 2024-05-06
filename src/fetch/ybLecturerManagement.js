@@ -34,6 +34,8 @@ export const fetchExportTeacher = params => httpServe('/fn/yb/teacher/exportTeac
 export const fetchImportBatchTeacherDatas = params => httpServe('/fn/yb/teacher/importBatchTeacherDatas', params)
 // 讲师审批
 export const fetchTeacherApprove = params => httpServe('/fn/yb/teacher/teacherApprove', params)
+// 批量审批
+export const fetchBatchApprove = params => httpServe('/fn/yb/approve/batchApprove', params)
 // **************************************************************************************************************************************************************
 /**
  * 银保讲师授课/分享管理
@@ -184,6 +186,8 @@ export const fetchBatchUpdateStatus = params => httpServe('/fn/yb/znCourse/batch
 export const fetchAddZnCourseCatalogue = params => httpServe('/fn/yb/znCourse/addZnCourseCatalogue', params)
 // 知鸟课程目录数据批量导入
 export const fetchImportBatchZnCourseCatalogueDatas = params => httpServe('/fn/yb/znCourse/importBatchZnCourseCatalogueDatas', params)
+// 知鸟课程目录数据批量导入
+export const fetchBatchUpdateCourseCataLogue = params => httpServe('/fn/yb/znCourse/batchUpdateCourseCatalogue', params)
 // 导出知鸟课程目录
 export const fetchExportZnCourseCatalogue = params => httpServe('/fn/yb/znCourse/exportZnCourseCatalogue', { data: { ...params.data, tip: 'N' } }, { headers: { responseType: 'blob' } })
 // 修改知鸟课程目录
@@ -242,14 +246,75 @@ export const fetchImportLiveDatas = params => httpServe('/fn/yb/courseRecommend/
 /**
  * 培训速递内容管理
  */
+// http://arena-luna.fat.qa.pab.com.cn/#/contract-design/interlayer/list?appId=70109&subSysCode=AMS-RLM
 // 查询培训速递信息
 export const fetchQueryTrainNotice = params => httpServe('/fn/yb/trainNotice/queryTrainNotice', params)
 // 查询用户默认信息
-export const fetchGetFirstOrgByTeacherUm = params => httpServe('/fn/yb/trainNotice/getFirstOrgByTeacherUm', params)
+export const fetchGetFirstOrgByCurrentUm = params => httpServe('/fn/yb/trainNotice/getFirstOrgByCurrentUm', params)
 // 新增培训速递信息
 export const fetchAddTrainNotice = params => httpServe('/fn/yb/trainNotice/addTrainNotice', params)
 // 修改培训速递信息
 export const fetchUpdateTrainNotice = params => httpServe('/fn/yb/trainNotice/updateTrainNotice', params)
 // 删除培训速递信息
 export const fetchDeleteTrainNotice = params => httpServe('/fn/yb/trainNotice/deleteTrainNotice', params)
+// **************************************************************************************************************************************************************
+/**
+ * 发布总结管理
+ */
+// http://arena-luna.fat.qa.pab.com.cn/#/contract-design/interlayer/detils?pagePathOrigin=%2Fcontract-design%2Finterlayer%2Fdetils&id=460128&appId=70109&subSysCode=AMS-RLM
+// 查询培训班总结信息列表
+export const fetchQueryClassSummary = params => httpServe('/fn/yb/offlineTrain/queryClassSummary', params)
+// 新增培训班总结信息(仅供造数据使用) 
+export const fetchPublishSummary = params => httpServe('/fn/yb/offlineTrain/publishSummary', params)
+// 修改培训班总结信息
+export const fetchUpdateSummary = params => httpServe('/fn/yb/offlineTrain/updateSummary', params)
+// 删除培训班总结信息
+export const fetchDeleteSummary = params => httpServe('/fn/yb/offlineTrain/deleteSummary', params)
+// **************************************************************************************************************************************************************
+/**
+ * 学习专题管理
+ */
+// http://arena-luna.fat.qa.pab.com.cn/#/contract-design/interlayer/detils?pagePathOrigin=%2Fcontract-design%2Finterlayer%2Fdetils&id=476714&appId=70109&subSysCode=AMS-RLM
+// 是否本人
+export const fetchGetDefaultPrincipal = params => httpServe('/fn/yb/smartCourse/studySpecial/getDefaultPrincipal', params)
+// 查询专题信息
+export const fetchQueryStudySpecial = params => httpServe('/fn/yb/smartCourse/studySpecial/queryStudySpecial', params)
+// 新增专题
+export const fetchAddStudySpecial = params => httpServe('/fn/yb/smartCourse/studySpecial/addStudySpecial', params)
+// 修改专题
+export const fetchUpdateStudySpecial = params => httpServe('/fn/yb/smartCourse/studySpecial/updateStudySpecial', params)
+// 删除专题
+export const fetchDeleteStudySpecial = params => httpServe('/fn/yb/smartCourse/studySpecial/deleteStudySpecial', params)
+// 查询专题推送名单
+export const fetchQuerySpecialPushUser = params => httpServe('/fn/yb/smartCourse/specialPushUser/querySpecialPushUser', params)
+// 批量删除推送名单人员
+export const fetchBatchDeleteSpecialPushUser = params => httpServe('/fn/yb/smartCourse/specialPushUser/batchDeleteSpecialPushUser', params)
+// // 批量新增推送名单人员
+// export const fetchBatchAddSpecialPushUser = params => httpServe('/fn/yb/smartCourse/specialPushUser/batchAddSpecialPushUser', params)
+// 通过专题ID查询主题信息列表
+export const fetchQuerySpecialThemeBySpecialId = params => httpServe('/fn/yb/smartCourse/specialTheme/querySpecialThemeBySpecialId', params)
+// 新增主题
+export const fetchAddSpecialTheme = params => httpServe('/fn/yb/smartCourse/specialTheme/addSpecialTheme', params)
+// 修改主题
+export const fetchUpdateSpecialThemeById = params => httpServe('/fn/yb/smartCourse/specialTheme/updateSpecialThemeById', params)
+// 删除主题
+export const fetchDeleteSpecialThemeById = params => httpServe('/fn/yb/smartCourse/specialTheme/deleteSpecialThemeById', params)
+// 查询配置课程信息
+export const fetchQueryThemeCourseByThemeId = params => httpServe('/fn/yb/smartCourse/themeCourse/queryThemeCourseByThemeId', params)
+// 查询课程信息
+export const fetchQueryThemeZnCourseInfo = params => httpServe('/fn/yb/smartCourse/themeCourse/queryThemeZnCourseInfo', params)
+// 查询直播信息
+export const fetchQueryThemeZnLiveInfo = params => httpServe('/fn/yb/smartCourse/themeCourse/queryThemeZnLiveInfo', params)
+// 批量新增课程
+export const fetchAddThemeCourseData = params => httpServe('/fn/yb/smartCourse/themeCourse/addThemeCourseData', params)
+// 批量删除课程信息
+export const fetchRemoveThemeCourseById = params => httpServe('/fn/yb/smartCourse/themeCourse/removeThemeCourseById', params)
+// 批量修改课程信息
+export const fetchUpdateThemeCourseData = params => httpServe('/fn/yb/smartCourse/themeCourse/updateThemeCourseData', params)
+// **************************************************************************************************************************************************************
+/**
+ * 继续教育学习明细
+ */
+// 继续教育-查询个人的学习明细
+export const fetchQueryPersonStudyDetail = params => httpServe('/fn/yb/continuingEducation/queryPersonStudyDetail', params)
 // **************************************************************************************************************************************************************

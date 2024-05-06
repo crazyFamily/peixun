@@ -45,250 +45,100 @@ export const busiTypes = [
   { label: '非零', value: 'FL' },
   { label: '零售', value: 'LS' },
   { label: '金服', value: 'JF' },
+  { label: '橙信', value: 'CX' },
 ]
 
-export const TEMPLATE_LIST = [
-  // 零售-总行-年度计划-计划批量上传
-  {
-    label: '零售总行年度计划批量导入模板',
-    value: 'PLAN_LS_ZH'
-  },
-  // 零售-分行-年度计划-计划批量上传
-  {
-    label: '零售分行年度计划批量导入模板',
-    value: 'PLAN_LS_FH'
-  },
-  // 非零-年度计划-计划批量上传
-  {
-    label: '非零年度计划批量导入模板',
-    value: 'PLAN_FL'
-  },
-  // 金服-年度计划-计划批量上传
-  {
-    label: '金服年度计划批量导入模板',
-    value: 'PLAN_JF'
-  },
-  // 年度计划-培训班计划-新增-分摊单位-模版下载
-  {
-    label: '零售年度计划分摊单位模板',
-    value: 'PLAN_LS_SHARE'
-  },
-  // 年度计划-培训班计划-新增-分摊单位-模版下载
-  {
-    label: '非零年度计划分摊单位模板',
-    value: 'PLAN_FL_SHARE'
-  },
-  // 年度计划-培训班计划-新增-分摊单位-模版下载
-  {
-    label: '金服年度计划分摊单位模板',
-    value: 'PLAN_JF_SHARE'
-  },
-  // 报销中心-发起报销-报帐明细-费用分摊-模版下载
-  {
-    label: '费用分摊模板',
-    value: 'REIMBURSEMENT_APPORTIONCONST'
-  },
-// 培训师管理-法定节假日-模版下载
-{
-    label: '法定节假日模板',
-    value: 'LEGAL_HOLIDAY'
-  },
-  // 培训师管理-积分管理-积分补录-模版下载
-  {
-    label: '积分补录模板',
-    value: 'POINT_RECORD'
-  },
-  // 案例中心-活动数据-英雄名单-导入英雄名单-模版下载
-  {
-    label: '英雄名单模板',
-    value: 'HERO_USERS'
-  },
-  // 案例中心-案例活动-模版下载
-  {
-    label: '案例活动模板',
-    value: 'CASE_EVENT'
-  },
-  // 案例中心-案例推送-新增-规则-导入
-  {
-    label: '案例推送人员信息导入模板',
-    value: 'CASE_PUSH_USER_INFO'
-  },
-  // 潜才培养管理-权限管理-新增/编辑权限-批量添加员工UM
-  {
-    label: '潜才批量添加员工权限模板',
-    value: 'TANLENTS_USER_INFO'
-  },
-  // 报表中心-评委名单管理-批量导入-模版下载
-  {
-    label: '评委批量导入模板',
-    value: 'REPORT_JUDGES_USERS'
-  },
-  // 阶梯培训管理-讲师授权-批量授权-模版下载
-  {
-    label: '讲师授权批量导入模板',
-    value: 'LADDER_LECTURER_INSTRUCTOR'
-  },
-  // 阶梯培训管理-讲师授权-批量授权-模版下载
-  {
-    label: '潜才议题战队成员批量导入模板',
-    value: 'TANLENTS_TOPIC_TEAM'
-  },
-  // 潜才培养管理-议题管理
-  {
-    label: '潜才议题批量导入模板',
-    value: 'TANLENTS_TOPIC_INFO'
-  },
-  // 潜才培养管理-批量添加战队
-  {
-    label: '潜才议题批量添加战队导入模板',
-    value: 'TANLENTS_TOPIC_TEAMS_INFO'
-  },
-  // 潜才培养管理-批量添加学员评价
-  {
-    label: '潜才批量添加学员评价导入模板',
-    value: 'TANLENTS_STUDENT_EVALUATE'
-  },
-  // 潜才培养管理-方案管理-录入学员-批量导入学员
-  {
-    label: '潜才方案批量导入学员模板',
-    value: 'TANLENTS_PLAN_STUDENT'
-  },
-  {
-    label: '课程标签导入模板',
-    value: 'COURSE_TAGS'
-  },
-  // 阶梯培训管理-课表管理-增加-批量导入
-  {
-    label: '课表管理批量导入模板',
-    value: 'LADDER_SCHEDULE_MANAGE'
-  },
- // 培训班管理-编辑-学员管理-批量导入
- {
-    label: '学员管理批量导入模板',
-    value: 'TRAINING_COURSE_STUDENT_MANAGE'
-  },
-  // 培训班管理-编辑-学员管理-批量导入
-  {
-    label: '知鸟课程专题/课程批量导入模板',
-    value: 'ZN_SPECIAL_COURSE_MANAGE'
-  },
-  // (培训班管理-课表管理、培训项目立项-新增、培训项目立项-更改立项)-带班老师-批量导入
-  {
-    label: '带班老师批量导入模板',
-    value: 'CLASS_TG_TEACHER'
-  },
-  // 新人培养管理-学员报名-批量添加学员导入
-  {
-    label: '学员报名批量导入模板',
-    value: 'STUDENT_REGIST_ADD_BRACH'
-  },
-  // 新人培养管理-学员报名-批量添加学员导入
-  {
-    label: '批量上传支行长培训班模板',
-    value: 'SUB_BRANCH_MANAGER_ADD_BRACH'
-  },
-  // 覆盖率报表-人员名单-批量导入
-  {
-    label: '批量上传覆盖率报表名称管理模板',
-    value: 'LADDER_COVERAGE_USER_ADD_BRACH'
-  },
-  // 项目立项-新增立项-费用分摊明细-批量上传
-  {
-    label: '立项批量添加费用分摊模板',
-    value: 'ESTABLISH_COST_BATCH'
-  },
-  {
-    label: '批量上传学员培养评价模板',
-    value: 'STUDENT_FOSTER_EVALUATE_BRACH'
-  },
-  {
-    label: '批量上传新人面授培训班模板',
-    value: 'NEW_EMP_TRAINING_CLASS'
-  },
-  {
-    label: '批量上传线上营学员成绩模板',
-    value: 'TRAINING_MANAGE_SCORE_ADD_BATCH'
-  },
-  {
-    label: '批量上传知鸟课程入库',
-    value: 'ZN_COURSE_ADD_BATCH'
-  },
-  {
-    label: '批量上传月度计划模板',
-    value: 'MONTH_PLAN_ADD_BATCH'
-  }
-]
 
 export const ROUTER_ICON = [
   {
     label: '报表中心',
     icon: 'shouye-baobiaozhongxin.svg'
-},
-{
-  label: '报销中心',
-  icon: 'shouye-baoxiaozhongxin.svg'
-},
-{
-  label: '讲师管理',
-  icon: 'shouye-jiangshiguanli.svg'
-},
-{
-  label: '课程管理',
-  icon: 'shouye-kechengguanli.svg'
-},
-{
-  label: '培训计划管理',
-  icon: 'shouye-peixunjihuaguanli.svg'
-},
-{
-  label: '培训项目管理',
-  icon: 'shouye-peixunxiangmuguanli.svg'
-},
-{
-  label: '系统管理',
-  icon: 'shouye-xitongguanli.svg'
-},
-{
-  label: '星火计划',
-  icon: 'shouye-xinghuojihua.svg'
-},
-{
-  label: '培训师管理',
-  icon: 'peixunshi-yuan.svg'
-},
-{
-  label: '私行财富学习管理',
-  icon: 'sicai-yuan.svg'
-},
-{
-  label: '案例中心',
-  icon: 'anlizhongxin3.svg'
-},
-{
-  label: '首页运营',
-  icon: 'anlizhongxin3.svg'
-},
-{
-  label: 'AI陪练',
-  icon: 'ai-background.svg'
-},
-{
-  label: '阶梯培训管理',
-  icon: 'jietipeixunguanli1.svg'
-}
+  },
+  {
+    label: '报销中心',
+    icon: 'shouye-baoxiaozhongxin.svg'
+  },
+  {
+    label: '讲师管理',
+    icon: 'shouye-jiangshiguanli.svg'
+  },
+  {
+    label: '课程管理',
+    icon: 'shouye-kechengguanli.svg'
+  },
+  {
+    label: '培训计划管理',
+    icon: 'shouye-peixunjihuaguanli.svg'
+  },
+  {
+    label: '培训项目管理',
+    icon: 'shouye-peixunxiangmuguanli.svg'
+  },
+  {
+    label: '系统管理',
+    icon: 'shouye-xitongguanli.svg'
+  },
+  {
+    label: '星火计划',
+    icon: 'shouye-xinghuojihua.svg'
+  },
+  {
+    label: '培训师管理',
+    icon: 'peixunshi-yuan.svg'
+  },
+  {
+    label: '私行财富学习管理',
+    icon: 'sicai-yuan.svg'
+  },
+  {
+    label: '案例中心',
+    icon: 'anlizhongxin3.svg'
+  },
+  {
+    label: '首页运营',
+    icon: 'anlizhongxin3.svg'
+  },
+  {
+    label: 'AI陪练',
+    icon: 'ai-background.svg'
+  },
+  {
+    label: '阶梯培训管理',
+    icon: 'jietipeixunguanli1.svg'
+  },
+  {
+    label: '数据大屏',
+    icon: 'shouye-datadashboard.svg'
+  },
+  {
+    label: '潜才培养管理',
+    icon: 'shouye-qiancai.svg'
+  },
+  {
+    label: '新人培养管理',
+    icon: 'shouye-xinrenpeiyang.svg'
+  },
+  {
+    label: '校招轮岗管理',
+    icon: 'shouye-xiaozhao.svg'
+  },
+  {
+    label: '学习档案',
+    icon: 'shouye-xuexidangan.svg'
+  }
 ]
 
 // 训练营eoa审批状态
 export const TRAIN_EOA_STATUS = [
-{
-  label: '草稿中',
-  value: '02000'
-},
-{
-  label: '审批中',
-  value: '02001'
-},
-{
+  {
+    label: '草稿中',
+    value: '02000'
+  },
+  {
+    label: '审批中',
+    value: '02001'
+  },
+  {
     label: '已通过',
     value: '02002'
   },
@@ -322,10 +172,12 @@ export const TRAIN_STATUS = [
 export const LINE_LS = 'LS'
 export const LINE_FL = 'FL'
 export const LINE_JF = 'JF'
+export const LINE_CX = 'CX'
 export const LINE_MAP = {
   [LINE_LS]: '零售',
   [LINE_FL]: '非零',
-  [LINE_JF]: '金服'
+  [LINE_JF]: '金服',
+  [LINE_CX]: '橙信'
 }
 
 // 课程表讲师和课程类型
@@ -367,71 +219,71 @@ export const SPARK_APPLY_TYPE = [
 ]
 // 星火计划申请管理审批状态
 export const SPARK_APPLY_STATUS = [
-    { label: '未提交', value: '02000' },
-    { label: '审批中', value: '02001' },
-    { label: '已通过', value: '02002' },
-    { label: '已退回', value: '02003' },
-    { label: '已撤回', value: '02004' }
-  ]
-  // 报销中心发起报销TAB状态
-  export const REIMBURSE_DETAILS_TABS = [
-    { label: '报账明细', name: 'BZMX' },
-    { label: '挂账信息', name: 'GZXX' },
-    { label: '核销信息', name: 'HXXX' },
-    { label: '差旅信息', name: 'CLXX' },
-    { label: '审批记录', name: 'SPJL' },
-    { label: '咨询记录', name: 'ZXJL' },
-    { label: '影像信息', name: 'YXXX' }
-  ]
-  
-  // 智推训练营系列状态map
-  const TRAINING_STATUS_UNSTART = 0
-  const TRAINING_STATUS_DOING = 1
-  const TRAINING_STATUS_DONE = 2
-  export const TRAINING_STAGE_SERIES_STATUS = {
-    [TRAINING_STATUS_UNSTART]: '未开始',
-    [TRAINING_STATUS_DOING]: '进行中',
-    [TRAINING_STATUS_DONE]: '已完成'
+  { label: '未提交', value: '02000' },
+  { label: '审批中', value: '02001' },
+  { label: '已通过', value: '02002' },
+  { label: '已退回', value: '02003' },
+  { label: '已撤回', value: '02004' }
+]
+// 报销中心发起报销TAB状态
+export const REIMBURSE_DETAILS_TABS = [
+  { label: '报账明细', name: 'BZMX' },
+  { label: '挂账信息', name: 'GZXX' },
+  { label: '核销信息', name: 'HXXX' },
+  { label: '差旅信息', name: 'CLXX' },
+  { label: '审批记录', name: 'SPJL' },
+  { label: '咨询记录', name: 'ZXJL' },
+  { label: '影像信息', name: 'YXXX' }
+]
+
+// 智推训练营系列状态map
+const TRAINING_STATUS_UNSTART = 0
+const TRAINING_STATUS_DOING = 1
+const TRAINING_STATUS_DONE = 2
+export const TRAINING_STAGE_SERIES_STATUS = {
+  [TRAINING_STATUS_UNSTART]: '未开始',
+  [TRAINING_STATUS_DOING]: '进行中',
+  [TRAINING_STATUS_DONE]: '已完成'
+}
+
+// 是否映射关系
+export const YES_STATUS = 'Y'
+export const NO_STATUS = 'N'
+export const yesOrNoMap = [
+  {
+    label: '是',
+    value: YES_STATUS
+  },
+  {
+    label: '否',
+    value: NO_STATUS
   }
-  
-  // 是否映射关系
-  export const YES_STATUS = 'Y'
-  export const NO_STATUS = 'N'
-  export const yesOrNoMap = [
-    {
-      label: '是',
-      value: YES_STATUS
-    },
-    {
-      label: '否',
-      value: NO_STATUS
-    }
-  ]
-  // 培训立项培训形式形式
-  export const TRAININGMODE = [
-    {
-      label: '线上',
-      value: '1'
-    },
-    {
-      label: '线下',
-      value: '2'
-    },
-    {
-      label: '线上+线下',
-      value: '3'
-    }
-  ]
-  //培训班状态
-  export const TRAININGSTATE = [
-    {
-      value: '02003',
-      label: '已结训'
-    },
-    {
-      value: '02002',
-      label: '进行中'
-    }
+]
+// 培训立项培训形式形式
+export const TRAININGMODE = [
+  {
+    label: '线上',
+    value: '1'
+  },
+  {
+    label: '线下',
+    value: '2'
+  },
+  {
+    label: '线上+线下',
+    value: '3'
+  }
+]
+//培训班状态
+export const TRAININGSTATE = [
+  {
+    value: '02003',
+    label: '已结训'
+  },
+  {
+    value: '02002',
+    label: '进行中'
+  }
 ]
 
 export const YES_INT = '1'
@@ -485,4 +337,3 @@ export const ROLE_CODE = {
   SUPER_ADAMIN_BM: '20008', // 部门超管
   SUPER_ADAMIN_FH: '20009', // 分行超管
 }
-  

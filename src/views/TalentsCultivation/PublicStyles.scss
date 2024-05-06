@@ -1,0 +1,91 @@
+.search-card {
+    overflow: unset;
+  }
+  
+  .talents-container {
+    width: 100%;
+    min-height: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .table-options-label {
+    .item {
+      display: inline-block;
+      margin-right: 10px;
+      position: relative;
+  
+      &::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 15px;
+        background-color: $themeColor;
+        position: absolute;
+        top: 0;
+        right: -5px;
+        z-index: 1;
+      }
+  
+      &:last-child::after {
+        display: none;
+      }
+    }
+  }
+  
+  $base-margin: 15px;
+  
+  .main-box {
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main-container {
+    min-width: 50%;
+  }
+  
+  .talents-container {
+    .title {
+      margin-bottom: $base-margin;
+    }
+  
+    .tips {
+      display: inline-block;
+      margin-left: $base-margin;
+      color: rgb(#000, 0.4);
+    }
+  }
+  
+  .base-info-form {
+    margin-top: $base-margin;
+  }
+  
+  .base-info-item {
+    width: 49%;
+  }
+  
+  
+  .event-link {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: auto;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $themeColor;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }

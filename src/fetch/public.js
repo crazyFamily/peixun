@@ -22,12 +22,6 @@ export const fetchFixedTree = (params) => httpServe('/fn/user/selectFixedTree', 
 export const APIAllTree = '/fn/user/selectAllTree'
 export const fetchAllTree = (params) => httpServe(APIAllTree, params)
 
-// 上传附件， 类型支持多
-export const fetchUploadNewFileForCustom = (params, options) =>
-  httpServe('/common/file/uploadNewFileForCustom', params, {
-    ...dataHeaders,
-    ...options
-  })
 
 // 上传附件， 类型支持多
 export const fetchUploadNewFile = (params, options) =>
@@ -73,8 +67,7 @@ export const fetchListFixedChain = (params) => httpServe('/fn/commons/eoa/listFi
 
 
 // 上传图片
-export const fetchCourseImgUpload = (params) =>
-  httpServe('/common/lixiang/shareFee', params)
+export const fetchCourseImgUpload = (params) => httpServe('/common/lixiang/shareFee', params)
   
 // 获取udmp预约接口返回的关键信息
 export const fetchUdmpReserve = (params) => httpServe('/fn/commons/udmp/udmpReserve', params)
@@ -83,4 +76,4 @@ export const fetchUdmpReserve = (params) => httpServe('/fn/commons/udmp/udmpRese
 export const fetchUDMPEnsureDoc = (params) => httpServe('/fn/commons/udmp/ensureDoc', params)
 
 // 文档获取接口
-export const fetchUDMPDownload = (params) => httpServe('/fn/commons/udmp/getDocuments', params)
+export const fetchUDMPDownload = (params) => httpServe('/fn/commons/udmp/getDocuments', params,{ loading: 'LOADING_FETCH_UDMP_DOWNLOAD' })

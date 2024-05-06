@@ -86,6 +86,7 @@ Form.mounted = function() {
     e.preventDefault()
   })
 }
+
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.use(Autocomplete)

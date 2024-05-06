@@ -55,7 +55,7 @@ export const fetchBatchImportAuthUsers = (params, options) =>
   })
 
 // 确认导入
-export const fetchImportUser = (params) => httpServe('/fn/qc/foster/importUser', {...params, tip: 'Y'})
+export const fetchImportUser = (params) => httpServe('/fn/qc/foster/importUser', { ...params, tip: 'Y' })
 
 // 查询方案列表
 export const fetchQcFosterPlanList = (params) =>
@@ -213,25 +213,24 @@ export const fetchSavePlanTeamsEvaluate = (params) => httpServe('/fn/qc/foster/s
 export const fetchBatchImportQcPlanTeams = (params) => httpServe('/common/qc/batchImportQcPlanTeams', params)
 // 导出学员失败信息
 export const fetchExportFailedPlanTeamsInfo = (params) =>
-httpServe('/fn/qc/foster/exportFailedPlanTeamsInfo', params, {
-  headers: { responseType: 'blob' }
-})
+  httpServe('/fn/qc/foster/exportFailedPlanTeamsInfo', params, {
+    headers: { responseType: 'blob' }
+  })
 // 确认添加学员
 export const fetchHandleQcPlanTeamsInfo = (params) => httpServe('/fn/qc/foster/handleQcPlanTeamsInfo', params)
 // 查询学员
-export const fetchListPlanTeams = ({data}) => httpServe('/fn/qc/foster/listPlanTeams', {data: {...data, tip: 'Y'}})
+export const fetchListPlanTeams = ({ data }) => httpServe('/fn/qc/foster/listPlanTeams', { data: { ...data, tip: 'Y' } })
 // 导出学员
 export const fetchExportListPlanTeams = ({ data }) =>
-httpServe(
-  '/fn/qc/foster/listPlanTeams',
-  { data: { ...data, tip: 'N' } },
-  {
-    headers: { responseType: 'blob' }
-  }
+  httpServe(
+    '/fn/qc/foster/listPlanTeams',
+    { data: { ...data, tip: 'N' } },
+    {
+      headers: { responseType: 'blob' }
+    }
   )
 // 删除学员
 export const fetchDeletePlanTeams = (params) => httpServe('/fn/qc/foster/deletePlanTeams', params)
-
 
 // 提交督办
 export const fetchSaveSuperviseAndHandle = (params) => httpServe('/fn/qc/foster/saveSuperviseAndHandle', params)
@@ -239,8 +238,7 @@ export const fetchSaveSuperviseAndHandle = (params) => httpServe('/fn/qc/foster/
 // 查看督办
 export const fetchFindSuperviseAndHandleDetail = (params) => httpServe('/fn/qc/foster/findSuperviseAndHandleDetail', params)
 // 培养进展列表
-export const fetchListFosterProgress = ({data}) =>
-httpServe('/fn/qc/foster/listFosterProgress', { data: { ...data, tip: 'Y' } })
+export const fetchListFosterProgress = ({ data }) => httpServe('/fn/qc/foster/listFosterProgress', { data: { ...data, tip: 'Y' } })
 
 // 培养进展列表导出
 export const fetchExportListFosterProgress = ({ data }) =>
@@ -259,5 +257,5 @@ export const fetchUpdateFosterProgress = (params) => httpServe('/fn/qc/foster/up
 export const fetchFosterProgressDetail = (params) => httpServe('/fn/qc/foster/fosterProgressDetail', params)
 
 //  潜才项目进展收集
-export const fetchSaveFosterProgress = (params) => httpServe('/fn/qc/foster/saveFosterProgress', params, { loading: 'LOADING_TANLENTS_PROGRESS_CREATE' })
-
+export const fetchSaveFosterProgress = (params) =>
+  httpServe('/fn/qc/foster/saveFosterProgress', params, { loading: 'LOADING_TANLENTS_PROGRESS_CREATE' })

@@ -3,7 +3,7 @@
     <div class="global-aside">
       <div class="hrx-home-logo" @click="gopath('/')">
         <img class="small" v-show="collapse" src="../assets/images/home/logo.png" />
-        <img class="big" v-show="!collapse" src="../assets/svg/head-pa-bank-logo.png" />
+        <img class="big" v-show="!collapse" :src="systemConfigParameters().headLogo" />
       </div>
       <div class="menu-wrapper">
         <el-menu
@@ -36,7 +36,7 @@
                 <el-menu-item @click="gopath(itemChildren.menuLink)" :index="`${index + 2}-${indexChildren + 1}`">
                   <span class="menu-zero">.</span>
                   {{ itemChildren.menuName }}
-               </el-menu-item>
+                </el-menu-item>
               </div>
             </template>
           </el-submenu>
@@ -51,11 +51,11 @@
 
 <script>
 import $ from 'jquery'
-import { addAllowKeepAlive } from '../util/utils'
+import { addAllowKeepAlive, systemConfigParameters } from '../util/utils'
 export default {
   data() {
     return {
-      collapse: true,
+      collapse: false,
       iconMaping: {
         数据大屏: 'el-icon-menu el-icon-menu-16',
         首页运营: 'el-icon-message el-icon-menu',
@@ -74,9 +74,11 @@ export default {
         AI陪练: 'el-icon-menu el-icon-menu-12',
         潜才培养管理: 'el-icon-menu el-icon-menu-13',
         新人培养管理: 'el-icon-menu el-icon-menu-15',
+        校招轮岗管理: 'el-icon-menu el-icon-menu-17',
+        学习档案: 'el-icon-menu el-icon-menu-18'
         // 资讯管理: "el-icon-menu el-icon-menu-12",
       },
-     localdata: {
+      localdata: {
         blgStripLine: 'Y',
         deptno: 'S000000342',
         empName: '罗冠人',
@@ -124,7 +126,7 @@ export default {
               //   pageSort: null,
               //   prnMenuId: '20200000000'
               // },
-            {
+              {
                 menuId: '2020000000031',
                 menuLink: '/SpecialManage',
                 menuLvl: 2,
@@ -181,7 +183,7 @@ export default {
                 pageSort: 3,
                 prnMenuId: '20300000000'
               },
-           {
+              {
                 menuId: '20304000000',
                 menuLink: '/InstructorEvaluation',
                 menuLvl: 2,
@@ -230,7 +232,7 @@ export default {
                 pageSort: 5,
                 prnMenuId: '20310000000'
               },
-            {
+              {
                 menuId: '21200000008',
                 menuLink: '/PointManagement',
                 menuLvl: 2,
@@ -271,7 +273,7 @@ export default {
                 pageSort: 2,
                 prnMenuId: '20600000000'
               },
-            {
+              {
                 menuId: '20640000000',
                 menuLink: '/MyReimbursement',
                 menuLvl: 2,
@@ -320,7 +322,7 @@ export default {
                 pageSort: 3,
                 prnMenuId: '20900000000'
               },
-        {
+              {
                 menuId: '20950000000',
                 menuLink: '/CurriculumStorageManagement',
                 menuLvl: 2,
@@ -334,14 +336,6 @@ export default {
                 menuLvl: 2,
                 menuName: '知鸟课程存档',
                 pageSort: 3,
-                prnMenuId: '20900000000'
-              },
-              {
-                menuId: '20960000000',
-                menuLink: '/LadderManagenebt',
-                menuLvl: 2,
-                menuName: '阶梯培训管理',
-                pageSort: 4,
                 prnMenuId: '20900000000'
               }
             ],
@@ -369,7 +363,7 @@ export default {
                 pageSort: 1,
                 prnMenuId: '20520000000'
               },
-         {
+              {
                 menuId: '21141000000',
                 menuLink: '/ScheduleManagmnet',
                 menuLvl: 2,
@@ -390,7 +384,7 @@ export default {
                 menuId: '21110000000',
                 menuLink: '/AnnualPlan',
                 menuLvl: 2,
-                menuName: '年度计划',
+                menuName: '年度计划制定',
                 pageSort: 1,
                 prnMenuId: '21000000000'
               },
@@ -414,12 +408,12 @@ export default {
                 menuId: '21120000000',
                 menuLink: '/PlanManagement',
                 menuLvl: 2,
-                menuName: '计划管理',
+                menuName: '年度计划管理',
                 pageSort: 1,
                 prnMenuId: '21000000000'
               }
             ],
-           menuId: '21100000000',
+            menuId: '21100000000',
             menuLink: '#',
             menuLvl: 1,
             menuName: '培训计划管理',
@@ -481,6 +475,14 @@ export default {
               {
                 menuId: '21061000000',
                 menuLvl: 2,
+                menuLink: '/QuickDemo',
+                menuName: '快搭DEMO',
+                pageSort: 4,
+                prnMenuId: '21060000000'
+              },
+              {
+                menuId: '21061000000',
+                menuLvl: 2,
                 menuLink: '/EstablishProject',
                 menuName: '培训项目立项',
                 pageSort: 1,
@@ -535,7 +537,7 @@ export default {
                 pageSort: 4,
                 prnMenuId: '21070000000'
               },
-           {
+              {
                 menuId: '20307000000',
                 menuLink: '/CRSuperTubeCenter',
                 menuLvl: 2,
@@ -583,11 +585,11 @@ export default {
                 pageSort: 9,
                 prnMenuId: '21070000000'
               },
-            {
+              {
                 menuId: '20307000000',
                 menuLink: '/CRNoteManagement',
                 menuLvl: 2,
-                menuName: '笔记管理',
+                menuName: '评论管理',
                 pageSort: 10,
                 prnMenuId: '21070000000'
               }
@@ -640,7 +642,7 @@ export default {
                 pageSort: 2,
                 prnMenuId: '20510000000'
               }
-           ],
+            ],
             menuId: '20510000000',
             menuLink: '#',
             menuLvl: 1,
@@ -690,7 +692,7 @@ export default {
                 prnMenuId: '21000000000'
               }
             ],
-          menuId: '20500000000',
+            menuId: '20500000000',
             menuLink: '#',
             menuLvl: 1,
             menuName: '系统管理',
@@ -738,7 +740,7 @@ export default {
                 pageSort: 1,
                 prnMenuId: '20500000005'
               },
-           {
+              {
                 menuId: '210100000015',
                 menuLink: '/TalentsProgress',
                 menuLvl: 2,
@@ -761,7 +763,7 @@ export default {
                 menuName: '潜才培养追踪',
                 pageSort: 1,
                 prnMenuId: '20500000005'
-              },
+              }
             ],
             menuId: '20500000005',
             menuLink: '#',
@@ -795,7 +797,7 @@ export default {
                 pageSort: 2,
                 prnMenuId: '20500000006'
               },
-            {
+              {
                 menuId: '210100000013',
                 menuLink: '/OfflineOperation',
                 menuLvl: 2,
@@ -809,6 +811,56 @@ export default {
             menuLvl: 1,
             menuName: '新人培养管理',
             pageSort: 18
+          },
+          {
+            childMenus: [
+              {
+                menuId: '231100000001',
+                menuLink: '/RotationTraining',
+                menuLvl: 2,
+                menuName: '轮岗培养',
+                pageSort: 1,
+                prnMenuId: '20500000007'
+              },
+              {
+                menuId: '231100000002',
+                menuLink: '/TrainingPlanConfiguration',
+                menuLvl: 2,
+                menuName: '培养方案配置',
+                pageSort: 2,
+                prnMenuId: '20500000007'
+              },
+            ],
+            menuId: '20500000007',
+            menuLink: '#',
+            menuLvl: 1,
+            menuName: '校招轮岗管理',
+            pageSort: 19
+          },
+          {
+            childMenus: [
+              {
+                menuId: '240100000001',
+                menuLink: '/EmployeeFiles',
+                menuLvl: 2,
+                menuName: '我的档案',
+                pageSort: 1,
+                prnMenuId: '20500000008'
+              },
+              {
+                menuId: '240100000002',
+                menuLink: '/TotalDocuments',
+                menuLvl: 2,
+                menuName: '学员档案',
+                pageSort: 1,
+                prnMenuId: '20500000008'
+              }
+            ],
+            menuId: '20500000008',
+            menuLink: '#',
+            menuLvl: 1,
+            menuName: '学习档案',
+            pageSort: 21
           }
         ],
         thirdLvlMenuList: [
@@ -853,7 +905,7 @@ export default {
             menuLink: '#',
             menuName: '功能开关类',
             menuLvl: 3,
-          pageSort: 20,
+            pageSort: 20,
             childMenus: null,
             prnMenuId: '20599000000'
           },
@@ -909,7 +961,7 @@ export default {
             menuLvl: 3,
             pageSort: 2,
             childMenus: null,
-           prnMenuId: '20710000000'
+            prnMenuId: '20710000000'
           },
           {
             menuId: '20700000005',
@@ -965,7 +1017,7 @@ export default {
             childMenus: null,
             prnMenuId: '21200000002'
           },
-         {
+          {
             menuId: '2070530000012',
             menuLink: '/PointCalculate',
             menuName: '积分计算',
@@ -1019,7 +1071,7 @@ export default {
             childMenus: null,
             prnMenuId: '20710000000'
           },
-         {
+          {
             menuId: '2023180000001',
             menuLink: '#',
             menuName: '培训班与讲师',
@@ -1054,6 +1106,24 @@ export default {
             pageSort: 2,
             childMenus: null,
             prnMenuId: '21200000010'
+          },
+          {
+            menuId: '2023180000005',
+            menuLink: '#',
+            menuName: '智能推课管理',
+            menuLvl: 3,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '21200000010'
+          },
+          {
+            menuId: '2023180000006',
+            menuLink: '#',
+            menuName: '继续教育与年审管理',
+            menuLvl: 3,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '21200000010'
           }
         ],
         fourLvlMenuList: [
@@ -1066,7 +1136,7 @@ export default {
             childMenus: null,
             prnMenuId: '20509000001'
           },
-     {
+          {
             menuId: '20522000000',
             menuLink: '/RoleFunctionManagement',
             menuName: '角色功能管理',
@@ -1094,18 +1164,18 @@ export default {
             prnMenuId: '20700000012'
           },
           {
-            menuId: '20701000011',
-            menuLink: '/ExternalPlanReport',
-            menuName: '计划外培训项目明细表',
+            menuId: '20701000012',
+            menuLink: '/TrainingPlanExecuteReport',
+            menuName: '培训计划执行明细表',
             menuLvl: 4,
             pageSort: 1,
             childMenus: null,
             prnMenuId: '20700000012'
           },
           {
-            menuId: '20701000012',
-            menuLink: '/TrainingPlanExecuteReport',
-            menuName: '培训计划执行明细表',
+            menuId: '20701000011',
+            menuLink: '/ExternalPlanReport',
+            menuName: '计划外培训项目明细表',
             menuLvl: 4,
             pageSort: 1,
             childMenus: null,
@@ -1119,7 +1189,7 @@ export default {
             pageSort: 1,
             childMenus: null,
             prnMenuId: '20700000012'
-         },
+          },
           {
             menuId: '20701000000',
             menuLink: '/TutorAllowance',
@@ -1174,7 +1244,7 @@ export default {
             childMenus: null,
             prnMenuId: '20700000003'
           },
-        {
+          {
             menuId: '20705000000',
             menuLink: '/KpiTable',
             menuName: '机构培训KPI报表',
@@ -1228,7 +1298,7 @@ export default {
             childMenus: null,
             prnMenuId: '20700000005'
           },
-       {
+          {
             menuId: '20706000000',
             menuLink: '/PerCapitaHour',
             menuName: '机构人均课时报表',
@@ -1282,7 +1352,7 @@ export default {
             childMenus: null,
             prnMenuId: '20700000007'
           },
-         {
+          {
             menuId: '20706000000',
             menuLink: '/OnlineStatistic',
             menuName: '案例学习统计报表',
@@ -1336,7 +1406,7 @@ export default {
             childMenus: null,
             prnMenuId: '21202000001'
           },
-  {
+          {
             menuId: '20705300000',
             menuLink: '/LiveRecord',
             menuName: '直播记录',
@@ -1390,7 +1460,7 @@ export default {
             childMenus: null,
             prnMenuId: '2023180000001'
           },
-        {
+          {
             menuId: '2070530000019',
             menuLink: '/YBLecturerCurricularRD',
             menuName: '银保讲师课程研发管理',
@@ -1435,7 +1505,7 @@ export default {
             childMenus: null,
             prnMenuId: '2023180000002'
           },
-         {
+          {
             menuId: '2070530000023',
             menuLink: '/ZNBusinessZone',
             menuName: '知鸟业务专区',
@@ -1480,12 +1550,58 @@ export default {
             childMenus: null,
             prnMenuId: '2023180000004'
           },
+          {
+            menuId: '2070530000029',
+            menuLink: '/PublishSummarize',
+            menuName: '发布总结管理',
+            menuLvl: 4,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '2023180000004'
+          },
+          {
+            menuId: '2070530000030',
+            menuLink: '/LearningSpecialTopic',
+            menuName: '学习专题管理',
+            menuLvl: 4,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '2023180000005'
+          },
+          // .....
+          {
+            menuId: '2070530000031',
+            menuLink: '/LearningSpecialTopic',
+            menuName: '继续教育专区管理',
+            menuLvl: 4,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '2023180000006'
+          },
+          // {
+          //   menuId: '2070530000032',
+          //   menuLink: '/LearningSpecialTopic',
+          //   menuName: '年审进展查询',
+          //   menuLvl: 4,
+          //   pageSort: 2,
+          //   childMenus: null,
+          //   prnMenuId: '2023180000006'
+          // },
+          {
+            menuId: '2070530000033',
+            menuLink: '/ContinuingEducationLearningDetail',
+            menuName: '继续教育学习明细',
+            menuLvl: 4,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '2023180000006'
+          },
 
           {
             menuId: '207053000001',
             menuLink: '/OrganizationStaff',
             menuName: '机构员工学时清单明细',
-           menuLvl: 4,
+            menuLvl: 4,
             pageSort: 2,
             childMenus: null,
             prnMenuId: '20700000004'
@@ -1503,6 +1619,15 @@ export default {
             menuId: '2070530000011',
             menuLink: '/UserFeedback',
             menuName: '用户反馈',
+            menuLvl: 4,
+            pageSort: 2,
+            childMenus: null,
+            prnMenuId: '20509000015'
+          },
+          {
+            menuId: '2070530000011',
+            menuLink: '/FlOrgManagement',
+            menuName: '非零架构树管理',
             menuLvl: 4,
             pageSort: 2,
             childMenus: null,
@@ -1535,7 +1660,7 @@ export default {
             childMenus: null,
             prnMenuId: '20700000008'
           },
-         {
+          {
             menuId: '20730000006',
             menuLink: '/LadderCoverage',
             menuName: '岗位阶梯覆盖率报表',
@@ -1579,10 +1704,11 @@ export default {
             pageSort: 7,
             childMenus: null,
             prnMenuId: '20700000006'
-          },
+          }
         ],
         umId: 'LUOGUANREN063'
-      }
+      },
+      systemConfigParameters
     }
   },
   methods: {
@@ -1594,7 +1720,7 @@ export default {
       if (parm != undefined) {
         this.$router.push({
           path,
-         query: {
+          query: {
             postId: parm
           }
         })
@@ -1709,7 +1835,7 @@ export default {
       .el-icon-menu-7:before {
         background-image: url('../assets/svg/baobiaozhongxin.svg');
       }
-   .el-icon-menu-8:before {
+      .el-icon-menu-8:before {
         background-image: url('../assets/svg/lixiang.svg');
       }
       .el-icon-menu-9:before {
@@ -1735,6 +1861,12 @@ export default {
       }
       .el-icon-menu-16:before {
         background-image: url('../assets/svg/data-dashboard.svg');
+      }
+      .el-icon-menu-17:before {
+        background-image: url('../assets/svg/xiaozhao.svg');
+      }
+      .el-icon-menu-18:before {
+        background-image: url('../assets/svg/xuexidangan.svg');
       }
       span {
         color: #ffffff;
@@ -1771,7 +1903,7 @@ export default {
       &-3:before {
         background-image: url('../assets/svg/jiangshi--hui.svg');
       }
-  &-4:before {
+      &-4:before {
         background-image: url('../assets/svg/kechengguanlihui.svg');
       }
       &-5:before {
@@ -1810,6 +1942,12 @@ export default {
       &-16:before {
         background-image: url('../assets/svg/data-dashboard.svg');
       }
+      &-17:before {
+        background-image: url('../assets/svg/xiaozhao.svg');
+      }
+      &-18:before {
+        background-image: url('../assets/svg/xuexidangan.svg');
+      }
     }
 
     .el-icon-message:before {
@@ -1833,7 +1971,7 @@ export default {
       }
     }
   }
- .el-menu--collapse .el-submenu {
+  .el-menu--collapse .el-submenu {
     .el-submenu__title {
       text-align: center;
     }

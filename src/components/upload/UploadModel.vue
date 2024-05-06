@@ -51,7 +51,7 @@ import store from '@/store'
 import { Message } from 'element-ui'
 import { ref, reactive, nextTick, watch, computed } from 'vue'
 import { uploadFile, getCurrentTime } from '@/util/utils'
-import { fetchUploadNewFile, fetchUploadNewFileForCustom } from '@/fetch/public'
+import { fetchUploadNewFile } from '@/fetch/public'
 import { UPLOAD_STATUS_SCZ, UPLOAD_STATUS_SCCG, UPLOAD_STATUS_YSC } from './emun'
 import { getUdmpToken, uploadFileToUdmp, updateId as updateUdmpId, getUdmpFileInfo } from '@/util/udmp'
 
@@ -95,10 +95,6 @@ const props = defineProps({
   originalList: { // 回显文件列表
     type: Array,
     default: () => []
-  },
-  useUdmp: {
-    type: Boolean,
-    default: false
   }
 })
 const isDialogShow = ref(false)
@@ -169,18 +165,6 @@ watch(() => props.accept, (n) => {
 }, { immediate: true })
 
 const isIntercept = ref(false)
-function _formatData(file) {
-  let data = new FormData()
-  data.append('isSave', 'N')
-  data.append('isReplace', 'N')
-  data.append('files', file)
-  if (props.params) {
-    Object.keys(props.params).forEach((item) => {
-      data.append(item, props.params[item])
-    })
-  }
-  return data
-}
 // 上传文件控制
 function uploadInterceptor(file) {
   isIntercept.value = false
@@ -192,12 +176,7 @@ function uploadInterceptor(file) {
 }
 
 function handleUpload({ file }) {
-  // 做逻辑分流，如果设置了使用UDMP，则走UDMP上传逻辑
-  if(props.useUdmp) {
-    udmpUpload({ file })
-  } else {
-    orginUpload({ file })
-  }
+  udmpUpload({ file })
 }
 
 const currentFileUid = ref('')
@@ -222,39 +201,11 @@ function udmpUpload({ file }) {
 }
 
 // 监听状态更新
-if(props.useUdmp) {
-  watch(updateUdmpId, () => {
-    const thisFile = fileDataList.value.find(m => m.uid === currentFileUid.value)
-    // 以当前逻辑并没有多个文件的场景，如有需求扩展再做修改
-    thisFile.percentage = getUdmpFileInfo()?.[0].uploadProgress
-  })
-}
-
-function orginUpload({ file }) {
-  if (isIntercept.value) return
-  addFile(fileDataList.value, file)
-  const data = _formatData(file)
-  const thisFile = fileDataList.value.find(m => m.uid === file.uid)
-  fetchUploadNewFileForCustom(data, {
-    onUploadProgress: (obj) => {
-      const { lengthComputable, loaded, total } = obj
-      const percentage = Math.floor((loaded / total) * 100)
-      // console.log(lengthComputable, loaded, total, percentage)
-      if (lengthComputable && thisFile && percentage < 100) {
-        thisFile.percentage = percentage
-      }
-    }
-  })
-  .then(res => {
-    if (res.length) {
-      const [fileData] = res
-      thisFile.udmpId = fileData.udmpId
-      thisFile.sizes = fileData.sizes
-      thisFile.percentage = '上传成功'
-      thisFile.uploadStatus = UPLOAD_STATUS_SCCG // 上传成功
-    }
-  })
-}
+watch(updateUdmpId, () => {
+  const thisFile = fileDataList.value.find(m => m.uid === currentFileUid.value)
+  // 以当前逻辑并没有多个文件的场景，如有需求扩展再做修改
+  thisFile.percentage = getUdmpFileInfo()?.[0].uploadProgress
+})
 
 function reset () {
   fileDataList.value = []

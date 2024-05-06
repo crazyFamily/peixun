@@ -13,7 +13,8 @@ export default {
   props: {
     maxLen: Number,
     contentText: String,
-    width: String
+    width: String,
+    allowUpload:{type:Boolean,default:true}
   },
   data() {
     return {
@@ -58,12 +59,17 @@ export default {
       // 22: "undo"
       // 23: "redo"
       let menus = editor.config.menus
+      let excludeArr = ['code', 'video', 'quote', 'todo', 'redo', 'fullscreen']
+      if(!this.allowUpload){
+        excludeArr.push('image')
+      }
       editor.config.menus = menus.filter(
         (item) =>
-          !['code', 'video', 'quote', 'todo', 'redo', 'fullscreen'].includes(
+          !excludeArr.includes(
             item
           )
       )
+      
       editor.config.uploadImgMaxLength = 1
       editor.config.customUploadImg = (files, insert) => {
         uploadFile({
@@ -84,20 +90,26 @@ export default {
       }
       editor.create()
       this.editor = editor
+    },
+    enable(){
+      this.editor.enable()
+    },
+    disable(){
+      this.editor.disable()
     }
   },
   watch: {
     contentText: {
       handler(n) {
         if (n) {
-          this.editor && this.editor.txt.html(n)
+          this.editor && this.editor.txt.html(this.$xss(n))
         }
       },
       immediate: true
     }
   },
   beforeDestroy() {
-    this.editor.destroy()
+    this.disable()
     this.editor = null
   }
 }

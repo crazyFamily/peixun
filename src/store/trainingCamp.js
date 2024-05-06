@@ -118,127 +118,126 @@ export default {
     },
     // 复制信息
     [UPDATE_DETAIL_COPY](state, detailInfo) {
-        state.loading = false
-        // 训练营详情信息
-        Object.keys(detailInfo).forEach((key) => {
-          if (!copyEmptyKey.includes(key)) {
-            state[key] = detailInfo[key]
-          }
-          if (key === 'trainingStageList') {
-            const list = detailInfo[key].map((item, index) => {
-              const stageSeriesList = computedSeries(item.stageSeriesList)
-              item.startTime = null
-              item.endTime = null
-              item.id = null
-              return {
-                ...item,
-                name: String(index + 1),
-                stageSeriesList,
-                timeRange:
-                  item.startTime && item.endTime
-                    ? [item.startTime, item.endTime]
-                    : ''
-              }
-            })
-            state[key] = list
-          }
-        })
-        console.log('UPDATE_DETAIL', state, detailInfo)
-      },
-      [SET_ERR](state, error) {
-        // state['validate'] = { ...error, error }
-        state['error'] = error
-      },
-      // [CLEAN_ERR](state, { active: index }) {
-      //   state['validate'] = _.omit(state.validate, index)
-      // }
-      [SET_APPROVAL_LIST](state, data) {
-        const { classInfoDTOList } = state
-        let flatList = []
-        function cycle(list = []) {
-          list.forEach(item => {
-            if (item.stageSeriesList?.length > 0) {
-              cycle(item.stageSeriesList)
-            } else {
-              flatList.push(item)
+      state.loading = false
+      // 训练营详情信息
+      Object.keys(detailInfo).forEach((key) => {
+        if (!copyEmptyKey.includes(key)) {
+          state[key] = detailInfo[key]
+        }
+        if (key === 'trainingStageList') {
+          const list = detailInfo[key].map((item, index) => {
+            const stageSeriesList = computedSeries(item.stageSeriesList)
+            item.startTime = null
+            item.endTime = null
+            item.id = null
+            return {
+              ...item,
+              name: String(index + 1),
+              stageSeriesList,
+              timeRange:
+                item.startTime && item.endTime
+                  ? [item.startTime, item.endTime]
+                  : ''
             }
           })
+          state[key] = list
         }
-        cycle(data)
-        const classList = flatList.filter(item => item.type === 'class')
-        const res = classList.map(item => {
-          const info = (classInfoDTOList || []).find(i => i.classId === item.relationId)
-          console.log('info', info);
-          // 存在相同的 线下培训
-          if (info) {
-            return {
-              relationId: info.classId,
-              applyName: info.applyName,
-              applyUmId: info.applyUmId
-            }
-          } else {
-            return {
-              relationId: item.relationId,
-              applyName: item.applyName,
-              applyUmId: item.applyUmId
-            }
-          }
-        })
-        console.log('SET_APPROVAL_LIST', flatList, classList, classInfoDTOList);
-        console.log('SET_APPROVAL_LIST', res);
-        state.classInfoDTOList = res
-      },
-      [OPERATE_STATUS](state, data) {
-        state.operateStatus = data
-      },
-      [SET_EOA_STATUS](state, data) {
-        state.eoaStatus = data
-      }
+      })
+      console.log('UPDATE_DETAIL', state, detailInfo)
     },
-    actions: {
-        [SAVE_DRAFT](state, data) {
-          //调用 训练营保存草稿接口
-          console.log('SAVE_DRAFT', data)
-        },
-        [SUBMIT]({ state, commit, rootState }, { type, id }) {
-          //调用 训练营提交接口
-          return new Promise(async function (resolve, reject) {
-            if (state.error) {
-              resolve(false)
-            }
-            const fields = [
-              'trainingName',
-              'introduce',
-              'backgroundUdmp',
-              'ifNotShow',
-              'orgId',
-              'classAdviserUms',
-              'startTime',
-              'endTime',
-              'trainingAbility',
-              'auditUsers',
-              'auditUsersUm',
-              'auditUsersName',
-              'umIds',
-              'trainingStageList'
-            ]
-    
-            const submitData = _.pick(state, fields)
-            try {
-              await saveTrainingInfo({ ifDraft: type, data: { ...submitData, id: id } })
-              resolve(true)
-            } catch (error) {
-              reject(error)
-            }
-          })
-        },
-        async getDetailData({ state, commit, rootState }, { id, copy }) {
-          state.loading = true
-          const data = await queryTrainingDetail({ id })
-          copy ? commit(UPDATE_DETAIL_COPY, data) : commit(UPDATE_DETAIL, data)
+    [SET_ERR](state, error) {
+      // state['validate'] = { ...error, error }
+      state['error'] = error
+    },
+    // [CLEAN_ERR](state, { active: index }) {
+    //   state['validate'] = _.omit(state.validate, index)
+    // }
+    [SET_APPROVAL_LIST](state, data) {
+      const { classInfoDTOList } = state
+      let flatList = []
+      function cycle(list = []) {
+        list.forEach(item => {
+          if (item.stageSeriesList?.length > 0) {
+            cycle(item.stageSeriesList)
+          } else {
+            flatList.push(item)
+          }
+        })
+      }
+      cycle(data)
+      const classList = flatList.filter(item => item.type === 'class')
+      const res = classList.map(item => {
+        const info = (classInfoDTOList || []).find(i => i.classId === item.relationId)
+        console.log('info', info);
+        // 存在相同的 线下培训
+        if (info) {
+          return {
+            relationId: info.classId,
+            applyName: info.applyName,
+            applyUmId: info.applyUmId
+          }
+        } else {
+          return {
+            relationId: item.relationId,
+            applyName: item.applyName,
+            applyUmId: item.applyUmId
+          }
         }
-      },
-      getters: {},
-      modules: {}
+      })
+      console.log('SET_APPROVAL_LIST', flatList, classList, classInfoDTOList);
+      console.log('SET_APPROVAL_LIST', res);
+      state.classInfoDTOList = res
+    },
+    [OPERATE_STATUS](state, data) {
+      state.operateStatus = data
+    },
+    [SET_EOA_STATUS](state, data) {
+      state.eoaStatus = data
     }
-      
+  },
+  actions: {
+    [SAVE_DRAFT](state, data) {
+      //调用 训练营保存草稿接口
+      console.log('SAVE_DRAFT', data)
+    },
+    [SUBMIT]({ state, commit, rootState }, { type, id }) {
+      //调用 训练营提交接口
+      return new Promise(async function (resolve, reject) {
+        if (state.error) {
+          resolve(false)
+        }
+        const fields = [
+          'trainingName',
+          'introduce',
+          'backgroundUdmp',
+          'ifNotShow',
+          'orgId',
+          'classAdviserUms',
+          'startTime',
+          'endTime',
+          'trainingAbility',
+          'auditUsers',
+          'auditUsersUm',
+          'auditUsersName',
+          'umIds',
+          'trainingStageList'
+        ]
+
+        const submitData = _.pick(state, fields)
+        try {
+          await saveTrainingInfo({ ifDraft: type, data: { ...submitData, id: id } })
+          resolve(true)
+        } catch (error) {
+          reject(error)
+        }
+      })
+    },
+    async getDetailData({ state, commit, rootState }, { id, copy }) {
+      state.loading = true
+      const data = await queryTrainingDetail({ id })
+      copy ? commit(UPDATE_DETAIL_COPY, data) : commit(UPDATE_DETAIL, data)
+    }
+  },
+  getters: {},
+  modules: {}
+}

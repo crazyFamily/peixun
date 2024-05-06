@@ -6,7 +6,7 @@ import { message } from 'element-ui'
 import { SERVER_BASEHOST } from '@/util/constants'
 import { vueInt } from '@/main.js'
 
-// Full config:  http://github.com/axios/axios#request-config
+// Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -21,7 +21,6 @@ const config = {
   timeout: 60 * 10000, // Timeout
   withCredentials: true // Check cross-site Access-Control
 }
-
 const _axios = axios.create(config)
 
 _axios.interceptors.request.use(
@@ -32,7 +31,7 @@ _axios.interceptors.request.use(
       try {
         ticketInfo = require('../../serve/sessionTicket/ticket')
         document.cookie = `sessionTick=${ticketInfo.ticket}`
-      } catch (e) {}
+      } catch (e) { }
     }
 
     if (!config.baseURL) config.baseURL = SERVER_BASEHOST
@@ -136,7 +135,7 @@ _axios.interceptors.response.use(
         // 判断是否 94版本以上
         const isChrome94 = Number(navigator.userAgent.match(/Chrome\/([\d.]+)/g)[0].match(/\d+/g)[0]) > 94
         // 由于谷歌浏览器在94版本以上，无法通过第三方写入cookie，只能通过手动写入，所以这里的跳转就没有意义了。
-        if(isChrome94) return
+        if (isChrome94) return
       }
 
       location.href = config.baseURL + loc
@@ -147,6 +146,15 @@ _axios.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+
+const twAxios = axios.create({
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  baseURL: SERVER_BASEHOST,
+  timeout: 60 * 10000, // Timeout
+  withCredentials: false // Check cross-site Access-Control
+})
 
 Plugin.install = function (Vue, options) {
   Vue.axios = _axios
@@ -167,6 +175,6 @@ Plugin.install = function (Vue, options) {
 
 Vue.use(Plugin)
 
-export { _axios }
+export { _axios,twAxios }
 
 export default Plugin

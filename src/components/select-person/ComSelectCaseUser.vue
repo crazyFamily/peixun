@@ -18,7 +18,7 @@
             @change="navTypeChangeHandle"
           >
             <el-radio label="UM">UM号导入</el-radio>
-            <el-radio label="name">姓名搜索</el-radio>
+            <el-radio v-if="!hideNameType" label="name">姓名搜索</el-radio>
           </el-radio-group>
           <div class="content-container" v-show="navType === 'UM'">
             <div class="tips">
@@ -45,7 +45,7 @@
                   >确定</el-button
                 >
               </template>
-          </el-input>
+            </el-input>
             <div class="search-list-container">
               <el-scrollbar style="height: 40vh">
                 <p class="um-name-item null-data" v-if="!searchUmNameList.length">
@@ -96,7 +96,7 @@ import { CopyObj } from '@/plugins/until'
 export default {
   name: 'CompSelectCaseUser',
 
- props: {
+  props: {
     type: {
       type: String,
       default: 'case'
@@ -112,6 +112,18 @@ export default {
     uuid: {
       type: String,
       default: ''
+    },
+    // 自定义通过Um查数据的请求
+    customUmFetch: {
+      type: Function,
+    },
+    hideNameType: {
+      type: Boolean,
+      default: false
+    },
+    onlyFrame: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -154,7 +166,7 @@ export default {
       handler(n) {
         this.isDialogShow = n
       },
-    immediate: true
+      immediate: true
     },
     failUserList(n) {
       if (n.length) {
@@ -171,7 +183,7 @@ export default {
 
   computed: {
     fetchInsertManulVisibleUsers () {
-      return this.fnMapping[this.type].fetchInsertManulVisibleUsers
+      return this.customUmFetch || this.fnMapping[this.type].fetchInsertManulVisibleUsers
     },
     fetchListManulVisibleUsers () {
       return this.fnMapping[this.type].fetchListManulUsers
@@ -182,6 +194,10 @@ export default {
 
   methods: {
     closeHandle() {
+      if(this.onlyFrame) {
+        this.$emit('close', false)
+        return
+      }
       this._resetData()
       // this.$emit('update:show', false)
       this.$emit('close', false)
@@ -200,13 +216,17 @@ export default {
           operateId: this.operateId,
         }))
       }
+      if(this.onlyFrame) {
+        this.$emit('save', CopyObj(this.successUserList))
+        return
+      }
       await this.fetchInsertManulVisibleUsers({ data })
 
       this.$message.success('添加成功')
       this.$emit('save', CopyObj(this.successUserList))
       this.closeHandle()
     },
-  async addUmHandle() {
+    async addUmHandle() {
       if (this.navType === 'UM') {
         await this.umExportHandle()
         this.umSet = this.failUserList.map((item) => item.umId).join('\n')
@@ -252,7 +272,7 @@ export default {
       })
       this.selectedList = []
     },
-   umExportHandle() {
+    umExportHandle() {
       return new Promise(async (resolve, reject) => {
         // this.umSet.replace(/\n/g, ',')
         let users = this.umSet
@@ -299,7 +319,7 @@ export default {
         resolve({ successList, failList })
       })
     },
-   selectionHandle(list) {
+    selectionHandle(list) {
       this.selectedList = list
     },
     async searchUmNameHandle() {
@@ -346,7 +366,7 @@ export default {
   flex-wrap: wrap;
   height: 400px;
 
- .title {
+  .title {
     width: 100%;
   }
 
@@ -409,14 +429,18 @@ export default {
   }
   .fail-tip {
     $base-height: 30px;
-    width: 100%;
+    min-width: 150px;
+    // width: 50%;
     height: $base-height;
     line-height: $base-height;
     padding: 10px;
     box-sizing: border-box;
     color: $themeColor;
     position: absolute;
-    bottom: 10px;
+    bottom: 5px;
+    right: 20px;
+    background-color: #fff;
+    padding: 0;
   }
 }
 
