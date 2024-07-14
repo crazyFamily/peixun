@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>向上</title>
+    <defs>
+        <filter x="-6.4%" y="-52.3%" width="112.8%" height="204.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.106479458 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="08栏位管理-发现好课" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-2栏目管理-新建栏目-添加下级栏目" transform="translate(-757.000000, -1056.000000)">
+            <g id="222备份-2" transform="translate(358.000000, 1009.000000)">
+                <g id="333" filter="url(#filter-1)" transform="translate(82.000000, 50.000000)">
+                    <g id="编组-7" transform="translate(282.000000, 14.000000)">
+                        <g id="向上" transform="translate(52.000000, 0.000000)">
+                            <circle id="椭圆形" stroke="#FD6720" cx="8" cy="8" r="7.5"></circle>
+                            <path d="M8.00001148,3.20045862 C8.14154689,3.20045862 8.25888439,3.24601512 8.35553938,3.33960869 L11.8557023,6.6991859 C11.9507673,6.78899899 12.002927,6.91250243 11.9998215,7.04051381 C12.0036971,7.169038 11.952171,7.29342394 11.8575035,7.38435805 C11.7627863,7.47529217 11.6332257,7.52472455 11.4993049,7.52103948 C11.366204,7.52346041 11.2379103,7.47309782 11.1446465,7.38184171 L8.50052809,4.83922849 L8.50052809,12.3205122 C8.50052809,12.4530911 8.45132484,12.5657421 8.35383758,12.6593714 C8.26149299,12.7516174 8.13324905,12.8026717 8.00001148,12.8002886 C7.86681119,12.8024332 7.73866661,12.7514266 7.64617296,12.6593714 C7.55058625,12.5707271 7.49750737,12.4480704 7.49949488,12.3205122 L7.49949488,4.83922849 L4.85536402,7.38267652 C4.76176482,7.47384915 4.63313579,7.52387781 4.49983612,7.52103948 C4.36616379,7.52424751 4.23698819,7.47463625 4.14251946,7.38379754 C4.0480383,7.29295883 3.99661153,7.16885911 4.00020147,7.04051381 C4.00020147,6.90461948 4.04852276,6.79198044 4.14430822,6.6991859 L7.64360162,3.33960869 C7.73691512,3.24745814 7.86617767,3.19696437 8.00001148,3.20045862 Z" id="Fill-1" fill="#FD6720"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组</title>
+    <defs>
+        <filter x="-7.7%" y="-28.7%" width="115.4%" height="157.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.179414336 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="10月" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-2资源选择器" transform="translate(-528.000000, -150.000000)">
+            <g id="编组-54" transform="translate(83.000000, 18.000000)">
+                <g id="1备份-8" filter="url(#filter-1)" transform="translate(425.000000, 115.000000)">
+                    <g id="编组" transform="translate(37.500000, 34.000000)">
+                        <path d="M18.5,4 L19,0 L22,0 L21.875,1 L23,1 C24.1045695,1 25,1.8954305 25,3 L25,24 C25,25.1045695 24.1045695,26 23,26 L2,26 C0.8954305,26 0,25.1045695 0,24 L0,3 C0,1.8954305 0.8954305,1 2,1 L3.875,1 L4,0 L7,0 L6.5,4 L3,4 L3,23 L22,23 L22,4 L18.5,4 Z M18,1 L17.625,4 L7.625,4 L8,1 L18,1 Z" id="形状结合" fill="#1A1F36" fill-rule="nonzero"></path>
+                        <path d="M12.5,17.5 L9.1028921,19.2859653 C8.90735426,19.3887656 8.6655034,19.313587 8.56270308,19.1180492 C8.52176745,19.040185 8.50764158,18.9509978 8.52251231,18.8642947 L9.17130219,15.0815595 L9.17130219,15.0815595 L6.42298417,12.4026115 C6.26479074,12.248411 6.26155381,11.9951657 6.4157543,11.8369723 C6.47715774,11.7739788 6.5576147,11.732984 6.64466952,11.7203342 L10.4427516,11.1684405 L10.4427516,11.1684405 L12.1413056,7.7267943 C12.2390745,7.52869284 12.4789248,7.44735724 12.6770263,7.54512615 C12.7559113,7.58405825 12.8197623,7.64790926 12.8586944,7.7267943 L14.5572484,11.1684405 L14.5572484,11.1684405 L18.3553305,11.7203342 C18.5739484,11.7521012 18.725421,11.9550783 18.693654,12.1736963 C18.6810042,12.2607511 18.6400093,12.3412081 18.5770158,12.4026115 L15.8286978,15.0815595 L15.8286978,15.0815595 L16.4774877,18.8642947 C16.5148321,19.0820293 16.368597,19.2888117 16.1508624,19.3261561 C16.0641593,19.3410268 15.9749721,19.3269009 15.8971079,19.2859653 L12.5,17.5 L12.5,17.5 Z" id="星形" fill="#366FF9"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

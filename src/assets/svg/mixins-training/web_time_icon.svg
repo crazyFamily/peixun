@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>web_time_icon</title>
+    <defs>
+        <filter x="-2.3%" y="-5.6%" width="104.6%" height="111.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.258823529   0 0 0 0 0.274509804   0 0 0 0 0.337254902  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="2023-9-7" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-3直播数据" transform="translate(-225.000000, -246.000000)">
+            <g id="bj" filter="url(#filter-1)" transform="translate(183.000000, 114.000000)">
+                <g id="1" transform="translate(20.000000, 110.500000)">
+                    <g id="编组" transform="translate(14.000000, 14.000000)">
+                        <g id="01_图标资源/-01单色图标-/【历史记录】poppy_icon_history" transform="translate(8.000000, 7.500000)">
+                            <rect id="矩形" fill-opacity="0" fill="#FFFFFF" x="0" y="0" width="24" height="24"></rect>
+                            <g id="形状结合-2" transform="translate(2.000000, 2.000000)" fill="#63BAFF">
+                                <path d="M10,0 C11.847822,0 13.5785865,0.501182661 15.0637737,1.37502824 L13.9641093,3.04961979 C12.7955626,2.38170843 11.4423577,2 10,2 C5.581722,2 2,5.581722 2,10 C2,14.418278 5.581722,18 10,18 C14.418278,18 18,14.418278 18,10 C18,8.34131948 17.4952094,6.80053914 16.630872,5.5229028 L18.2181965,4.30095501 C19.3415544,5.91782629 20,7.88201904 20,10 C20,15.5228475 15.5228475,20 10,20 C4.4771525,20 0,15.5228475 0,10 C0,4.4771525 4.4771525,0 10,0 Z M11,4.5 L11,9.612 L13.4355347,7.96050629 L14.5584648,9.61550719 L10.5614651,12.3275005 L9,11.5 L9,4.5 L11,4.5 Z M15.8992878,1.92459908 C16.5284448,2.38499709 17.1017889,2.91714322 17.6072751,3.50899238 L16.0198649,4.73094303 C15.6534243,4.31262626 15.2440813,3.93283614 14.7987043,3.5984411 Z" id="形状结合"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

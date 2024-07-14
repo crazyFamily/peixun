@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>head-func-vitae</title>
+    <desc>Created with Sketch.</desc>
+    <g id="head-func-vitae" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_direct">
+            <rect id="Rectangle-7" x="0" y="0" width="18" height="18"></rect>
+            <g id="合同管理" transform="translate(2.000000, 2.000000)">
+                <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="14" height="14"></rect>
+                <path d="M1,3.91666667 L1,13.0833333 L10,13.0833333 L10,3.91666667 L1,3.91666667 Z M0.916666667,3 L10.0833333,3 C10.5895944,3 11,3.35177627 11,3.78571429 L11,13.2142857 C11,13.6482237 10.5895944,14 10.0833333,14 L0.916666667,14 C0.410405646,14 0,13.6482237 0,13.2142857 L0,3.78571429 C0,3.35177627 0.410405646,3 0.916666667,3 Z" id="Combined-Shape" fill="#7B8193" fill-rule="nonzero" transform="translate(5.500000, 8.500000) scale(1, -1) translate(-5.500000, -8.500000) "></path>
+                <path d="M13.0833333,0 C13.5895944,0 14,0.383755929 14,0.857142857 L14,0.857142857 L14,11.1428571 C14,11.6162441 13.5895944,12 13.0833333,12 L13.0833333,12 L12.5,12 L12.5,10.999 L13,11 L13,1 L4,1 L4,1.49 L3,1.49015259 L3,0.857142857 C3,0.383755929 3.41040565,0 3.91666667,0 L3.91666667,0 Z" id="形状结合" fill="#7B8193" fill-rule="nonzero"></path>
+                <circle id="椭圆形" fill="#7B8193" cx="3.5" cy="1.5366887" r="1"></circle>
+                <circle id="椭圆形备份" fill="#7B8193" cx="12.4957759" cy="11.5" r="1"></circle>
+                <rect id="Rectangle" fill="#7B8193" x="3" y="6" width="4" height="1" rx="0.5"></rect>
+                <rect id="Rectangle备份-2" fill="#7B8193" x="3" y="9" width="5" height="1" rx="0.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

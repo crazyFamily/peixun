@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>发起预付款</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="切图" transform="translate(-56.000000, -311.000000)" stroke="#FD6720">
+            <g id="发起预付款" transform="translate(56.000000, 311.000000)">
+                <g id="编组-17" transform="translate(10.500000, 12.500000)">
+                    <g id="编组-23" transform="translate(0.596436, 0.500000)">
+                        <line x1="0.403564453" y1="1.5" x2="4.2" y2="1.5" id="路径-4"></line>
+                        <path d="M2.90356445,0.5 L4.24800017,2.28690961 C4.31440873,2.37517422 4.43979611,2.39289205 4.52806071,2.32648349 C4.54320471,2.31508944 4.55665236,2.30160076 4.56800022,2.28642211 L5.90356445,0.5 L5.90356445,0.5" id="路径-11备份" transform="translate(4.403564, 1.500000) rotate(-90.000000) translate(-4.403564, -1.500000) "></path>
+                    </g>
+                </g>
+                <path d="M11.7721978,2 L2.2,2 C2.08954305,2 2,2.08954305 2,2.2 L2,16.8 C2,16.9104569 2.08954305,17 2.2,17 L14.8,17 C14.9104569,17 15,16.9104569 15,16.8 L15,8.4 L15,8.4" id="路径-17" transform="translate(8.500000, 9.500000) scale(1, -1) translate(-8.500000, -9.500000) "></path>
+                <g id="编组-20" transform="translate(5.500000, 4.844116)">
+                    <polyline id="路径-11" points="0 0 2.50793457 2.98791504 5 0"></polyline>
+                    <line x1="2.5" y1="3.13226318" x2="2.5" y2="9.13226318" id="路径-12"></line>
+                    <line x1="0" y1="3.6282959" x2="5" y2="3.58347168" id="路径-12"></line>
+                    <line x1="0.0333251953" y1="5.65588379" x2="5" y2="5.65588379" id="路径-12备份"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

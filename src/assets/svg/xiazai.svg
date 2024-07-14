@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>下载</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="切图" transform="translate(-433.000000, -311.000000)" stroke="#FD6720">
+            <g id="下载" transform="translate(433.000000, 311.000000)">
+                <g id="编组-15" transform="translate(3.000000, 2.000000)">
+                    <path d="M9.77219779,0 L0.2,0 C0.08954305,2.02906125e-17 -7.35172041e-16,0.08954305 0,0.2 L0,14.8 C1.3527075e-17,14.9104569 0.08954305,15 0.2,15 L12.8,15 C12.9104569,15 13,14.9104569 13,14.8 L13,6.4 L13,6.4" id="路径-17"></path>
+                    <path d="M4.30058231,12.0237427 C5.13865666,11.2060091 5.97673101,10.3882755 6.81480536,9.57054184 C6.85433454,9.53197206 6.91764627,9.53274981 6.95621605,9.572279 C6.95644989,9.57251866 6.95668253,9.57275949 6.95691395,9.57300149 L9.30058231,12.0237427 L9.30058231,12.0237427" id="路径-16" transform="translate(6.800582, 10.761871) scale(1, -1) translate(-6.800582, -10.761871) "></path>
+                    <line x1="7" y1="11.8588257" x2="7" y2="3.20343018" id="路径-15"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

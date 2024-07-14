@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>web_hint_win_icon</title>
+    <g id="2023-10-26/11-23" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-6不可重新提交作业" transform="translate(-609.000000, -210.000000)">
+            <g id="全局提示/常规/成功提示" transform="translate(588.000000, 88.000000)">
+                <g id="图标/提示/成功" transform="translate(21.000000, 122.000000)">
+                    <path d="M0,0 L22,0 L22,22 L0,22 L0,0 Z" id="check-circle-filled-(Background)"></path>
+                    <path d="M11,1.375 C16.3157411,1.375 20.625,5.68425927 20.625,11 C20.625,16.3157411 16.3157411,20.625 11,20.625 C5.68425927,20.625 1.375,16.3157411 1.375,11 C1.375,5.68425927 5.68425927,1.375 11,1.375 Z M14.8396869,7.5625 L9.625,12.7778753 L7.15893757,10.3125 L6.1875,11.2839376 L9.625,14.7221247 L15.8125,8.53531247 L14.8396869,7.5625 Z" id="check-circle-filled" fill="#00A870"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

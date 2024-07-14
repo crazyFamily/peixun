@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>上传</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="切图" transform="translate(-583.000000, -49.000000)" stroke="#FD6720">
+            <g id="上传" transform="translate(583.831579, 49.000000)">
+                <g id="编组-23" transform="translate(2.000000, 3.000000)">
+                    <g id="编组-17" transform="translate(3.500000, 0.000000)">
+                        <path d="M0,2.52374268 C0.752269746,1.7099073 1.50453949,0.896071934 2.25680924,0.082236563 C2.29429751,0.0416802575 2.35756514,0.0391931248 2.39812144,0.0766813967 C2.4008876,0.079238294 2.40350707,0.0819494451 2.40596733,0.0848018871 L4.50958252,2.52374268 L4.50958252,2.52374268" id="路径-16"></path>
+                        <line x1="2.25479126" y1="7.17480469" x2="2.33283412" y2="0.703430176" id="路径-15"></line>
+                    </g>
+                    <path d="M0,6.17480469 L0,9.8 C0,9.91045695 0.08954305,10 0.2,10 L10.8,10 C10.9104569,10 11,9.91045695 11,9.8 L11,6.17480469" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

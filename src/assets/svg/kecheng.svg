@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="34px" viewBox="0 0 31 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>keben</title>
+    <defs>
+        <filter x="-3.4%" y="-18.9%" width="106.9%" height="137.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.106479458 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="02项目管理" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-0推送信息2" transform="translate(-829.000000, -730.000000)" fill="#FD6720">
+            <g id="一" transform="translate(326.000000, 254.000000)">
+                <g id="9999999" transform="translate(24.000000, 374.000000)">
+                    <g id="111" filter="url(#filter-1)" transform="translate(23.000000, 37.000000)">
+                        <g id="编组-7" transform="translate(447.000000, 58.000000)">
+                            <path d="M28.8000291,15 L20.0500184,15 C19.4725006,15 19,15.4725006 19,16.0500184 L19,27.95005 C19,28.5274994 19.4725006,29 20.0500184,29 L28.8000291,29 C29.3774785,29 29.8499962,28.5274994 29.8499962,27.95005 L29.8499962,16.0500184 C29.8499962,15.4725006 29.3774785,15 28.8000291,15 Z M25.1249733,15.874984 L28.1875454,15.874984 L28.1875454,21.3000248 L26.6562593,19.8999889 L25.1249733,21.3000248 L25.1249733,15.874984 Z M20.8375022,23.4000103 L25.1249733,23.4000103 C25.3665044,23.4000103 25.562508,23.5959968 25.562508,23.8375279 C25.562508,24.0789906 25.3665044,24.2749942 25.1249733,24.2749942 L20.8375022,24.2749942 C20.5960395,24.2749942 20.4000359,24.0789906 20.4000359,23.8375279 C20.4000359,23.5959968 20.5960395,23.4000103 20.8375022,23.4000103 Z M28.1875454,26.6375313 L20.8375022,26.6375313 C20.5960395,26.6375313 20.4000359,26.4415276 20.4000359,26.1999966 C20.4000359,25.9585339 20.5960395,25.7625473 20.8375022,25.7625473 L28.1875454,25.7625473 C28.428991,25.7625473 28.6249947,25.9585339 28.6249947,26.1999966 C28.6249947,26.4415276 28.428991,26.6375313 28.1875454,26.6375313 Z" id="keben"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>下载影像</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="切图" transform="translate(-627.000000, -50.000000)" stroke="#7D8292">
+            <g id="下载影像" transform="translate(627.126316, 50.000000)">
+                <g id="编组-4" transform="translate(1.500000, 1.500000)">
+                    <g id="编组-23">
+                        <path d="M3.80058231,8.52374268 C4.55285205,7.7099073 5.3051218,6.89607193 6.05739154,6.08223656 C6.09487981,6.04168026 6.15814744,6.03919312 6.19870375,6.0766814 C6.2014699,6.07923829 6.20408937,6.08194945 6.20654964,6.08480189 L8.31016482,8.52374268 L8.31016482,8.52374268" id="路径-16" transform="translate(6.055374, 7.261871) scale(1, -1) translate(-6.055374, -7.261871) "></path>
+                        <path d="M8.77219779,0 L0.2,0 C0.08954305,2.02906125e-17 1.0411848e-15,0.08954305 0,0.2 L0,11.8 C-9.39772142e-16,11.9104569 0.08954305,12 0.2,12 L11.8,12 C11.9104569,12 12,11.9104569 12,11.8 L12,2.4 L12,2.4" id="路径-17"></path>
+                    </g>
+                    <line x1="6.13340701" y1="8.35882568" x2="6.13341643" y2="2.70343018" id="路径-15"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

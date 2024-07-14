@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="108px" height="70px" viewBox="0 0 108 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>1</title>
+    <defs>
+        <linearGradient x1="50%" y1="0.429804025%" x2="50%" y2="98.3391608%" id="linearGradient-1">
+            <stop stop-color="#F5B2A8" offset="0%"></stop>
+            <stop stop-color="#E97362" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="2023" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-1.000000, 0.000000)" fill="url(#linearGradient-1)">
+            <path d="M0,0 L382,0 L368.216676,48.2416338 C364.536948,61.1206806 352.765368,70 339.370958,70 L42.6290424,70 C29.2346316,70 17.4630516,61.1206806 13.783324,48.2416338 L0,0 L0,0 Z" id="矩形"></path>
+        </g>
+    </g>
+</svg>

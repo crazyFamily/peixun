@@ -1,0 +1,131 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  /* overflow-y: hidden; */
+}
+
+.frame-wrapper {
+  /* overflow: hidden; */
+  /* position: relative;
+    z-index: 1; */
+  height: 100%;
+  width: 100%;
+  /* min-width: 1366px; */
+  background-color: #f5f6fb;
+}
+
+.comp-frame-head {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  margin: auto;
+  z-index: 5;
+  height: 50px;
+  background-color: #fff;
+}
+
+.comp-frame-head__main {
+  height: 100%;
+  width: 100%;
+}
+
+.comp-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.comp-frame-head ~ .comp-frame {
+  padding: 50px 0 0;
+}
+
+.comp-frame__vue-template-vertical {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.comp-frame__vue-template-horizontal {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.comp-frame__auto-area {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.comp-main {
+  padding: 20px 24px;
+}
+
+.comp-main__shadow-box {
+  -moz-box-shadow: 0 3px 20px 0 rgba(28, 32, 53, 0.05);
+  -webkit-box-shadow: 0 3px 20px 0 rgba(28, 32, 53, 0.05);
+  box-shadow: 0 3px 20px 0 rgba(28, 32, 53, 0.05);
+}
+
+.comp-main-head {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 30px;
+  border-bottom: 1px solid #eaecf1;
+  background: #fff;
+}
+
+.comp-main-head__title {
+  position: relative;
+  z-index: 1;
+  padding-left: 14px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #424656;
+}
+
+.comp-main-head__title:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: block;
+  width: 4px;
+  height: 12px;
+  -moz-border-radius-topright: 1px;
+  -webkit-border-top-right-radius: 1px;
+  border-top-right-radius: 1px;
+  -moz-border-radius-bottomright: 1px;
+  -webkit-border-bottom-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+  background: #fd6720;
+}

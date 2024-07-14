@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>web_people_red_icon</title>
+    <defs>
+        <filter x="-2.3%" y="-5.6%" width="104.6%" height="111.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.258823529   0 0 0 0 0.274509804   0 0 0 0 0.337254902  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="2023-9-7" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-3直播数据" transform="translate(-225.000000, -397.000000)">
+            <g id="bj" filter="url(#filter-1)" transform="translate(183.000000, 114.000000)">
+                <g id="1" transform="translate(20.000000, 260.500000)">
+                    <g id="编组" transform="translate(14.000000, 14.000000)">
+                        <g id="点赞数" transform="translate(8.000000, 8.500000)">
+                            <rect id="矩形" fill-opacity="0" fill="#FFFFFF" x="0" y="0" width="24" height="24"></rect>
+                            <g id="shape-2" transform="translate(3.000000, 2.000000)" fill="#FF8348">
+                                <path d="M9,0 C12.3137085,0 15,2.6862915 15,6 C15,7.943593 14.0758655,9.67134283 12.6430313,10.7678146 C15.7986588,12.1663557 18,15.3261024 18,19 L16,19 L16,19 C16,15.1340068 12.8659932,12 9,12 C5.13400675,12 2,15.1340068 2,19 L-1.0658141e-14,19 C-1.0658141e-14,15.3261024 2.20134119,12.1663557 5.35696866,10.7678146 C3.92413451,9.67134283 3,7.943593 3,6 C3,2.6862915 5.6862915,0 9,0 Z M9,10 C11.209139,10 13,8.209139 13,6 C13,3.790861 11.209139,2 9,2 C6.790861,2 5,3.790861 5,6 C5,8.209139 6.790861,10 9,10 Z" id="shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

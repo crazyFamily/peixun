@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C_图标资源 / 03一级界面图标 / 首页 / icon_业绩补录</title>
+    <g id="C_图标资源-/-03一级界面图标-/-首页-/-icon_业绩补录" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="shape" transform="translate(4.000000, 6.000000)">
+            <path d="M22,0 L22,7 L28,7 L28,20.8333333 C28,23.1345198 26.209139,25 24,25 L4,25 C1.790861,25 2.705415e-16,23.209139 0,21 L0,0 L0,0 L22,0 Z M19,3 L3,3 L3,20 C3.00009338,21.104533 3.89546697,21.9999484 5,22.0000934 L19.1804996,22.0007554 L19.1804996,22.0007554 C19.0640776,21.6835436 19,21.348687 19,21 L19,3 Z M25,10 L22,10 L22,20.5 C22,21.2670622 22.7636203,22 23.5,22 C24.2363797,22 25,21.2670622 25,20.5 L25,10 Z" id="形状" fill="#191F35"></path>
+            <path d="M14,12 L13,15 L5,15 L6,12 L14,12 Z M18,6 L17,9 L5,9 L6,6 L18,6 Z" id="形状结合" fill="#366FF9" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

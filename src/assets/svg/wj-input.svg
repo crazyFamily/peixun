@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>shape 2</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.992157 0 0 0 0 0.403922 0 0 0 0 0.125490 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="10月" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1" transform="translate(-174.000000, -271.000000)">
+            <g transform="translate(65.000000, 65.000000)" id="编组-7备份-2">
+                <g transform="translate(20.000000, 193.000000)">
+                    <g id="编组-2" transform="translate(89.000000, 10.000000)">
+                        <g id="shape-2" transform="translate(0.000000, 3.000000)" filter="url(#filter-1)">
+                            <g transform="translate(0.250000, 0.250000)">
+                                <path d="M9.75,0 L9.75,0.999852125 L1.02398899,0.999852125 L1.02398899,12.4012926 L12.444286,12.4012926 L12.444286,4.5 L13.5,4.5 L13.5,12.75 C13.5,13.1642136 13.1642136,13.5 12.75,13.5 L0.75,13.5 C0.335786438,13.5 0,13.1642136 0,12.75 L0,0.75 C0,0.335786438 0.335786438,0 0.75,0 L9.75,0 Z M12.6746212,3.56648044e-12 L13.7352814,1.06066017 L6.31066017,8.48528137 L5.25,7.4246212 L12.6746212,3.56648044e-12 Z" id="shape" fill="#000000"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

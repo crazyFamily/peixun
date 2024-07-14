@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>顺时针旋转</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="切图" transform="translate(-178.000000, -118.000000)" stroke="#FFFFFF">
+            <g id="顺时针旋转" transform="translate(188.928571, 128.000000) scale(-1, 1) translate(-188.928571, -128.000000) translate(178.428571, 118.000000)">
+                <g id="编组-33" transform="translate(0.400000, 1.000000)">
+                    <path d="M3.16837515,12.0701497 C4.53374234,14.8410789 7.3863468,16.747525 10.6842256,16.747525 C14.1334406,16.747525 17.0955772,14.6620947 18.3785457,11.683324 C18.8157791,10.6681642 19.0579881,9.54924884 19.0579881,8.37376251 C19.0579881,6.91184858 18.6833614,5.5374334 18.0248719,4.34128099 C16.6002585,1.7534571 13.847013,0 10.6842256,0 C7.42611771,0 4.60260932,1.86074159 3.21841931,4.57750588 C3.10814651,4.79393948 3.00700857,5.01580596 2.9155135,5.24259733" id="路径"></path>
+                    <polyline id="路径" transform="translate(3.457353, 3.688871) rotate(66.000000) translate(-3.457353, -3.688871) " points="5.6173015 1.17135106 5.91470533 6.20639085 1 5.30392066"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

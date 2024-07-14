@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="62px" viewBox="0 0 60 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组</title>
+    <defs>
+        <filter x="-7.7%" y="-28.7%" width="115.4%" height="157.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.179414336 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="10月" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-2资源选择器" transform="translate(-148.000000, -273.000000)" fill-rule="nonzero">
+            <g id="编组-54" transform="translate(83.000000, 18.000000)">
+                <g id="1备份-7" filter="url(#filter-1)" transform="translate(45.000000, 239.000000)">
+                    <g id="编组" transform="translate(37.000000, 33.000000)">
+                        <path d="M22,0 C23.1045695,-2.02906125e-16 24,0.8954305 24,2 L24,2 L24,12.7857143 L21,12.7857143 L21,3 L3,3 L3,25 L10.4615385,25 L10.4615385,28 L2,28 C0.8954305,28 1.3527075e-16,27.1045695 0,26 L0,26 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 L2,0 Z M19,7 L18.125,10 L5,10 L5.875,7 L19,7 Z" id="形状结合" fill="#1A1F36"></path>
+                        <path d="M20,16 C23.3137085,16 26,18.6862915 26,22 C26,25.3137085 23.3137085,28 20,28 C16.6862915,28 14,25.3137085 14,22 C14,18.6862915 16.6862915,16 20,16 Z M19.2127217,19.0399473 C18.660437,19.0399473 18.2127217,19.4876625 18.2127217,20.0399473 L18.2127217,20.0399473 L18.2127217,24.2737612 C18.2127217,24.4742244 18.2729705,24.6700605 18.3856502,24.8358579 C18.6960876,25.2926369 19.3180394,25.4112702 19.7748184,25.1008328 L19.7748184,25.1008328 L22.8896449,22.9839258 C22.9938777,22.9130868 23.0837808,22.8231837 23.1546198,22.7189509 C23.4650572,22.2621719 23.3464239,21.6402201 22.8896449,21.3297827 L22.8896449,21.3297827 L19.7748184,19.2128757 C19.609021,19.100196 19.4131849,19.0399473 19.2127217,19.0399473 Z" id="形状结合" fill="#366FF9"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

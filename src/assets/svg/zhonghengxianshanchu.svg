@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>删除</title>
+    <defs>
+        <filter x="-6.4%" y="-52.3%" width="112.8%" height="204.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.106479458 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="08栏位管理-发现好课" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-2栏目管理-新建栏目-添加下级栏目" transform="translate(-705.000000, -1056.000000)">
+            <g id="222备份-2" transform="translate(358.000000, 1009.000000)">
+                <g id="333" filter="url(#filter-1)" transform="translate(82.000000, 50.000000)">
+                    <g id="删除" transform="translate(282.000000, 14.000000)">
+                        <circle id="椭圆形" stroke="#FD6720" cx="8" cy="8" r="7.5"></circle>
+                        <rect id="矩形" fill="#FD6720" x="3.2" y="7.2" width="9.6" height="1.6" rx="0.8"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

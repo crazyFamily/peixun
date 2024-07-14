@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>head-func-message</title>
+    <desc>Created with Sketch.</desc>
+    <g id="head-func-message" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_feedback">
+            <rect id="Rectangle-7" opacity="0.5" x="0" y="0" width="18" height="18"></rect>
+            <path d="M9,1.4 C4.78452682,1.4 1.4,4.22043901 1.4,7.65 C1.4,10.4382929 3.65513754,12.889683 6.89700291,13.6572155 L7.07308592,13.6989043 L7.1817061,13.8436276 L8.6,15.7333333 C8.76568542,15.9542472 9.0790861,15.9990188 9.3,15.8333333 C9.33790283,15.8049062 9.37157288,15.7712362 9.40018634,15.733085 L10.9279683,13.6986751 L11.1039402,13.6569922 C14.3453325,12.8891954 16.6,10.4380012 16.6,7.65 C16.6,4.22043901 13.2154732,1.4 9,1.4 Z" id="Combined-Shape" stroke="#7D8292"></path>
+            <circle id="Oval-4" fill="#7D8292" cx="9" cy="7.2" r="1"></circle>
+            <circle id="Oval-4-Copy-2" fill="#7D8292" cx="12.6" cy="7.2" r="1"></circle>
+            <circle id="Oval-4-Copy" fill="#7D8292" cx="5.4" cy="7.2" r="1"></circle>
+        </g>
+    </g>
+</svg>

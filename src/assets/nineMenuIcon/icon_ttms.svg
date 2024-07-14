@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C_图标资源 / 03一级界面图标 / 首页 / icon_厅堂模式</title>
+    <g id="C_图标资源-/-03一级界面图标-/-首页-/-icon_厅堂模式" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M28,4 C29.1045695,4 30,4.8954305 30,6 L30,30 C30,31.1045695 29.1045695,32 28,32 L8,32 C6.8954305,32 6,31.1045695 6,30 L6,6 C6,4.8954305 6.8954305,4 8,4 L28,4 Z M27,7 L9,7 L9,29 L27,29 L27,7 Z" id="矩形-2" fill="#1A1F36"></path>
+        <polygon id="矩形" fill="#366FF9" points="10.67 11 26 11 25.33 14 10 14"></polygon>
+        <rect id="矩形-copy" fill="#366FF9" transform="translate(18.000000, 26.500000) rotate(-90.000000) translate(-18.000000, -26.500000) " x="16.5" y="24" width="3" height="5"></rect>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>培训动态</title>
+    <g id="1.培训阶梯管理" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1.阶梯培训管理" transform="translate(-1259.000000, -258.000000)" stroke="#FD6720">
+            <g id="培训动态" transform="translate(1259.000000, 258.000000)">
+                <g id="编组-20" transform="translate(2.000000, 2.000000)">
+                    <path d="M6.00537109,12 L0.7,12 C0.58954305,12 0.5,11.9104569 0.5,11.8 L0.5,0.2 C0.5,0.08954305 0.58954305,0 0.7,0 L14.3,0 C14.4104569,0 14.5,0.08954305 14.5,0.2 L14.5,11.8 C14.5,11.9104569 14.4104569,12 14.3,12 L10.2250977,12 L10.2250977,14.6124175 C10.2250977,14.7228745 10.1355546,14.8124175 10.0250977,14.8124175 C9.98356429,14.8124175 9.94306118,14.7994871 9.90921072,14.7754213 L6.00537109,12 L6.00537109,12 Z" id="路径"></path>
+                    <line x1="10" y1="4" x2="5" y2="4" id="路径-5" stroke-linecap="round"></line>
+                    <line x1="10" y1="8" x2="5" y2="8" id="路径-5" stroke-linecap="round"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

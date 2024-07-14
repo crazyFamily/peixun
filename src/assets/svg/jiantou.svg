@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="11px" viewBox="0 0 10 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>箭头</title>
+    <desc>Created with Sketch.</desc>
+    <g id="10月-讲师管理" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2.1修改讲师信息" transform="translate(-429.000000, -160.000000)" fill="#697290" fill-rule="nonzero">
+            <g id="编组-57" transform="translate(130.000000, 65.000000)">
+                <g id="编组-55" transform="translate(98.000000, 85.000000)">
+                    <g id="箭头" transform="translate(206.000000, 15.000000) scale(1, -1) translate(-206.000000, -15.000000) translate(201.000000, 8.500000)">
+                        <g id="编组-24" transform="translate(0.000000, 3.000000)">
+                            <path d="M7,7 L7,2.5 C7,2.22385763 7.22385763,2 7.5,2 C7.77614237,2 8,2.22385763 8,2.5 L8,8 L2.5,8 C2.22385763,8 2,7.77614237 2,7.5 C2,7.22385763 2.22385763,7 2.5,7 L7,7 Z" id="Path" transform="translate(5.000000, 5.000000) scale(1, -1) rotate(45.000000) translate(-5.000000, -5.000000) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

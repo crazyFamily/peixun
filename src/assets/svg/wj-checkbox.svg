@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>形状结合 2</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.992157 0 0 0 0 0.403922 0 0 0 0 0.125490 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="10月" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1" transform="translate(-173.000000, -210.000000)">
+            <g transform="translate(65.000000, 65.000000)" id="编组-7备份">
+                <g transform="translate(20.000000, 133.000000)">
+                    <g id="编组-2" transform="translate(87.000000, 10.000000)">
+                        <g id="形状结合-2" transform="translate(0.000000, 1.000000)" filter="url(#filter-1)">
+                            <g transform="translate(1.500000, 1.500000)">
+                                <rect id="形状结合" stroke="#979797" x="0.5" y="0.5" width="14" height="14" rx="2"></rect>
+                                <path d="M10.3692358,5.59841113 L6.91056136,9.48749843 L4.62015026,7.19708733 L6.91056136,9.0570856 L10.3692358,5.59841113 Z" id="路径" stroke="#979797"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="32px" viewBox="0 0 26 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>app_pdf_icon</title>
+    <g id="20231026/1123" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组" transform="translate(-0.000000, 0.000000)">
+            <path d="M2,0 L15,0 L15,0 L26,11 L26,30 C26,31.1045695 25.1045695,32 24,32 L2,32 C0.8954305,32 1.3527075e-16,31.1045695 0,30 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="矩形" fill="#F5595B"></path>
+            <text id="PDF" font-family="PingFangSC-Semibold, PingFang SC" font-size="10" font-weight="500" fill="#FFFFFF">
+                <tspan x="3" y="28">PDF</tspan>
+            </text>
+            <polygon id="路径-8" fill="#EB3B3D" points="26 11 26 15.053833 20.0145264 9.03930664"></polygon>
+            <path d="M15,0 L26,11 L17,11 C15.8954305,11 15,10.1045695 15,9 L15,0 L15,0 Z" id="矩形" fill="#FFC2C3"></path>
+        </g>
+    </g>
+</svg>

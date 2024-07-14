@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>手工补录</title>
+    <g id="4.培训项目管理" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="4-考勤管理" transform="translate(-1053.000000, -319.000000)" stroke="#FD6720">
+            <g id="编组-58备份" transform="translate(83.000000, 154.000000)">
+                <g id="编组-26" transform="translate(24.000000, 108.000000)">
+                    <g id="编组-17" transform="translate(930.000000, 11.000000)">
+                        <g id="手工补录" transform="translate(16.000000, 46.000000)">
+                            <line x1="13" y1="14.5" x2="17" y2="14.5" id="路径-4"></line>
+                            <line x1="14.9939472" y1="12.6783383" x2="14.9939472" y2="16.6783383" id="路径-4备份-2"></line>
+                            <g id="编组-21" transform="translate(2.000000, 2.000000)">
+                                <path d="M9.77219779,0 L0.2,0 C0.08954305,-7.46496308e-18 -7.35172041e-16,0.08954305 0,0.2 L0,14.8 C1.3527075e-17,14.9104569 0.08954305,15 0.2,15 L12.8,15 C12.9104569,15 13,14.9104569 13,14.8 L13,6.4 L13,6.4" id="路径-17" transform="translate(6.500000, 7.500000) scale(1, -1) translate(-6.500000, -7.500000) "></path>
+                                <line x1="2.5" y1="4.47241211" x2="7.5" y2="4.42758789" id="路径-12"></line>
+                                <line x1="2.5333252" y1="7.5" x2="7.5" y2="7.5" id="路径-12备份"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="15px" viewBox="0 0 6 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>标题</title>
+    <defs>
+        <linearGradient x1="148.893229%" y1="100%" x2="148.893229%" y2="1.19919143%" id="linearGradient-1">
+            <stop stop-color="#FFA163" offset="0%"></stop>
+            <stop stop-color="#FF8557" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="控件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页/标题/翻页" transform="translate(-24.000000, -24.000000)" fill="url(#linearGradient-1)">
+            <rect id="标题" transform="translate(27.000000, 31.500000) scale(1, -1) translate(-27.000000, -31.500000) " x="24" y="24" width="6" height="15"></rect>
+        </g>
+    </g>
+</svg>

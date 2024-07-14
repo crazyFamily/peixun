@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C_图标资源 / 03一级界面图标 / 首页 / icon_网点活动量</title>
+    <g id="C_图标资源-/-03一级界面图标-/-首页-/-icon_网点活动量" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="矩形" fill="#1A1F36" points="4.37869629 28 21 28 20.6213037 31 4 31"></polygon>
+        <path d="M22.90896,5.12383184 C22.969304,5.31693274 23,5.51807177 23,5.72038183 L23,14.9998474 L28,15 C29.1045695,15 30,15.8954305 30,17 L30,31 L17,30.9998474 L17,27.9998474 L20,28 L20,7.08 L10,10.205 L10,17.7198474 L7,17.7198474 L7,9.47038183 C7,8.59561189 7.56849962,7.82234387 8.40345001,7.56142187 L20.40345,3.81142187 C21.4577395,3.48195641 22.5794945,4.06954237 22.90896,5.12383184 Z M27,18 L23,18 L23,28 L27,28 L27,18 Z" id="矩形-2" fill="#1A1F36" fill-rule="nonzero" transform="translate(18.500000, 17.359924) scale(-1, 1) translate(-18.500000, -17.359924) "></path>
+        <rect id="矩形" fill="#366FF9" x="26" y="24" width="3" height="7" rx="0.2"></rect>
+        <rect id="矩形备份-3" fill="#366FF9" x="22" y="28" width="3" height="3" rx="0.2"></rect>
+        <rect id="矩形备份" fill="#366FF9" x="30" y="20" width="3" height="11" rx="0.2"></rect>
+    </g>
+</svg>

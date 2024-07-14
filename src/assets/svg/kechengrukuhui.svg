@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>录入资料查看</title>
+    <g id="2.课程入库管理" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="1.0课程入库管理" transform="translate(-1160.000000, -220.000000)" stroke="#7D8292">
+            <g id="表" transform="translate(65.000000, 145.000000)">
+                <g id="编组-2" transform="translate(19.000000, 20.000000)">
+                    <g id="编组-20" transform="translate(1061.000000, 10.000000)">
+                        <g id="课程入库" transform="translate(15.000000, 45.000000)">
+                            <g id="编组-23" transform="translate(13.903564, 14.500000) scale(-1, 1) translate(-13.903564, -14.500000) translate(10.903564, 13.000000)">
+                                <line x1="0.403564453" y1="1.5" x2="4.2" y2="1.5" id="路径-4"></line>
+                                <path d="M2.90356445,0.5 L4.24800017,2.28690961 C4.31440873,2.37517422 4.43979611,2.39289205 4.52806071,2.32648349 C4.54320471,2.31508944 4.55665236,2.30160076 4.56800022,2.28642211 L5.90356445,0.5 L5.90356445,0.5" id="路径-11备份" transform="translate(4.403564, 1.500000) rotate(-90.000000) translate(-4.403564, -1.500000) "></path>
+                            </g>
+                            <g id="编组-21" transform="translate(2.000000, 2.000000)">
+                                <path d="M9.77219779,0 L0.2,0 C0.08954305,-7.46496308e-18 -7.35172041e-16,0.08954305 0,0.2 L0,14.8 C1.3527075e-17,14.9104569 0.08954305,15 0.2,15 L12.8,15 C12.9104569,15 13,14.9104569 13,14.8 L13,6.4 L13,6.4" id="路径-17" transform="translate(6.500000, 7.500000) scale(1, -1) translate(-6.500000, -7.500000) "></path>
+                                <line x1="2.5" y1="4.47241211" x2="7.5" y2="4.42758789" id="路径-12"></line>
+                                <line x1="2.5333252" y1="7.5" x2="7.5" y2="7.5" id="路径-12备份"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

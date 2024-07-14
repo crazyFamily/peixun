@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C_图标资源 / 03一级界面图标 / 首页 / icon_分配开卡</title>
+    <g id="C_图标资源-/-03一级界面图标-/-首页-/-icon_分配开卡" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="shape备份-5" fill="#366FF9" fill-rule="nonzero" points="30 19 29.273 23 33 23 32.5 26 28.727 26 28 30 25 30 25.727 26 22 26 22.5 23 26.273 23 27 19"></polygon>
+        <path d="M6.5,6 L29.5,6 C30.8254834,6 31.9100387,7.03153594 31.9946823,8.33562431 L32,8.5 L32,17 L29,17 L29,9 L7,9 L7,27 L20.5,27 L20.5,30 L6.5,30 C5.1745166,30 4.08996133,28.9684641 4.00531768,27.6643757 L4,27.5 L4,8.5 C4,7.1745166 5.03153594,6.08996133 6.33562431,6.00531768 L6.5,6 L29.5,6 L6.5,6 Z M25,13 L24.125,16 L11,16 L11.875,13 L25,13 Z" id="shape" fill="#191F35" fill-rule="nonzero"></path>
+    </g>
+</svg>

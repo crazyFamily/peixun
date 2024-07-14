@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C_图标资源 / 03一级界面图标 / 首页 / icon_智能管户</title>
+    <g id="C_图标资源-/-03一级界面图标-/-首页-/-icon_智能管户" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8,28 L28,28 L28,16.1730793 L18,8 L8,16.1730793 L8,28 Z M19.2949874,5.10028652 L30.2949874,14.4464404 C30.7422309,14.826441 31,15.3837028 31,15.9705819 L31,29 C31,30.1045695 30.1045695,31 29,31 L7,31 C5.8954305,31 5,30.1045695 5,29 L5,15.9705819 C5,15.3837028 5.25776908,14.826441 5.70501257,14.4464404 L16.7050126,5.10028652 C17.4517643,4.46580863 18.5482357,4.46580863 19.2949874,5.10028652 Z" id="合并形状" fill="#1A1F36"></path>
+        <rect id="矩形" fill="#366FF9" x="13" y="18" width="3" height="5"></rect>
+        <rect id="矩形-copy" fill="#366FF9" x="20" y="18" width="3" height="5"></rect>
+    </g>
+</svg>
